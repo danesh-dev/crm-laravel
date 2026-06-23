@@ -19,7 +19,7 @@ class Customer extends Model
 
     public function latestSubscription(): HasOne
     {
-        return $this->hasOne(Subscription::class)->latestOfMany('started_at');
+        return $this->hasOne(Subscription::class)->latestOfMany('expires_at');
     }
 
     public function emailDeliveries(): HasMany
@@ -30,6 +30,14 @@ class Customer extends Model
     public function tags(): BelongsToMany
     {
         return $this->belongsToMany(Tag::class);
+    }
+
+    public function activeSubscription(): HasOne
+    {
+        return $this->hasOne(Subscription::class)
+            ->whereNull('cancelled_at')
+            ->where('started_at', '<=', now())
+            ->where('expires_at', '>', now());
     }
 
     protected function casts(): array
