@@ -18,6 +18,9 @@
                     <flux:sidebar.item icon="user" :href="route('customers.index')" :current="request()->routeIs('customers.index')" wire:navigate>
                         {{ __('Customers') }}
                     </flux:sidebar.item>
+                    <flux:sidebar.item icon="folder" :href="route('templates.index')" :current="request()->routeIs('templates.index')" wire:navigate>
+                        {{ __('Email Templates') }}
+                    </flux:sidebar.item>
                 </flux:sidebar.group>
             </flux:sidebar.nav>
 

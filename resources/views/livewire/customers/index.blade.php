@@ -1,4 +1,20 @@
+
 <div class="p-4 space-y-4">
+
+    <div class="flex justify-between items-center">
+
+        <h1 class="text-2xl font-bold">
+            Customers
+        </h1>
+
+        <a
+            href="{{ route('customers.create') }}"
+            class="px-4 py-2 bg-blue-600 text-white rounded"
+        >
+            Create Customer
+        </a>
+
+    </div>
 
     {{-- Filters --}}
     <div class="grid grid-cols-1 md:grid-cols-4 gap-3">
@@ -14,9 +30,24 @@
             <option value="none">No Subscription</option>
         </select>
 
-        <input type="text" wire:model.live="source"
-               placeholder="Source"
-               class="border p-2 rounded" />
+        <select
+            wire:model.live="source"
+            class="border rounded p-2"
+        >
+
+            <option value="">
+                All Sources
+            </option>
+
+            @foreach(\App\Enums\UserSource::cases() as $source)
+
+                <option value="{{ $source->value }}">
+                    {{ str($source->value)->headline() }}
+                </option>
+
+            @endforeach
+
+        </select>
 
         <input type="number" wire:model.live="tag_id"
                placeholder="Tag ID"

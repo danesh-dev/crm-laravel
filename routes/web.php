@@ -11,12 +11,19 @@ use App\Livewire\Dashboard\Index as DashboardIndex;
 Route::view('/', 'welcome')->name('home');
 
 Route::middleware(['auth', 'verified'])->group(function () {
+    // dashoard
     Route::view('dashboard', 'dashboard')->name('dashboard');
     Route::get('/dashboard', DashboardIndex::class)->name('dashboard');
     
+    // customer
     Route::get('/customers', Index::class)->name('customers.index');
     Route::get('/customers/create', Create::class)->name('customers.create');
     Route::get('/customers/{customer}/edit', Edit::class)->name('customers.edit');
+
+    // templates
+    Route::get('/templates', \App\Livewire\EmailTemplates\Index::class)->name('templates.index');
+    Route::get('/templates/create',\App\Livewire\EmailTemplates\Create::class)->name('templates.create');
+    Route::get('/templates/{emailTemplate}/edit',\App\Livewire\EmailTemplates\Edit::class)->name('templates.edit');
 });
 
 

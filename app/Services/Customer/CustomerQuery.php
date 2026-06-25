@@ -22,9 +22,11 @@ class CustomerQuery
         });
 
         // Source
-        $query->when($filters['source'] ?? null, function ($q, $source) {
-            $q->where('source', $source);
-        });
+        $query->when($filters['source'] ?? null, $filters['source'],
+            fn ($query) => $query->where(
+            'source',
+            $filters['source']
+        ));
 
         // Tag filter
         $query->when($filters['tag_id'] ?? null, function ($q, $tagId) {
