@@ -10,10 +10,13 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 #[Fillable(['name', 'description', 'target_user_type', 'schedule_type', 'is_active', 'email_template_id', 'created_by'])]
 class Automation extends Model
 {
+    use SoftDeletes;
+
     public function emailTemplate(): BelongsTo
     {
         return $this->belongsTo(EmailTemplate::class);
