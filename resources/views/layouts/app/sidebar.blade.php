@@ -29,6 +29,14 @@
                         {{ __('Automations') }}
                     </flux:sidebar.item>
 
+                                        <flux:sidebar.item icon="bolt" :href="route('automations.index')" :current="request()->routeIs('automations.index')" wire:navigate>
+                        {{ __('Deliveries') }}
+                    </flux:sidebar.item>
+
+                                        <flux:sidebar.item icon="bolt" :href="route('automations.index')" :current="request()->routeIs('automations.index')" wire:navigate>
+                        {{ __('Tags') }}
+                    </flux:sidebar.item>
+
                 </flux:sidebar.group>
             </flux:sidebar.nav>
 

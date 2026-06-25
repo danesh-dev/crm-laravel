@@ -29,6 +29,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/automations', \App\Livewire\Automations\Index::class)->name('automations.index');
     Route::get('/automations/create', \App\Livewire\Automations\Create::class)->name('automations.create');
     Route::get('/automations/{automation}/edit', \App\Livewire\Automations\Edit::class)->name('automations.edit');
+
+    Route::get('/deliveries',\App\Livewire\Deliveries\Index::class)->name('deliveries.index');
 });
 
 
