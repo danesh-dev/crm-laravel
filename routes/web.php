@@ -24,6 +24,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/templates', \App\Livewire\EmailTemplates\Index::class)->name('templates.index');
     Route::get('/templates/create',\App\Livewire\EmailTemplates\Create::class)->name('templates.create');
     Route::get('/templates/{emailTemplate}/edit',\App\Livewire\EmailTemplates\Edit::class)->name('templates.edit');
+
+    // automations
+    Route::get('/automations', \App\Livewire\Automations\Index::class)->name('automations.index');
+    Route::get('/automations/create', \App\Livewire\Automations\Create::class)->name('automations.create');
+    Route::get('/automations/{automation}/edit', \App\Livewire\Automations\Edit::class)->name('automations.edit');
 });
 
 

@@ -33,7 +33,7 @@
     <table class="w-full border">
 
         <thead>
-        <tr class="border-b bg-gray-600">
+        <tr class="border-b bg-gray-300">
             <th class="text-left p-2">Name</th>
             <th class="text-left p-2">Subject</th>
             <th class="text-left p-2">Created By</th>

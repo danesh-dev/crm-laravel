@@ -20,7 +20,7 @@ class AutomationSchedule extends Model
             'delay_days' => 'integer',
             'weekday' => 'integer',
             'month_day' => 'integer',
-            // 'send_time' => 'datetime:H:i:s',
+            'send_time' => 'datetime',        
         ];
     }
 }
