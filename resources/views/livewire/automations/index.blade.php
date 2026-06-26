@@ -50,6 +50,10 @@
                     </td>
                     <td class="px-4 py-3">
                         <div class="flex justify-end gap-2">
+                            <x-ui.button :href="route('automations.show', $automation)" variant="secondary" size="sm" icon="eye" wire:navigate>
+                                {{ __('Show') }}
+                            </x-ui.button>
+
                             <x-ui.button :href="route('automations.edit', $automation)" variant="secondary" size="sm" icon="pencil-square" wire:navigate>
                                 {{ __('Edit') }}
                             </x-ui.button>

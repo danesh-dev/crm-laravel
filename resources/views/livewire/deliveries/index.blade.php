@@ -60,7 +60,11 @@
                     <td class="px-4 py-3 text-zinc-600 dark:text-zinc-300">{{ $delivery->scheduled_for?->format('Y-m-d H:i') ?? '---' }}</td>
                     <td class="px-4 py-3 text-zinc-600 dark:text-zinc-300">{{ $delivery->sent_at?->format('Y-m-d H:i') ?? '---' }}</td>
                     <td class="px-4 py-3">
-                        <div class="flex justify-end">
+                        <div class="flex justify-end gap-2">
+                            <x-ui.button :href="route('deliveries.show', $delivery)" variant="secondary" size="sm" icon="eye" wire:navigate>
+                                {{ __('Show') }}
+                            </x-ui.button>
+
                             @if($delivery->status === \App\Enums\EmailDeliveryStatus::FAILED)
                                 <x-ui.button
                                     variant="secondary"
@@ -69,8 +73,6 @@
                                 >
                                     {{ __('Retry') }}
                                 </x-ui.button>
-                            @else
-                                <span class="text-sm text-zinc-400 dark:text-zinc-500">{{ __('No action') }}</span>
                             @endif
                         </div>
                     </td>

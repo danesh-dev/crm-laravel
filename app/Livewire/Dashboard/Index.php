@@ -3,6 +3,7 @@
 namespace App\Livewire\Dashboard;
 
 use App\Services\Dashboard\DashboardStatsService;
+use Illuminate\Contracts\View\View;
 use Livewire\Component;
 
 class Index extends Component
@@ -15,8 +16,10 @@ class Index extends Component
         $this->stats = $service->get();
     }
 
-    public function render()
+    public function render(): View
     {
-        return view('livewire.dashboard.index');
+        return view('livewire.dashboard.index', [
+            'stats' => $this->stats,
+        ]);
     }
 }

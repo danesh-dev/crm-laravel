@@ -43,6 +43,10 @@
                     <td class="px-4 py-3 text-zinc-600 dark:text-zinc-300">{{ $template->created_at?->format('Y-m-d H:i') }}</td>
                     <td class="px-4 py-3">
                         <div class="flex justify-end gap-2">
+                            <x-ui.button :href="route('templates.show', $template)" variant="secondary" size="sm" icon="eye" wire:navigate>
+                                {{ __('Show') }}
+                            </x-ui.button>
+
                             <x-ui.button :href="route('templates.edit', $template)" variant="secondary" size="sm" icon="pencil-square" wire:navigate>
                                 {{ __('Edit') }}
                             </x-ui.button>

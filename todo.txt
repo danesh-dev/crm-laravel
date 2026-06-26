@@ -5,4 +5,3 @@ Functional:
 UI:
 - add 'subscription status' to customers index
 - edit Delete buttons to be red
-- add show actions to every index

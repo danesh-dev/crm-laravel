@@ -64,6 +64,10 @@
                     </td>
                     <td class="px-4 py-3">
                         <div class="flex justify-end gap-2">
+                            <x-ui.button :href="route('customers.show', $customer)" variant="secondary" size="sm" icon="eye" wire:navigate>
+                                {{ __('Show') }}
+                            </x-ui.button>
+
                             <x-ui.button :href="route('customers.edit', $customer->id)" variant="secondary" size="sm" icon="pencil-square" wire:navigate>
                                 {{ __('Edit') }}
                             </x-ui.button>
