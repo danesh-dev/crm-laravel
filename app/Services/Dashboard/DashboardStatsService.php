@@ -11,6 +11,18 @@ class DashboardStatsService
 {
     public function get(): array
     {
+        $totalDeliveriesToday = EmailDelivery::query()
+            ->whereDate('created_at', today())
+            ->count();
+
+        $emailsSentToday = EmailDelivery::query()
+            ->whereDate('sent_at', today())
+            ->count();
+
+        $emailsFailedToday = EmailDelivery::query()
+            ->whereDate('failed_at', today())
+            ->count();
+
         return [
 
             'customers' => Customer::count(),
@@ -21,13 +33,27 @@ class DashboardStatsService
 
             'automations' => Automation::active()->count(),
 
-            'emails_sent_today' => EmailDelivery::query()
-                ->whereDate('sent_at', today())
+            'emails_sent_today' => $emailsSentToday,
+
+            'emails_failed_today' => $emailsFailedToday,
+
+            'emails_pending' => EmailDelivery::query()
+                ->pending()
                 ->count(),
 
-            'emails_failed_today' => EmailDelivery::query()
-                ->whereDate('failed_at', today())
-                ->count(),
+            'delivery_success_rate' => $totalDeliveriesToday > 0
+                ? round(($emailsSentToday / $totalDeliveriesToday) * 100)
+                : 0,
+
+            'recent_deliveries' => EmailDelivery::query()
+                ->with([
+                    'customer',
+                    'automation',
+                    'emailTemplate',
+                ])
+                ->latest()
+                ->limit(6)
+                ->get(),
         ];
     }
 }

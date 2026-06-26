@@ -1,0 +1,8 @@
+Functional:
+- add 'once' to scheduleType
+- add repeat count to automations
+
+UI:
+- add 'subscription status' to customers index
+- edit Delete buttons to be red
+- add show actions to every index

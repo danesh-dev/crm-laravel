@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Customers;
 
+use App\Enums\UserSource;
 use App\Services\Customer\CustomerService;
 use Livewire\Component;
 
@@ -24,6 +25,7 @@ class Create extends Component
             'name' => $this->name,
             'email' => $this->email,
             'phone' => $this->phone,
+            'source' => UserSource::MANUAL,
         ]);
 
         return redirect()->route('customers.index');

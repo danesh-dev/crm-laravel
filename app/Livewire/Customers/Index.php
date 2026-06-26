@@ -46,6 +46,7 @@ class Index extends Component
 
     public function render(CustomerQuery $query)
     {
+        // dd(Customer::all());
         return view('livewire.customers.index', [
             'customers' => $query->apply([
                 'search' => $this->search,

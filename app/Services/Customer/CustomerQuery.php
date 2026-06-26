@@ -22,7 +22,7 @@ class CustomerQuery
         });
 
         // Source
-        $query->when($filters['source'] ?? null, $filters['source'],
+        $query->when($filters['source'] ?? null, 
             fn ($query) => $query->where(
             'source',
             $filters['source']
