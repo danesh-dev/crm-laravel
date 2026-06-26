@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Tag extends Model
 {
     use SoftDeletes;
-    
+
     public function customers(): BelongsToMany
     {
         return $this->belongsToMany(Customer::class);

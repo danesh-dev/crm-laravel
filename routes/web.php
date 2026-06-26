@@ -36,6 +36,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/deliveries', App\Livewire\Deliveries\Index::class)->name('deliveries.index');
     Route::get('/deliveries/{delivery}', App\Livewire\Deliveries\Show::class)->name('deliveries.show');
 
+    // tags
+    Route::get('/tags', App\Livewire\Tags\Index::class)->name('tags.index');
+    Route::get('/tags/create', App\Livewire\Tags\Create::class)->name('tags.create');
+    Route::get('/tags/{tag}/edit', App\Livewire\Tags\Edit::class)->name('tags.edit');
+
     // Route::middleware('super-admin')->group(function () {
         Route::get('/users', App\Livewire\Users\Index::class)->name('users.index');
         Route::get('/users/create', App\Livewire\Users\Create::class)->name('users.create');
