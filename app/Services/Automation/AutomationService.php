@@ -3,16 +3,10 @@
 namespace App\Services\Automation;
 
 use App\Models\Automation;
-use App\Services\Email\EmailScheduler;
 use Illuminate\Support\Facades\DB;
 
 class AutomationService
 {
-    public function __construct(
-        private AutomationMatcher $matcher,
-        private EmailScheduler $scheduler,
-    ) {}
-
     public function create(array $data): Automation
     {
         return DB::transaction(function () use ($data) {
@@ -74,30 +68,6 @@ class AutomationService
 
             $automation->delete();
         });
-    }
-
-    public function runNow(Automation $automation): int
-    {
-        $queued = 0;
-        $scheduledFor = now();
-
-        $this->matcher
-            ->query($automation)
-            ->chunkById(100, function ($customers) use ($automation, $scheduledFor, &$queued): void {
-                foreach ($customers as $customer) {
-                    $delivery = $this->scheduler->schedule(
-                        automation: $automation,
-                        customer: $customer,
-                        scheduledFor: $scheduledFor,
-                    );
-
-                    if ($delivery !== null) {
-                        $queued++;
-                    }
-                }
-            });
-
-        return $queued;
     }
 
     public function duplicate(Automation $automation, int $userId): Automation

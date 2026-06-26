@@ -6,6 +6,7 @@ use App\Enums\ScheduleType;
 use App\Models\Automation;
 use App\Services\Email\EmailScheduler;
 use Carbon\CarbonInterface;
+use Illuminate\Database\Eloquent\Builder;
 
 /**
  * Load active automations
@@ -35,6 +36,17 @@ class AutomationEngine
             });
     }
 
+    public function runForAutomation(Automation $automation): int
+    {
+        $automation->loadMissing('schedule');
+
+        return $this->scheduleCustomers(
+            automation: $automation,
+            customers: $this->matcher->query($automation),
+            scheduledFor: now(),
+        );
+    }
+
     protected function processAutomation(
         Automation $automation
     ): void {
@@ -62,17 +74,13 @@ class AutomationEngine
         }
 
         $customers = $this->matcher
-            ->query($automation)
-            ->get();
+            ->query($automation);
 
-        foreach ($customers as $customer) {
-
-            $this->scheduler->schedule(
-                automation: $automation,
-                customer: $customer,
-                scheduledFor: $this->scheduledFor($automation)
-            );
-        }
+        $this->scheduleCustomers(
+            automation: $automation,
+            customers: $customers,
+            scheduledFor: $this->scheduledFor($automation),
+        );
 
         $automation->update([
             'is_active' => false,
@@ -92,17 +100,13 @@ class AutomationEngine
             ->whereDate(
                 'signup_at',
                 now()->subDays($days)->toDateString()
-            )
-            ->get();
-
-        foreach ($customers as $customer) {
-
-            $this->scheduler->schedule(
-                automation: $automation,
-                customer: $customer,
-                scheduledFor: $this->scheduledFor($automation)
             );
-        }
+
+        $this->scheduleCustomers(
+            automation: $automation,
+            customers: $customers,
+            scheduledFor: $this->scheduledFor($automation),
+        );
     }
 
     protected function processDaily(
@@ -110,17 +114,13 @@ class AutomationEngine
     ): void {
 
         $customers = $this->matcher
-            ->query($automation)
-            ->get();
+            ->query($automation);
 
-        foreach ($customers as $customer) {
-
-            $this->scheduler->schedule(
-                automation: $automation,
-                customer: $customer,
-                scheduledFor: $this->scheduledFor($automation)
-            );
-        }
+        $this->scheduleCustomers(
+            automation: $automation,
+            customers: $customers,
+            scheduledFor: $this->scheduledFor($automation),
+        );
     }
 
     protected function processWeekly(
@@ -135,17 +135,13 @@ class AutomationEngine
         }
 
         $customers = $this->matcher
-            ->query($automation)
-            ->get();
+            ->query($automation);
 
-        foreach ($customers as $customer) {
-
-            $this->scheduler->schedule(
-                automation: $automation,
-                customer: $customer,
-                scheduledFor: $this->scheduledFor($automation)
-            );
-        }
+        $this->scheduleCustomers(
+            automation: $automation,
+            customers: $customers,
+            scheduledFor: $this->scheduledFor($automation),
+        );
     }
 
     protected function processMonthly(
@@ -160,17 +156,37 @@ class AutomationEngine
         }
 
         $customers = $this->matcher
-            ->query($automation)
-            ->get();
+            ->query($automation);
 
-        foreach ($customers as $customer) {
+        $this->scheduleCustomers(
+            automation: $automation,
+            customers: $customers,
+            scheduledFor: $this->scheduledFor($automation),
+        );
+    }
 
-            $this->scheduler->schedule(
-                automation: $automation,
-                customer: $customer,
-                scheduledFor: $this->scheduledFor($automation)
-            );
-        }
+    private function scheduleCustomers(
+        Automation $automation,
+        Builder $customers,
+        CarbonInterface $scheduledFor
+    ): int {
+        $queued = 0;
+
+        $customers->chunkById(100, function ($customers) use ($automation, $scheduledFor, &$queued): void {
+            foreach ($customers as $customer) {
+                $delivery = $this->scheduler->schedule(
+                    automation: $automation,
+                    customer: $customer,
+                    scheduledFor: $scheduledFor
+                );
+
+                if ($delivery !== null) {
+                    $queued++;
+                }
+            }
+        });
+
+        return $queued;
     }
 
     private function scheduledFor(Automation $automation): CarbonInterface

@@ -4,6 +4,7 @@ namespace App\Livewire\Automations;
 
 use App\Models\Automation;
 use App\Services\Automation\AutomationDetailsService;
+use App\Services\Automation\AutomationEngine;
 use App\Services\Automation\AutomationService;
 use App\Services\Automation\AutomationStatisticsService;
 use Illuminate\Contracts\View\View;
@@ -36,17 +37,14 @@ class Show extends Component
     }
 
     public function runNow(
-        AutomationService $service,
+        AutomationEngine $engine,
         AutomationStatisticsService $statistics,
     ): void {
         $automation = $this->automation();
-        $queued = $service->runNow($automation);
+        $engine->runForAutomation($automation);
         $statistics->forget($automation);
 
-        session()->flash('success', trans_choice(
-            ':count email queued.|:count emails queued.',
-            $queued
-        ));
+        session()->flash('success', __('Automation executed successfully.'));
     }
 
     public function duplicate(AutomationService $service): void
