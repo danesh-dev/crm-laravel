@@ -79,7 +79,7 @@ class AutomationService
                 'deleted_at',
             ]);
 
-            $copy->name = __('Copy of :name', ['name' => $automation->name]);
+            $copy->name = $automation->name.' (Copy)';
             $copy->created_by = $userId;
             $copy->is_active = false;
             $copy->save();

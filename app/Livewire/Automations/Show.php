@@ -51,7 +51,7 @@ class Show extends Component
     {
         $copy = $service->duplicate($this->automation(), auth()->id());
 
-        $this->redirectRoute('automations.show', $copy, navigate: true);
+        $this->redirectRoute('automations.edit', $copy, navigate: true);
     }
 
     public function pause(
