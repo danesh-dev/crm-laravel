@@ -3,10 +3,16 @@
 namespace App\Services\Automation;
 
 use App\Models\Automation;
+use App\Services\Email\EmailScheduler;
 use Illuminate\Support\Facades\DB;
 
 class AutomationService
 {
+    public function __construct(
+        private AutomationMatcher $matcher,
+        private EmailScheduler $scheduler,
+    ) {}
+
     public function create(array $data): Automation
     {
         return DB::transaction(function () use ($data) {
@@ -68,6 +74,72 @@ class AutomationService
 
             $automation->delete();
         });
+    }
+
+    public function runNow(Automation $automation): int
+    {
+        $queued = 0;
+        $scheduledFor = now();
+
+        $this->matcher
+            ->query($automation)
+            ->chunkById(100, function ($customers) use ($automation, $scheduledFor, &$queued): void {
+                foreach ($customers as $customer) {
+                    $delivery = $this->scheduler->schedule(
+                        automation: $automation,
+                        customer: $customer,
+                        scheduledFor: $scheduledFor,
+                    );
+
+                    if ($delivery !== null) {
+                        $queued++;
+                    }
+                }
+            });
+
+        return $queued;
+    }
+
+    public function duplicate(Automation $automation, int $userId): Automation
+    {
+        return DB::transaction(function () use ($automation, $userId): Automation {
+            $copy = $automation->replicate([
+                'created_at',
+                'updated_at',
+                'deleted_at',
+            ]);
+
+            $copy->name = __('Copy of :name', ['name' => $automation->name]);
+            $copy->created_by = $userId;
+            $copy->is_active = false;
+            $copy->save();
+
+            if ($automation->schedule) {
+                $copy->schedule()->create($automation->schedule->only([
+                    'run_date',
+                    'delay_days',
+                    'weekday',
+                    'month_day',
+                    'send_time',
+                ]));
+            }
+
+            return $copy->fresh(['emailTemplate', 'schedule', 'creator']);
+        });
+    }
+
+    public function pause(Automation $automation): void
+    {
+        $automation->update([
+            'is_active' => false,
+        ]);
+    }
+
+    public function resume(Automation $automation): void
+    {
+        $automation->update([
+            'is_active' => true,
+        ]);
     }
 
     private function scheduleData(array $data): array

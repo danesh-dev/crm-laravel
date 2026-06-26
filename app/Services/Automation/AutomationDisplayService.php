@@ -31,6 +31,33 @@ class AutomationDisplayService
         };
     }
 
+    public function scheduleCard(Automation $automation): string
+    {
+        return match ($automation->schedule_type) {
+            ScheduleType::ONCE => $automation->schedule?->run_date
+                ? __('Once on :date at :time', [
+                    'date' => $automation->schedule->run_date->format('M j Y'),
+                    'time' => $this->sendTime($automation),
+                ])
+                : __('Once'),
+            ScheduleType::AFTER_SIGNUP => __(':days after signup at :time', [
+                'days' => trans_choice(':count day|:count days', $automation->schedule?->delay_days ?? 0),
+                'time' => $this->sendTime($automation),
+            ]),
+            ScheduleType::DAILY => __('Every day at :time', [
+                'time' => $this->sendTime($automation),
+            ]),
+            ScheduleType::WEEKLY => __('Every :day at :time', [
+                'day' => $this->weekdayName($automation->schedule?->weekday),
+                'time' => $this->sendTime($automation),
+            ]),
+            ScheduleType::MONTHLY => __('Every month on day :day at :time', [
+                'day' => $automation->schedule?->month_day ?? '---',
+                'time' => $this->sendTime($automation),
+            ]),
+        };
+    }
+
     public function repeat(Automation $automation): string
     {
         return $automation->repeat_count === null
