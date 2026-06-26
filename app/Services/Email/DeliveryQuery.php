@@ -11,34 +11,38 @@ class DeliveryQuery
     {
         return EmailDelivery::query()
             ->with([
-                'customer',
-                'automation',
-                'emailTemplate',
+                'customer:id,name,email,phone,source,signup_at,last_login_at',
+                'automation:id,name',
+                'emailTemplate:id,name,subject',
             ])
             ->when(
                 $filters['status'] ?? null,
-                fn ($q, $status) => $q->where(
-                    'status',
-                    $status
-                )
+                fn ($query, $status) => $query->where('status', $status)
+            )
+            ->when(
+                $filters['automation_id'] ?? null,
+                fn ($query, $automationId) => $query->where('automation_id', $automationId)
+            )
+            ->when(
+                $filters['email_template_id'] ?? null,
+                fn ($query, $templateId) => $query->where('email_template_id', $templateId)
+            )
+            ->when(
+                $filters['date_from'] ?? null,
+                fn ($query, $dateFrom) => $query->whereDate('scheduled_for', '>=', $dateFrom)
+            )
+            ->when(
+                $filters['date_to'] ?? null,
+                fn ($query, $dateTo) => $query->whereDate('scheduled_for', '<=', $dateTo)
             )
             ->when(
                 $filters['search'] ?? null,
-                function ($q, $search) {
-
-                    $q->whereHas(
+                function ($query, $search): void {
+                    $query->whereHas(
                         'customer',
                         fn ($customer) => $customer
-                            ->where(
-                                'name',
-                                'ilike',
-                                "%{$search}%"
-                            )
-                            ->orWhere(
-                                'email',
-                                'ilike',
-                                "%{$search}%"
-                            )
+                            ->where('name', 'ilike', "%{$search}%")
+                            ->orWhere('email', 'ilike', "%{$search}%")
                     );
                 }
             )

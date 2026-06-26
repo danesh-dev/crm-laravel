@@ -266,6 +266,7 @@ class DashboardStatsService
             EmailDeliveryStatus::FAILED,
             EmailDeliveryStatus::BOUNCED => 'danger',
             EmailDeliveryStatus::PROCESSING => 'info',
+            EmailDeliveryStatus::CANCELLED => 'neutral',
             EmailDeliveryStatus::PENDING => 'warning',
         };
     }

@@ -16,6 +16,10 @@ class DeliveryService
 
     public function send(EmailDelivery $delivery): void
     {
+        if ($delivery->status === EmailDeliveryStatus::CANCELLED) {
+            return;
+        }
+
         try {
 
             $delivery->update([

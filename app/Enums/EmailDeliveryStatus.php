@@ -9,4 +9,5 @@ enum EmailDeliveryStatus: string
     case SENT = 'sent';
     case FAILED = 'failed';
     case BOUNCED = 'bounced';
+    case CANCELLED = 'cancelled';
 }

@@ -1,12 +1,27 @@
 <x-ui.page
     :title="__('Deliveries')"
-    :subtitle="__('Track scheduled, sent, and failed email deliveries.')"
+    :subtitle="__('Track scheduled, processing, sent, failed, and cancelled email deliveries.')"
 >
-    <div class="grid gap-3 rounded-lg border border-zinc-200 bg-white p-4 shadow-sm sm:grid-cols-2 dark:border-zinc-700 dark:bg-zinc-900">
+    @inject('statusPresenter', 'App\Services\Email\DeliveryStatusPresenter')
+
+    @if(session('success'))
+        <div class="rounded-lg border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-700 dark:border-emerald-500/20 dark:bg-emerald-500/10 dark:text-emerald-300">
+            {{ session('success') }}
+        </div>
+    @endif
+
+    @if($message)
+        <div class="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700 dark:border-red-500/20 dark:bg-red-500/10 dark:text-red-300">
+            {{ $message }}
+        </div>
+    @endif
+
+    <div class="grid gap-3 rounded-lg border border-zinc-200 bg-white p-4 shadow-sm sm:grid-cols-2 xl:grid-cols-6 dark:border-zinc-700 dark:bg-zinc-900">
         <input
+            type="text"
             wire:model.live.debounce.300ms="search"
-            placeholder="{{ __('Search customer...') }}"
-            class="h-10 rounded-md border border-zinc-200 bg-white px-3 text-sm text-zinc-900 placeholder:text-zinc-400 focus:border-zinc-400 focus:outline-none focus:ring-2 focus:ring-zinc-200 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white dark:focus:border-zinc-500 dark:focus:ring-zinc-700"
+            placeholder="{{ __('Search customer name or email...') }}"
+            class="h-10 rounded-md border border-zinc-200 bg-white px-3 text-sm text-zinc-900 placeholder:text-zinc-400 focus:border-zinc-400 focus:outline-none focus:ring-2 focus:ring-zinc-200 xl:col-span-2 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white dark:focus:border-zinc-500 dark:focus:ring-zinc-700"
         />
 
         <select wire:model.live="status" class="h-10 rounded-md border border-zinc-200 bg-white px-3 text-sm text-zinc-900 focus:border-zinc-400 focus:outline-none focus:ring-2 focus:ring-zinc-200 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white dark:focus:border-zinc-500 dark:focus:ring-zinc-700">
@@ -18,67 +33,107 @@
                 </option>
             @endforeach
         </select>
+
+        <select wire:model.live="automation_id" class="h-10 rounded-md border border-zinc-200 bg-white px-3 text-sm text-zinc-900 focus:border-zinc-400 focus:outline-none focus:ring-2 focus:ring-zinc-200 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white dark:focus:border-zinc-500 dark:focus:ring-zinc-700">
+            <option value="">{{ __('All Automations') }}</option>
+
+            @foreach($automations as $automation)
+                <option value="{{ $automation->id }}">{{ $automation->name }}</option>
+            @endforeach
+        </select>
+
+        <select wire:model.live="email_template_id" class="h-10 rounded-md border border-zinc-200 bg-white px-3 text-sm text-zinc-900 focus:border-zinc-400 focus:outline-none focus:ring-2 focus:ring-zinc-200 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white dark:focus:border-zinc-500 dark:focus:ring-zinc-700">
+            <option value="">{{ __('All Templates') }}</option>
+
+            @foreach($emailTemplates as $template)
+                <option value="{{ $template->id }}">{{ $template->name }}</option>
+            @endforeach
+        </select>
+
+        <input
+            type="date"
+            wire:model.live="date_from"
+            aria-label="{{ __('Date from') }}"
+            class="h-10 rounded-md border border-zinc-200 bg-white px-3 text-sm text-zinc-900 focus:border-zinc-400 focus:outline-none focus:ring-2 focus:ring-zinc-200 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white dark:focus:border-zinc-500 dark:focus:ring-zinc-700"
+        />
+
+        <input
+            type="date"
+            wire:model.live="date_to"
+            aria-label="{{ __('Date to') }}"
+            class="h-10 rounded-md border border-zinc-200 bg-white px-3 text-sm text-zinc-900 focus:border-zinc-400 focus:outline-none focus:ring-2 focus:ring-zinc-200 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white dark:focus:border-zinc-500 dark:focus:ring-zinc-700"
+        />
+    </div>
+
+    <div wire:loading.delay class="text-sm text-zinc-500 dark:text-zinc-400">
+        {{ __('Loading deliveries...') }}
     </div>
 
     <x-ui.table>
         <thead class="bg-zinc-50 dark:bg-zinc-800/60">
             <tr>
                 <th class="px-4 py-3 text-left font-medium text-zinc-600 dark:text-zinc-300">{{ __('Customer') }}</th>
-                <th class="px-4 py-3 text-left font-medium text-zinc-600 dark:text-zinc-300">{{ __('Template') }}</th>
+                <th class="px-4 py-3 text-left font-medium text-zinc-600 dark:text-zinc-300">{{ __('Email') }}</th>
                 <th class="px-4 py-3 text-left font-medium text-zinc-600 dark:text-zinc-300">{{ __('Automation') }}</th>
+                <th class="px-4 py-3 text-left font-medium text-zinc-600 dark:text-zinc-300">{{ __('Template') }}</th>
                 <th class="px-4 py-3 text-left font-medium text-zinc-600 dark:text-zinc-300">{{ __('Status') }}</th>
-                <th class="px-4 py-3 text-left font-medium text-zinc-600 dark:text-zinc-300">{{ __('Scheduled') }}</th>
-                <th class="px-4 py-3 text-left font-medium text-zinc-600 dark:text-zinc-300">{{ __('Sent') }}</th>
+                <th class="px-4 py-3 text-left font-medium text-zinc-600 dark:text-zinc-300">{{ __('Scheduled At') }}</th>
+                <th class="px-4 py-3 text-left font-medium text-zinc-600 dark:text-zinc-300">{{ __('Processing At') }}</th>
+                <th class="px-4 py-3 text-left font-medium text-zinc-600 dark:text-zinc-300">{{ __('Sent At') }}</th>
+                <th class="px-4 py-3 text-left font-medium text-zinc-600 dark:text-zinc-300">{{ __('Failed At') }}</th>
                 <th class="px-4 py-3 text-right font-medium text-zinc-600 dark:text-zinc-300">{{ __('Actions') }}</th>
             </tr>
         </thead>
 
         <tbody class="divide-y divide-zinc-100 dark:divide-zinc-800">
             @forelse($deliveries as $delivery)
-                @php
-                    $statusVariant = match ($delivery->status) {
-                        \App\Enums\EmailDeliveryStatus::SENT => 'success',
-                        \App\Enums\EmailDeliveryStatus::FAILED,
-                        \App\Enums\EmailDeliveryStatus::BOUNCED => 'danger',
-                        \App\Enums\EmailDeliveryStatus::PROCESSING => 'info',
-                        default => 'warning',
-                    };
-                @endphp
-
                 <tr class="hover:bg-zinc-50/70 dark:hover:bg-zinc-800/40">
-                    <td class="px-4 py-3">
-                        <div class="font-medium text-zinc-900 dark:text-white">{{ $delivery->customer?->name ?? '---' }}</div>
-                        <div class="text-sm text-zinc-500 dark:text-zinc-400">{{ $delivery->customer?->email ?? '---' }}</div>
-                    </td>
-                    <td class="px-4 py-3 text-zinc-600 dark:text-zinc-300">{{ $delivery->emailTemplate?->name ?? '---' }}</td>
+                    <td class="px-4 py-3 font-medium text-zinc-900 dark:text-white">{{ $delivery->customer?->name ?? '---' }}</td>
+                    <td class="px-4 py-3 text-zinc-600 dark:text-zinc-300">{{ $delivery->customer?->email ?? '---' }}</td>
                     <td class="px-4 py-3 text-zinc-600 dark:text-zinc-300">{{ $delivery->automation?->name ?? '---' }}</td>
+                    <td class="px-4 py-3 text-zinc-600 dark:text-zinc-300">{{ $delivery->emailTemplate?->name ?? '---' }}</td>
                     <td class="px-4 py-3">
-                        <x-ui.badge :variant="$statusVariant">
+                        <x-ui.badge :variant="$statusPresenter->badgeVariant($delivery->status)">
                             {{ str($delivery->status->value)->headline() }}
                         </x-ui.badge>
                     </td>
                     <td class="px-4 py-3 text-zinc-600 dark:text-zinc-300">{{ $delivery->scheduled_for?->format('Y-m-d H:i') ?? '---' }}</td>
+                    <td class="px-4 py-3 text-zinc-600 dark:text-zinc-300">{{ $delivery->processing_at?->format('Y-m-d H:i') ?? '---' }}</td>
                     <td class="px-4 py-3 text-zinc-600 dark:text-zinc-300">{{ $delivery->sent_at?->format('Y-m-d H:i') ?? '---' }}</td>
+                    <td class="px-4 py-3 text-zinc-600 dark:text-zinc-300">{{ $delivery->failed_at?->format('Y-m-d H:i') ?? '---' }}</td>
                     <td class="px-4 py-3">
                         <div class="flex justify-end gap-2">
                             <x-ui.button :href="route('deliveries.show', $delivery)" variant="secondary" size="sm" icon="eye" wire:navigate>
-                                {{ __('Show') }}
+                                <!-- {{ __('View') }} -->
                             </x-ui.button>
 
                             @if($delivery->status === \App\Enums\EmailDeliveryStatus::FAILED)
                                 <x-ui.button
                                     variant="secondary"
                                     size="sm"
+                                    icon="arrow-path"
                                     wire:click="retry({{ $delivery->id }})"
                                 >
-                                    {{ __('Retry') }}
+                                    <!-- {{ __('Retry') }} -->
+                                </x-ui.button>
+                            @endif
+
+                            @if($delivery->status === \App\Enums\EmailDeliveryStatus::PENDING)
+                                <x-ui.button
+                                    variant="danger"
+                                    size="sm"
+                                    icon="x-mark"
+                                    wire:click="cancel({{ $delivery->id }})"
+                                    wire:confirm="{{ __('Cancel this pending delivery?') }}"
+                                >
+                                    <!-- {{ __('Cancel') }} -->
                                 </x-ui.button>
                             @endif
                         </div>
                     </td>
                 </tr>
             @empty
-                <x-ui.table-empty colspan="7" :title="__('No deliveries found.')" :message="__('Scheduled emails will appear here when automations run.')" />
+                <x-ui.table-empty colspan="10" :title="__('No deliveries found.')" :message="__('Try changing the filters or wait for automations to schedule email deliveries.')" />
             @endforelse
         </tbody>
     </x-ui.table>
