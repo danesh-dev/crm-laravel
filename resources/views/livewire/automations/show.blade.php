@@ -79,16 +79,16 @@
 
                 <div class="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
                     <div class="rounded-lg border border-zinc-200 bg-zinc-50 p-4 dark:border-zinc-700 dark:bg-zinc-950">
-                        <div class="text-sm text-zinc-500 dark:text-zinc-400">{{ __('Customers matched') }}</div>
-                        <div class="mt-2 text-2xl font-semibold text-zinc-950 dark:text-white">{{ number_format($statistics['customers_matched']) }}</div>
+                        <div class="text-sm text-zinc-500 dark:text-zinc-400">{{ __('Total customers matching') }}</div>
+                        <div class="mt-2 text-2xl font-semibold text-zinc-950 dark:text-white">{{ number_format($statistics['customers_matching']) }}</div>
                     </div>
                     <div class="rounded-lg border border-zinc-200 bg-zinc-50 p-4 dark:border-zinc-700 dark:bg-zinc-950">
-                        <div class="text-sm text-zinc-500 dark:text-zinc-400">{{ __('Emails queued') }}</div>
-                        <div class="mt-2 text-2xl font-semibold text-zinc-950 dark:text-white">{{ number_format($statistics['emails_queued']) }}</div>
+                        <div class="text-sm text-zinc-500 dark:text-zinc-400">{{ __('Total queued') }}</div>
+                        <div class="mt-2 text-2xl font-semibold text-zinc-950 dark:text-white">{{ number_format($statistics['total_queued']) }}</div>
                     </div>
                     <div class="rounded-lg border border-zinc-200 bg-zinc-50 p-4 dark:border-zinc-700 dark:bg-zinc-950">
-                        <div class="text-sm text-zinc-500 dark:text-zinc-400">{{ __('Sent') }}</div>
-                        <div class="mt-2 text-2xl font-semibold text-emerald-700 dark:text-emerald-300">{{ number_format($statistics['sent']) }}</div>
+                        <div class="text-sm text-zinc-500 dark:text-zinc-400">{{ __('Total sent') }}</div>
+                        <div class="mt-2 text-2xl font-semibold text-emerald-700 dark:text-emerald-300">{{ number_format($statistics['total_sent']) }}</div>
                     </div>
                     <div class="rounded-lg border border-zinc-200 bg-zinc-50 p-4 dark:border-zinc-700 dark:bg-zinc-950">
                         <div class="text-sm text-zinc-500 dark:text-zinc-400">{{ __('Failed') }}</div>
@@ -102,7 +102,29 @@
                         <div class="text-sm text-zinc-500 dark:text-zinc-400">{{ __('Success rate') }}</div>
                         <div class="mt-2 text-2xl font-semibold text-zinc-950 dark:text-white">{{ $statistics['success_rate'] }}%</div>
                     </div>
+                    <div class="rounded-lg border border-zinc-200 bg-zinc-50 p-4 dark:border-zinc-700 dark:bg-zinc-950">
+                        <div class="text-sm text-zinc-500 dark:text-zinc-400">{{ __('Last execution') }}</div>
+                        <div class="mt-2 text-base font-semibold text-zinc-950 dark:text-white">{{ $statistics['last_execution'] ?? '---' }}</div>
+                    </div>
+                    <div class="rounded-lg border border-zinc-200 bg-zinc-50 p-4 dark:border-zinc-700 dark:bg-zinc-950">
+                        <div class="text-sm text-zinc-500 dark:text-zinc-400">{{ __('Next execution') }}</div>
+                        <div class="mt-2 text-base font-semibold text-zinc-950 dark:text-white">{{ $statistics['next_execution'] ?? '---' }}</div>
+                    </div>
                 </div>
+            </section>
+
+            <section class="rounded-lg border border-zinc-200 bg-white p-5 shadow-sm dark:border-zinc-700 dark:bg-zinc-900">
+                <div>
+                    <h2 class="text-base font-semibold text-zinc-950 dark:text-white">{{ __('Daily Delivery Activity') }}</h2>
+                    <p class="mt-1 text-sm text-zinc-500 dark:text-zinc-400">{{ __('Queued, sent, and failed deliveries over the last 30 days.') }}</p>
+                </div>
+
+                <div
+                    class="js-dashboard-chart mt-4 min-h-72"
+                    data-chart-type="area"
+                    data-chart-labels='@json($dailyChart['labels'])'
+                    data-chart-series='@json($dailyChart['series'])'
+                ></div>
             </section>
 
             <section>

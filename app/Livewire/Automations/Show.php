@@ -5,6 +5,7 @@ namespace App\Livewire\Automations;
 use App\Models\Automation;
 use App\Services\Automation\AutomationDetailsService;
 use App\Services\Automation\AutomationService;
+use App\Services\Automation\AutomationStatisticsService;
 use Illuminate\Contracts\View\View;
 use Livewire\Component;
 
@@ -19,20 +20,28 @@ class Show extends Component
         $this->automationId = $automation->id;
     }
 
-    public function render(AutomationDetailsService $details): View
-    {
+    public function render(
+        AutomationDetailsService $details,
+        AutomationStatisticsService $statistics,
+    ): View {
         $automation = $this->automation();
+        $stats = $statistics->get($automation);
 
         return view('livewire.automations.show', [
             'automation' => $automation,
-            'statistics' => $details->statistics($automation),
+            'statistics' => $stats['summary'],
+            'dailyChart' => $stats['daily'],
             'recentDeliveries' => $details->recentDeliveries($automation),
         ]);
     }
 
-    public function runNow(AutomationService $service): void
-    {
-        $queued = $service->runNow($this->automation());
+    public function runNow(
+        AutomationService $service,
+        AutomationStatisticsService $statistics,
+    ): void {
+        $automation = $this->automation();
+        $queued = $service->runNow($automation);
+        $statistics->forget($automation);
 
         session()->flash('success', trans_choice(
             ':count email queued.|:count emails queued.',
@@ -47,23 +56,35 @@ class Show extends Component
         $this->redirectRoute('automations.show', $copy, navigate: true);
     }
 
-    public function pause(AutomationService $service): void
-    {
-        $service->pause($this->automation());
+    public function pause(
+        AutomationService $service,
+        AutomationStatisticsService $statistics,
+    ): void {
+        $automation = $this->automation();
+        $service->pause($automation);
+        $statistics->forget($automation);
 
         session()->flash('success', __('Automation paused.'));
     }
 
-    public function resume(AutomationService $service): void
-    {
-        $service->resume($this->automation());
+    public function resume(
+        AutomationService $service,
+        AutomationStatisticsService $statistics,
+    ): void {
+        $automation = $this->automation();
+        $service->resume($automation);
+        $statistics->forget($automation);
 
         session()->flash('success', __('Automation resumed.'));
     }
 
-    public function delete(AutomationService $service): void
-    {
-        $service->delete($this->automation());
+    public function delete(
+        AutomationService $service,
+        AutomationStatisticsService $statistics,
+    ): void {
+        $automation = $this->automation();
+        $statistics->forget($automation);
+        $service->delete($automation);
 
         $this->redirectRoute('automations.index', navigate: true);
     }
