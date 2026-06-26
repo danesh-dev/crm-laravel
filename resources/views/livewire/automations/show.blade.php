@@ -2,6 +2,8 @@
     :title="$automation->name"
     :subtitle="$automation->description ?: __('Automation details and schedule settings.')"
 >
+    @inject('automationDisplay', 'App\Services\Automation\AutomationDisplayService')
+
     <x-slot:actions>
         <x-ui.button :href="route('automations.index')" variant="secondary" wire:navigate>
             {{ __('Back') }}
@@ -25,19 +27,31 @@
             <dl class="mt-5 grid gap-4 sm:grid-cols-2">
                 <div>
                     <dt class="text-sm text-zinc-500 dark:text-zinc-400">{{ __('Target User Type') }}</dt>
-                    <dd class="mt-1 font-medium text-zinc-950 dark:text-white">{{ str($automation->target_user_type->value)->headline() }}</dd>
+                    <dd class="mt-1 font-medium text-zinc-950 dark:text-white">{{ $automationDisplay->audience($automation) }}</dd>
                 </div>
                 <div>
                     <dt class="text-sm text-zinc-500 dark:text-zinc-400">{{ __('Schedule Type') }}</dt>
-                    <dd class="mt-1 font-medium text-zinc-950 dark:text-white">{{ str($automation->schedule_type->value)->headline() }}</dd>
+                    <dd class="mt-1 font-medium text-zinc-950 dark:text-white">{{ $automationDisplay->schedule($automation) }}</dd>
                 </div>
                 <div>
                     <dt class="text-sm text-zinc-500 dark:text-zinc-400">{{ __('Email Template') }}</dt>
-                    <dd class="mt-1 font-medium text-zinc-950 dark:text-white">{{ $automation->emailTemplate?->name ?? '---' }}</dd>
+                    <dd class="mt-1 flex flex-wrap items-center gap-2 font-medium text-zinc-950 dark:text-white">
+                        <span>{{ $automation->emailTemplate?->name ?? '---' }}</span>
+
+                        @if($automation->emailTemplate)
+                            <x-ui.button :href="route('templates.show', $automation->emailTemplate)" variant="secondary" size="sm" icon="eye" wire:navigate>
+                                <!-- {{ __('Show') }} -->
+                            </x-ui.button>
+                        @endif
+                    </dd>
                 </div>
                 <div>
                     <dt class="text-sm text-zinc-500 dark:text-zinc-400">{{ __('Created By') }}</dt>
                     <dd class="mt-1 font-medium text-zinc-950 dark:text-white">{{ $automation->creator?->name ?? '---' }}</dd>
+                </div>
+                <div>
+                    <dt class="text-sm text-zinc-500 dark:text-zinc-400">{{ __('Repeat') }}</dt>
+                    <dd class="mt-1 font-medium text-zinc-950 dark:text-white">{{ $automationDisplay->repeat($automation) }}</dd>
                 </div>
             </dl>
         </div>
@@ -46,6 +60,10 @@
             <h2 class="text-base font-semibold text-zinc-950 dark:text-white">{{ __('Schedule') }}</h2>
 
             <dl class="mt-5 space-y-4">
+                <div>
+                    <dt class="text-sm text-zinc-500 dark:text-zinc-400">{{ __('Run Date') }}</dt>
+                    <dd class="mt-1 font-medium text-zinc-950 dark:text-white">{{ $automation->schedule?->run_date?->format('Y-m-d') ?? '---' }}</dd>
+                </div>
                 <div>
                     <dt class="text-sm text-zinc-500 dark:text-zinc-400">{{ __('Delay Days') }}</dt>
                     <dd class="mt-1 font-medium text-zinc-950 dark:text-white">{{ $automation->schedule?->delay_days ?? '---' }}</dd>

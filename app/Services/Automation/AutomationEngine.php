@@ -5,6 +5,7 @@ namespace App\Services\Automation;
 use App\Enums\ScheduleType;
 use App\Models\Automation;
 use App\Services\Email\EmailScheduler;
+use Carbon\CarbonInterface;
 
 /**
  * Load active automations
@@ -40,6 +41,8 @@ class AutomationEngine
 
         match ($automation->schedule_type) {
 
+            ScheduleType::ONCE => $this->processOnce($automation),
+
             ScheduleType::AFTER_SIGNUP => $this->processAfterSignup($automation),
 
             ScheduleType::DAILY => $this->processDaily($automation),
@@ -48,6 +51,32 @@ class AutomationEngine
 
             ScheduleType::MONTHLY => $this->processMonthly($automation),
         };
+    }
+
+    protected function processOnce(
+        Automation $automation
+    ): void {
+
+        if (! $automation->schedule?->run_date?->isToday()) {
+            return;
+        }
+
+        $customers = $this->matcher
+            ->query($automation)
+            ->get();
+
+        foreach ($customers as $customer) {
+
+            $this->scheduler->schedule(
+                automation: $automation,
+                customer: $customer,
+                scheduledFor: $this->scheduledFor($automation)
+            );
+        }
+
+        $automation->update([
+            'is_active' => false,
+        ]);
     }
 
     protected function processAfterSignup(
@@ -71,7 +100,7 @@ class AutomationEngine
             $this->scheduler->schedule(
                 automation: $automation,
                 customer: $customer,
-                scheduledFor: now()
+                scheduledFor: $this->scheduledFor($automation)
             );
         }
     }
@@ -89,7 +118,7 @@ class AutomationEngine
             $this->scheduler->schedule(
                 automation: $automation,
                 customer: $customer,
-                scheduledFor: now()
+                scheduledFor: $this->scheduledFor($automation)
             );
         }
     }
@@ -114,7 +143,7 @@ class AutomationEngine
             $this->scheduler->schedule(
                 automation: $automation,
                 customer: $customer,
-                scheduledFor: now()
+                scheduledFor: $this->scheduledFor($automation)
             );
         }
     }
@@ -139,8 +168,26 @@ class AutomationEngine
             $this->scheduler->schedule(
                 automation: $automation,
                 customer: $customer,
-                scheduledFor: now()
+                scheduledFor: $this->scheduledFor($automation)
             );
         }
+    }
+
+    private function scheduledFor(Automation $automation): CarbonInterface
+    {
+        $date = $automation->schedule_type === ScheduleType::ONCE
+            ? $automation->schedule->run_date->copy()
+            : now();
+
+        $sendTime = $automation->schedule?->send_time;
+
+        if (! $sendTime) {
+            return $date;
+        }
+
+        return $date->setTime(
+            hour: (int) $sendTime->format('H'),
+            minute: (int) $sendTime->format('i')
+        );
     }
 }

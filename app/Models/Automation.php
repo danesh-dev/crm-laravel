@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-#[Fillable(['name', 'description', 'target_user_type', 'schedule_type', 'is_active', 'email_template_id', 'created_by'])]
+#[Fillable(['name', 'description', 'target_user_type', 'target_offset_days', 'schedule_type', 'is_active', 'repeat_count', 'email_template_id', 'created_by'])]
 class Automation extends Model
 {
     use SoftDeletes;
@@ -46,8 +46,10 @@ class Automation extends Model
     {
         return [
             'target_user_type' => TargetUserType::class,
+            'target_offset_days' => 'integer',
             'schedule_type' => ScheduleType::class,
             'is_active' => 'boolean',
+            'repeat_count' => 'integer',
         ];
     }
 }

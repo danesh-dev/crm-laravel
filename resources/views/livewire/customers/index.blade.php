@@ -2,6 +2,8 @@
     :title="__('Customers')"
     :subtitle="__('Manage imported users, subscription state, and audience details.')"
 >
+    @inject('customerStatus', 'App\Services\Customer\CustomerStatusService')
+
     <x-slot:actions>
         <x-ui.button :href="route('customers.create')" icon="plus" wire:navigate>
             {{ __('New Customer') }}
@@ -20,6 +22,7 @@
             <option value="">{{ __('All Subscriptions') }}</option>
             <option value="active">{{ __('Active') }}</option>
             <option value="expired">{{ __('Expired') }}</option>
+            <option value="cancelled">{{ __('Cancelled') }}</option>
             <option value="none">{{ __('No Subscription') }}</option>
         </select>
 
@@ -48,7 +51,7 @@
                 <th class="px-4 py-3 text-left font-medium text-zinc-600 dark:text-zinc-300">{{ __('Email') }}</th>
                 <th class="px-4 py-3 text-left font-medium text-zinc-600 dark:text-zinc-300">{{ __('Phone') }}</th>
                 <th class="px-4 py-3 text-left font-medium text-zinc-600 dark:text-zinc-300">{{ __('Source') }}</th>
-                <!-- TODO: add subscription status field -->
+                <th class="px-4 py-3 text-left font-medium text-zinc-600 dark:text-zinc-300">{{ __('Subscription Status') }}</th>
                 <th class="px-4 py-3 text-right font-medium text-zinc-600 dark:text-zinc-300">{{ __('Actions') }}</th>
             </tr>
         </thead>
@@ -63,28 +66,44 @@
                         {{ $customer->source ? str($customer->source->value)->headline() : '---' }}
                     </td>
                     <td class="px-4 py-3">
+                        @php
+                            $status = $customerStatus->determine($customer);
+                            $statusVariant = match ($status) {
+                                \App\Enums\TargetUserType::ACTIVE_SUBSCRIBER => 'success',
+                                \App\Enums\TargetUserType::EXPIRED_SUBSCRIBER => 'warning',
+                                \App\Enums\TargetUserType::CANCELLED_SUBSCRIBER => 'danger',
+                                default => 'neutral',
+                            };
+                        @endphp
+
+                        <x-ui.badge :variant="$statusVariant">
+                            {{ str($status->value)->headline() }}
+                        </x-ui.badge>
+                    </td>
+                    <td class="px-4 py-3">
                         <div class="flex justify-end gap-2">
                             <x-ui.button :href="route('customers.show', $customer)" variant="secondary" size="sm" icon="eye" wire:navigate>
-                                {{ __('Show') }}
+                                <!-- {{ __('Show') }} -->
                             </x-ui.button>
 
                             <x-ui.button :href="route('customers.edit', $customer->id)" variant="secondary" size="sm" icon="pencil-square" wire:navigate>
-                                {{ __('Edit') }}
+                                <!-- {{ __('Edit') }} -->
                             </x-ui.button>
 
                             <x-ui.button
-                                variant="ghost"
+                                variant="danger"
                                 size="sm"
+                                icon="trash"
                                 wire:click="delete({{ $customer->id }})"
                                 wire:confirm="{{ __('Are you sure you want to delete this customer?') }}"
                             >
-                                {{ __('Delete') }}
+                                <!-- {{ __('Delete') }} -->
                             </x-ui.button>
                         </div>
                     </td>
                 </tr>
             @empty
-                <x-ui.table-empty colspan="5" :title="__('No customers found.')" :message="__('Try changing the filters or create a new customer.')" />
+                <x-ui.table-empty colspan="6" :title="__('No customers found.')" :message="__('Try changing the filters or create a new customer.')" />
             @endforelse
         </tbody>
     </x-ui.table>

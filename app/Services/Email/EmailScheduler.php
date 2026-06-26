@@ -10,18 +10,22 @@ use App\Models\EmailDelivery;
 
 class EmailScheduler
 {
+    public function __construct(
+        private DeliveryDuplicateChecker $duplicateChecker,
+        private AutomationRepeatLimiter $repeatLimiter,
+    ) {}
+
     public function schedule(
         Automation $automation,
         Customer $customer,
         \DateTimeInterface $scheduledFor
     ): ?EmailDelivery {
 
-        if (
-            $this->alreadyScheduledToday(
-                $automation->id,
-                $customer->id
-            )
-        ) {
+        if (! $this->repeatLimiter->allows($automation, $customer)) {
+            return null;
+        }
+
+        if ($this->duplicateChecker->exists($automation, $customer, $scheduledFor)) {
             return null;
         }
 
@@ -38,17 +42,5 @@ class EmailScheduler
         );
 
         return $delivery;
-    }
-
-    public function alreadyScheduledToday(
-        int $automationId,
-        int $customerId
-    ): bool {
-
-        return EmailDelivery::query()
-            ->where('automation_id', $automationId)
-            ->where('customer_id', $customerId)
-            ->whereDate('scheduled_for', today())
-            ->exists();
     }
 }

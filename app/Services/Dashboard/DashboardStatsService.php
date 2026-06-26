@@ -6,6 +6,7 @@ use App\Enums\EmailDeliveryStatus;
 use App\Models\Automation;
 use App\Models\Customer;
 use App\Models\EmailDelivery;
+use App\Services\Automation\AutomationDisplayService;
 use Carbon\CarbonInterface;
 use Flowframe\Trend\Trend;
 use Illuminate\Support\Carbon;
@@ -13,7 +14,11 @@ use Illuminate\Support\Facades\Cache;
 
 class DashboardStatsService
 {
-    private const CACHE_PREFIX = 'dashboard.v2.';
+    private const CACHE_PREFIX = 'dashboard.v3.';
+
+    public function __construct(
+        private AutomationDisplayService $automationDisplay,
+    ) {}
 
     public function get(): array
     {
@@ -42,12 +47,13 @@ class DashboardStatsService
 
     public function deliveryStats(): array
     {
-        return Cache::remember(self::CACHE_PREFIX.'delivery_stats', 60, function (): array {
+        return
+        Cache::remember(self::CACHE_PREFIX.'delivery_stats', 30, function (): array {
             $sentToday = $this->sentTodayCount();
             $failedToday = $this->failedTodayCount();
             $pending = $this->pendingCount();
             $totalToday = EmailDelivery::query()
-                ->whereDate('created_at', today())
+                ->whereDate('scheduled_for', today())
                 ->count();
 
             return [
@@ -63,7 +69,7 @@ class DashboardStatsService
 
     public function subscriptionStats(): array
     {
-        return Cache::remember(self::CACHE_PREFIX.'subscription_stats', 60, function (): array {
+        return Cache::remember(self::CACHE_PREFIX.'subscription_stats', 30, function (): array {
             $active = $this->customersByLatestSubscription('active');
             $expired = $this->customersByLatestSubscription('expired');
             $cancelled = $this->customersByLatestSubscription('cancelled');
@@ -91,7 +97,7 @@ class DashboardStatsService
 
     public function charts(): array
     {
-        return Cache::remember(self::CACHE_PREFIX.'charts', 60, function (): array {
+        return Cache::remember(self::CACHE_PREFIX.'charts', 30, function (): array {
             $start = now()->subDays(29)->startOfDay();
             $end = now()->endOfDay();
 
@@ -119,7 +125,7 @@ class DashboardStatsService
 
     public function recentCustomers(): array
     {
-        return Cache::remember(self::CACHE_PREFIX.'recent_customers', 60, fn (): array => Customer::query()
+        return Cache::remember(self::CACHE_PREFIX.'recent_customers', 30, fn (): array => Customer::query()
             ->select(['id', 'name', 'email', 'source', 'signup_at', 'created_at'])
             ->latest()
             ->limit(8)
@@ -136,7 +142,7 @@ class DashboardStatsService
 
     public function recentDeliveries(): array
     {
-        return Cache::remember(self::CACHE_PREFIX.'recent_deliveries', 60, fn (): array => EmailDelivery::query()
+        return Cache::remember(self::CACHE_PREFIX.'recent_deliveries', 30, fn (): array => EmailDelivery::query()
             ->select([
                 'id',
                 'automation_id',
@@ -171,11 +177,12 @@ class DashboardStatsService
 
     public function activeAutomations(): array
     {
-        return Cache::remember(self::CACHE_PREFIX.'active_automations', 60, fn (): array => Automation::query()
+        return Cache::remember(self::CACHE_PREFIX.'active_automations', 30, fn (): array => Automation::query()
             ->select([
                 'id',
                 'name',
                 'target_user_type',
+                'target_offset_days',
                 'schedule_type',
                 'is_active',
                 'email_template_id',
@@ -183,6 +190,7 @@ class DashboardStatsService
             ->active()
             ->with([
                 'emailTemplate:id,name',
+                'schedule',
             ])
             ->latest()
             ->limit(5)
@@ -190,8 +198,9 @@ class DashboardStatsService
             ->map(fn (Automation $automation): array => [
                 'id' => $automation->id,
                 'name' => $automation->name,
-                'schedule' => str($automation->schedule_type->value)->headline()->toString(),
-                'target_user_type' => str($automation->target_user_type->value)->headline()->toString(),
+                'schedule' => $this->automationDisplay->schedule($automation),
+                'repeat' => $this->automationDisplay->repeat($automation),
+                'target_user_type' => $this->automationDisplay->audience($automation),
                 'email_template' => $automation->emailTemplate?->name,
                 'is_active' => $automation->is_active,
             ])

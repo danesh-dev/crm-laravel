@@ -16,17 +16,17 @@ class CustomerQuery
         $query->when($filters['search'] ?? null, function ($q, $search) {
             $q->where(function ($q) use ($search) {
                 $q->where('name', 'ilike', "%{$search}%")
-                  ->orWhere('email', 'ilike', "%{$search}%")
-                  ->orWhere('phone', 'ilike', "%{$search}%");
+                    ->orWhere('email', 'ilike', "%{$search}%")
+                    ->orWhere('phone', 'ilike', "%{$search}%");
             });
         });
 
         // Source
-        $query->when($filters['source'] ?? null, 
+        $query->when($filters['source'] ?? null,
             fn ($query) => $query->where(
-            'source',
-            $filters['source']
-        ));
+                'source',
+                $filters['source']
+            ));
 
         // Tag filter
         $query->when($filters['tag_id'] ?? null, function ($q, $tagId) {
@@ -41,13 +41,19 @@ class CustomerQuery
             if ($type === 'active') {
                 $q->whereHas('subscriptions', function ($q) {
                     $q->whereNull('cancelled_at')
-                      ->where('expires_at', '>', now());
+                        ->where('expires_at', '>', now());
                 });
             }
 
             if ($type === 'expired') {
                 $q->whereHas('subscriptions', function ($q) {
                     $q->where('expires_at', '<=', now());
+                });
+            }
+
+            if ($type === 'cancelled') {
+                $q->whereHas('subscriptions', function ($q) {
+                    $q->whereNotNull('cancelled_at');
                 });
             }
 

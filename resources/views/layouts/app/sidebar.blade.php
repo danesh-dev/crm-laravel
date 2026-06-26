@@ -46,13 +46,13 @@
 
         <flux:spacer />
 
-        <flux:sidebar.nav>
+        <!-- <flux:sidebar.nav>
             <flux:sidebar.group :heading="__('Account')" class="grid">
                 <flux:sidebar.item icon="cog-6-tooth" :href="route('profile.edit')" :current="request()->routeIs('profile.edit') || request()->routeIs('appearance.edit') || request()->routeIs('security.edit')" wire:navigate>
                     {{ __('Settings') }}
                 </flux:sidebar.item>
             </flux:sidebar.group>
-        </flux:sidebar.nav>
+        </flux:sidebar.nav> -->
 
         <x-desktop-user-menu class="hidden lg:block" :name="auth()->user()->name" />
     </flux:sidebar>

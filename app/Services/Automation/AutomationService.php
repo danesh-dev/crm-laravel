@@ -15,18 +15,17 @@ class AutomationService
                 'name' => $data['name'],
                 'description' => $data['description'],
                 'target_user_type' => $data['target_user_type'],
+                'target_offset_days' => $data['target_offset_days'],
                 'schedule_type' => $data['schedule_type'],
                 'email_template_id' => $data['email_template_id'],
                 'created_by' => $data['created_by'],
                 'is_active' => $data['is_active'],
+                'repeat_count' => $data['repeat_count'],
             ]);
 
-            $automation->schedule()->create([
-                'delay_days' => $data['delay_days'],
-                'weekday' => $data['weekday'],
-                'month_day' => $data['month_day'],
-                'send_time' => $data['send_time'],
-            ]);
+            $automation->schedule()->create(
+                $this->scheduleData($data)
+            );
 
             return $automation;
         });
@@ -43,17 +42,17 @@ class AutomationService
                 'name' => $data['name'],
                 'description' => $data['description'],
                 'target_user_type' => $data['target_user_type'],
+                'target_offset_days' => $data['target_offset_days'],
                 'schedule_type' => $data['schedule_type'],
                 'email_template_id' => $data['email_template_id'],
                 'is_active' => $data['is_active'],
+                'repeat_count' => $data['repeat_count'],
             ]);
 
-            $automation->schedule()->update([
-                'delay_days' => $data['delay_days'],
-                'weekday' => $data['weekday'],
-                'month_day' => $data['month_day'],
-                'send_time' => $data['send_time'],
-            ]);
+            $automation->schedule()->updateOrCreate(
+                ['automation_id' => $automation->id],
+                $this->scheduleData($data)
+            );
 
             return $automation->fresh();
         });
@@ -69,5 +68,16 @@ class AutomationService
 
             $automation->delete();
         });
+    }
+
+    private function scheduleData(array $data): array
+    {
+        return [
+            'run_date' => $data['run_date'],
+            'delay_days' => $data['delay_days'],
+            'weekday' => $data['weekday'],
+            'month_day' => $data['month_day'],
+            'send_time' => $data['send_time'],
+        ];
     }
 }

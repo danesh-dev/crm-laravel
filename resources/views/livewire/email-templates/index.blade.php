@@ -44,20 +44,21 @@
                     <td class="px-4 py-3">
                         <div class="flex justify-end gap-2">
                             <x-ui.button :href="route('templates.show', $template)" variant="secondary" size="sm" icon="eye" wire:navigate>
-                                {{ __('Show') }}
+                                <!-- {{ __('Show') }} -->
                             </x-ui.button>
 
                             <x-ui.button :href="route('templates.edit', $template)" variant="secondary" size="sm" icon="pencil-square" wire:navigate>
-                                {{ __('Edit') }}
+                                <!-- {{ __('Edit') }} -->
                             </x-ui.button>
 
                             <x-ui.button
-                                variant="ghost"
+                                variant="danger"
                                 size="sm"
+                                icon="trash"
                                 wire:click="delete({{ $template->id }})"
                                 wire:confirm="{{ __('Delete this template?') }}"
                             >
-                                {{ __('Delete') }}
+                                <!-- {{ __('Delete') }} -->
                             </x-ui.button>
                         </div>
                     </td>
