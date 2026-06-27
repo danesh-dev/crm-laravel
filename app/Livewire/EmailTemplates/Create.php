@@ -26,8 +26,9 @@ class Create extends Component
 
         $customer = Customer::find($this->previewCustomerId);
 
-        if (!$customer) {
+        if (! $customer) {
             session()->flash('error', 'Customer not found.');
+
             return;
         }
 
@@ -46,9 +47,9 @@ class Create extends Component
     ): void {
 
         $this->validate([
-            'name' => ['required'],
-            'subject' => ['required'],
-            'body_html' => ['required'],
+            'name' => ['required', 'string', 'max:255'],
+            'subject' => ['required', 'string', 'max:255'],
+            'body_html' => ['required', 'string'],
         ]);
 
         $service->create([
@@ -59,7 +60,8 @@ class Create extends Component
         ]);
 
         $this->redirectRoute(
-            'templates.index'
+            'templates.index',
+            navigate: true,
         );
     }
 

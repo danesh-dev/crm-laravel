@@ -1,94 +1,73 @@
-<div class="space-y-4">
+<x-ui.page
+    :title="__('Create Email Template')"
+    :subtitle="__('Compose reusable HTML email content for automations.')"
+>
+    <x-slot:actions>
+        <x-ui.button :href="route('templates.index')" variant="secondary" wire:navigate>
+            {{ __('Back') }}
+        </x-ui.button>
+    </x-slot:actions>
 
-    <div>
-        <label>Name</label>
+    <form wire:submit="save" class="grid gap-6 xl:grid-cols-[minmax(0,1fr)_22rem]">
+        <div class="space-y-6">
+            <section class="rounded-lg border border-zinc-200 bg-white p-5 shadow-sm dark:border-zinc-700 dark:bg-zinc-900">
+                <h2 class="text-base font-semibold text-zinc-950 dark:text-white">{{ __('Template Details') }}</h2>
 
-        <input
-            wire:model="name"
-            class="border p-2 w-full"
-        >
-    </div>
+                <div class="mt-5 grid gap-4 md:grid-cols-2">
+                    <flux:input wire:model="name" :label="__('Name')" required autofocus />
+                    <flux:input wire:model="subject" :label="__('Subject')" required />
+                </div>
+            </section>
 
-    <div>
-        <label>Subject</label>
+            <section>
+                <div class="mb-3">
+                    <h2 class="text-base font-semibold text-zinc-950 dark:text-white">{{ __('Body') }}</h2>
+                </div>
 
-        <input
-            wire:model="subject"
-            class="border p-2 w-full"
-        >
-    </div>
+                @include('livewire.email-templates.partials.editor', ['html' => $body_html])
 
-    <div>
-        <label>Body</label>
+                @error('body_html') <div class="mt-2 text-sm text-red-600 dark:text-red-400">{{ $message }}</div> @enderror
+            </section>
 
-        <textarea
-            wire:model="body_html"
-            rows="15"
-            class="border p-2 w-full"
-        ></textarea>
-    </div>
+            @if($preview)
+                <section class="rounded-lg border border-zinc-200 bg-white p-5 shadow-sm dark:border-zinc-700 dark:bg-zinc-900">
+                    <h2 class="text-base font-semibold text-zinc-950 dark:text-white">{{ __('Rendered Preview') }}</h2>
 
-    <div class="bg-gray-600 p-3">
-        <p>Available Variables:</p>
-
-        <ul class="list-disc ml-5">
-            <li>@{{name}}</li>
-            <li>@{{email}}</li>
-            <li>@{{signup_date}}</li>
-        </ul>
-    </div>
-
-        
-    <button
-        type="button"
-        wire:click="save"
-        class="px-4 py-2 bg-green-600 text-white rounded border"
-    >
-        Save Template
-    </button>
-
-    <div class="space-x-2">
-        <div>
-
-            <label class="block mb-1">
-                Preview Customer
-            </label>
-
-            <select
-                wire:model="previewCustomerId"
-                class="border p-2 w-full"
-            >
-
-                @foreach($customers as $customer)
-
-                    <option value="{{ $customer->id }}">
-                        {{ $customer->name }}
-                        ({{ $customer->email }})
-                    </option>
-
-                @endforeach
-
-            </select>
-
-        </div>
-        <button
-            type="button"
-            wire:click="generatePreview"
-            class="px-4 py-2 bg-blue-600 text-white rounded border"
-        >
-            Generate Preview
-        </button>
-
-    </div>
-
-    @if($preview)
-
-        <div class="border p-4">
-
-            {!! $preview !!}
-
+                    <div class="mt-5 rounded-lg border border-zinc-200 bg-zinc-50 p-4 text-sm text-zinc-800 dark:border-zinc-700 dark:bg-zinc-950 dark:text-zinc-200">
+                        {!! $preview !!}
+                    </div>
+                </section>
+            @endif
         </div>
 
-    @endif
+        <aside class="space-y-6">
+            <div class="sticky top-6 rounded-lg border border-zinc-200 bg-white p-5 shadow-sm dark:border-zinc-700 dark:bg-zinc-900">
+                <h2 class="text-base font-semibold text-zinc-950 dark:text-white">{{ __('Preview') }}</h2>
 
-</div>
+                <div class="mt-5 space-y-4">
+                    <flux:select wire:model="previewCustomerId" :label="__('Preview Customer')">
+                        @foreach($customers as $customer)
+                            <flux:select.option value="{{ $customer->id }}">
+                                {{ $customer->name }} ({{ $customer->email }})
+                            </flux:select.option>
+                        @endforeach
+                    </flux:select>
+
+                    <x-ui.button type="button" variant="secondary" class="w-full" wire:click="generatePreview">
+                        {{ __('Generate Preview') }}
+                    </x-ui.button>
+                </div>
+
+                <div class="mt-6 flex flex-col gap-3">
+                    <x-ui.button type="submit" class="w-full">
+                        {{ __('Save Template') }}
+                    </x-ui.button>
+
+                    <x-ui.button :href="route('templates.index')" variant="secondary" class="w-full" wire:navigate>
+                        {{ __('Cancel') }}
+                    </x-ui.button>
+                </div>
+            </div>
+        </aside>
+    </form>
+</x-ui.page>

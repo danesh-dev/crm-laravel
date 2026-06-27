@@ -13,10 +13,13 @@ class Edit extends Component
     public EmailTemplate $template;
 
     public string $name;
+
     public string $subject;
+
     public string $body_html;
 
     public ?string $preview = null;
+
     public ?int $previewCustomerId = null;
 
     public function mount(
@@ -41,7 +44,7 @@ class Edit extends Component
             $this->previewCustomerId
         );
 
-        if (!$customer) {
+        if (! $customer) {
             return;
         }
 
@@ -56,9 +59,9 @@ class Edit extends Component
     ): void {
 
         $this->validate([
-            'name' => ['required'],
-            'subject' => ['required'],
-            'body_html' => ['required'],
+            'name' => ['required', 'string', 'max:255'],
+            'subject' => ['required', 'string', 'max:255'],
+            'body_html' => ['required', 'string'],
         ]);
 
         $service->update(
