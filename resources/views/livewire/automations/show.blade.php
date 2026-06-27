@@ -52,6 +52,18 @@
                         <dd class="mt-1 font-medium text-zinc-950 dark:text-white">{{ $automationDisplay->audience($automation) }}</dd>
                     </div>
                     <div>
+                        <dt class="text-sm text-zinc-500 dark:text-zinc-400">{{ __('Required Tags') }}</dt>
+                        <dd class="mt-1">
+                            <div class="flex flex-wrap gap-1.5">
+                                @forelse($automation->tags as $tag)
+                                    <x-ui.badge>{{ $tag->name }}</x-ui.badge>
+                                @empty
+                                    <span class="font-medium text-zinc-950 dark:text-white">{{ __('Any tags') }}</span>
+                                @endforelse
+                            </div>
+                        </dd>
+                    </div>
+                    <div>
                         <dt class="text-sm text-zinc-500 dark:text-zinc-400">{{ __('Schedule') }}</dt>
                         <dd class="mt-1 font-medium text-zinc-950 dark:text-white">{{ $automationDisplay->schedule($automation) }}</dd>
                     </div>

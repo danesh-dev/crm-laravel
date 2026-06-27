@@ -36,6 +36,7 @@
     $repeatSummary = $repeat_mode === 'limited'
         ? trans_choice(':count time per customer|:count times per customer', (int) $repeat_count)
         : __('Unlimited');
+    $selectedTags = $tags->whereIn('id', array_map('intval', $tagIds));
 @endphp
 
 <form wire:submit="save" class="grid gap-6 xl:grid-cols-[minmax(0,1fr)_22rem]">
@@ -99,6 +100,17 @@
                     @error('target_offset_days') <div class="mt-1 text-sm text-red-600 dark:text-red-400">{{ $message }}</div> @enderror
                 </div>
             @endif
+
+            <div class="mt-5">
+                <label class="text-sm font-medium text-zinc-700 dark:text-zinc-200">{{ __('Required Tags') }}</label>
+                <select wire:model.live="tagIds" multiple class="mt-1 min-h-36 w-full rounded-md border border-zinc-200 bg-white px-3 py-2 text-sm text-zinc-900 focus:border-zinc-400 focus:outline-none focus:ring-2 focus:ring-zinc-200 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white dark:focus:border-zinc-500 dark:focus:ring-zinc-700">
+                    @foreach($tags as $tag)
+                        <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+                    @endforeach
+                </select>
+                @error('tagIds') <div class="mt-1 text-sm text-red-600 dark:text-red-400">{{ $message }}</div> @enderror
+                @error('tagIds.*') <div class="mt-1 text-sm text-red-600 dark:text-red-400">{{ $message }}</div> @enderror
+            </div>
         </section>
 
         <section class="rounded-lg border border-zinc-200 bg-white p-5 shadow-sm dark:border-zinc-700 dark:bg-zinc-900">
@@ -258,6 +270,18 @@
                                 {{ $target_offset_days === null ? __('Any expired subscriber') : trans_choice(':count day after expiry|:count days after expiry', (int) $target_offset_days) }}
                             </span>
                         @endif
+                    </dd>
+                </div>
+                <div>
+                    <dt class="text-sm text-zinc-500 dark:text-zinc-400">{{ __('Required Tags') }}</dt>
+                    <dd class="mt-1">
+                        <div class="flex flex-wrap gap-1.5">
+                            @forelse($selectedTags as $tag)
+                                <x-ui.badge>{{ $tag->name }}</x-ui.badge>
+                            @empty
+                                <span class="font-medium text-zinc-950 dark:text-white">{{ __('Any tags') }}</span>
+                            @endforelse
+                        </div>
                     </dd>
                 </div>
                 <div>

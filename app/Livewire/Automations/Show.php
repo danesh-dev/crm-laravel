@@ -94,6 +94,7 @@ class Show extends Component
                 'emailTemplate:id,name,subject',
                 'schedule',
                 'creator:id,name,email',
+                'tags:id,name',
             ])
             ->findOrFail($this->automationId);
     }

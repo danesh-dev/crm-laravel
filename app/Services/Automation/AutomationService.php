@@ -3,6 +3,7 @@
 namespace App\Services\Automation;
 
 use App\Models\Automation;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
 
 class AutomationService
@@ -10,6 +11,7 @@ class AutomationService
     public function create(array $data): Automation
     {
         return DB::transaction(function () use ($data) {
+            $tagIds = Arr::pull($data, 'tag_ids');
 
             $automation = Automation::query()->create([
                 'name' => $data['name'],
@@ -27,6 +29,10 @@ class AutomationService
                 $this->scheduleData($data)
             );
 
+            if ($tagIds !== null) {
+                $automation->tags()->sync($tagIds);
+            }
+
             return $automation;
         });
     }
@@ -37,6 +43,7 @@ class AutomationService
     ): Automation {
 
         return DB::transaction(function () use ($automation, $data) {
+            $tagIds = Arr::pull($data, 'tag_ids');
 
             $automation->update([
                 'name' => $data['name'],
@@ -54,7 +61,11 @@ class AutomationService
                 $this->scheduleData($data)
             );
 
-            return $automation->fresh();
+            if ($tagIds !== null) {
+                $automation->tags()->sync($tagIds);
+            }
+
+            return $automation->fresh(['tags']);
         });
     }
 
@@ -93,6 +104,8 @@ class AutomationService
                     'send_time',
                 ]));
             }
+
+            $copy->tags()->sync($automation->tags()->pluck('tags.id')->all());
 
             return $copy->fresh(['emailTemplate', 'schedule', 'creator']);
         });

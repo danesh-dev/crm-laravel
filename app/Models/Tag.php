@@ -16,4 +16,9 @@ class Tag extends Model
     {
         return $this->belongsToMany(Customer::class);
     }
+
+    public function automations(): BelongsToMany
+    {
+        return $this->belongsToMany(Automation::class);
+    }
 }

@@ -6,6 +6,7 @@ use App\Enums\ScheduleType;
 use App\Enums\TargetUserType;
 use App\Models\Automation;
 use App\Models\EmailTemplate;
+use App\Models\Tag;
 use App\Services\Automation\AutomationService;
 use Illuminate\Contracts\View\View;
 use Illuminate\Validation\Rule;
@@ -43,11 +44,14 @@ class Edit extends Component
 
     public ?int $repeat_count = null;
 
+    /** @var array<int, int|string> */
+    public array $tagIds = [];
+
     public function mount(
         Automation $automation
     ): void {
 
-        $this->automation = $automation->load('schedule');
+        $this->automation = $automation->load(['schedule', 'tags:id']);
 
         $this->name = $automation->name;
 
@@ -90,6 +94,10 @@ class Edit extends Component
         $this->send_time = $automation
             ->schedule?->send_time?->format('H:i')
             ?? '09:00';
+
+        $this->tagIds = $this->automation->tags
+            ->pluck('id')
+            ->all();
     }
 
     protected function rules(): array
@@ -104,6 +112,8 @@ class Edit extends Component
             'is_active' => ['boolean'],
             'repeat_mode' => ['required', Rule::in(['unlimited', 'limited'])],
             'repeat_count' => ['nullable', 'required_if:repeat_mode,limited', 'integer', 'min:1', 'max:32767'],
+            'tagIds' => ['array'],
+            'tagIds.*' => ['integer', Rule::exists('tags', 'id')->whereNull('deleted_at')],
             'run_date' => ['nullable', 'required_if:schedule_type,'.ScheduleType::ONCE->value, 'date'],
             'delay_days' => ['nullable', 'required_if:schedule_type,'.ScheduleType::AFTER_SIGNUP->value, 'integer', 'min:0'],
             'weekday' => ['nullable', 'required_if:schedule_type,'.ScheduleType::WEEKLY->value, 'integer', 'between:0,6'],
@@ -129,6 +139,7 @@ class Edit extends Component
                 'email_template_id' => $this->email_template_id,
                 'is_active' => $this->is_active,
                 'repeat_count' => $this->normalizedRepeatCount(),
+                'tag_ids' => $this->tagIds,
                 'run_date' => $this->schedule_type === ScheduleType::ONCE->value ? $this->run_date : null,
                 'delay_days' => $this->schedule_type === ScheduleType::AFTER_SIGNUP->value ? $this->delay_days : null,
                 'weekday' => $this->schedule_type === ScheduleType::WEEKLY->value ? $this->weekday : null,
@@ -167,6 +178,10 @@ class Edit extends Component
             'targetTypes' => TargetUserType::cases(),
 
             'scheduleTypes' => ScheduleType::cases(),
+
+            'tags' => Tag::query()
+                ->orderBy('name')
+                ->get(['id', 'name']),
         ]);
     }
 

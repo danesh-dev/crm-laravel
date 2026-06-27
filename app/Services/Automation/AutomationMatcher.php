@@ -11,7 +11,7 @@ class AutomationMatcher
 {
     public function query(Automation $automation): Builder
     {
-        return match ($automation->target_user_type) {
+        $query = match ($automation->target_user_type) {
 
             TargetUserType::ALL => Customer::query(),
 
@@ -28,6 +28,8 @@ class AutomationMatcher
             TargetUserType::CANCELLED_SUBSCRIBER => Customer::query()
                 ->whereHas('latestSubscription', fn ($q) => $q->cancelled()),
         };
+
+        return $this->applyTagTargets($query, $automation);
     }
 
     private function newlyRegistered(Automation $automation): Builder
@@ -61,5 +63,19 @@ class AutomationMatcher
                     );
                 }
             });
+    }
+
+    private function applyTagTargets(Builder $query, Automation $automation): Builder
+    {
+        $tagIds = $automation->tags()
+            ->pluck('tags.id');
+
+        foreach ($tagIds as $tagId) {
+            $query->whereHas('tags', function (Builder $query) use ($tagId): void {
+                $query->where('tags.id', $tagId);
+            });
+        }
+
+        return $query;
     }
 }

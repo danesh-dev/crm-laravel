@@ -5,6 +5,7 @@ namespace App\Livewire\Automations;
 use App\Enums\ScheduleType;
 use App\Enums\TargetUserType;
 use App\Models\EmailTemplate;
+use App\Models\Tag;
 use App\Services\Automation\AutomationService;
 use Illuminate\Contracts\View\View;
 use Illuminate\Validation\Rule;
@@ -40,6 +41,9 @@ class Create extends Component
 
     public ?int $repeat_count = null;
 
+    /** @var array<int, int|string> */
+    public array $tagIds = [];
+
     public function mount(): void
     {
         $this->target_user_type =
@@ -65,6 +69,7 @@ class Create extends Component
             'created_by' => auth()->id(),
             'is_active' => $this->is_active,
             'repeat_count' => $this->normalizedRepeatCount(),
+            'tag_ids' => $this->tagIds,
             'run_date' => $this->schedule_type === ScheduleType::ONCE->value ? $this->run_date : null,
             'delay_days' => $this->schedule_type === ScheduleType::AFTER_SIGNUP->value ? $this->delay_days : null,
             'weekday' => $this->schedule_type === ScheduleType::WEEKLY->value ? $this->weekday : null,
@@ -96,6 +101,9 @@ class Create extends Component
             'selectedTemplate' => $templates->firstWhere('id', (int) $this->email_template_id),
             'scheduleTypes' => ScheduleType::cases(),
             'targetTypes' => TargetUserType::cases(),
+            'tags' => Tag::query()
+                ->orderBy('name')
+                ->get(['id', 'name']),
         ]);
     }
 
@@ -111,6 +119,8 @@ class Create extends Component
             'is_active' => ['boolean'],
             'repeat_mode' => ['required', Rule::in(['unlimited', 'limited'])],
             'repeat_count' => ['nullable', 'required_if:repeat_mode,limited', 'integer', 'min:1', 'max:32767'],
+            'tagIds' => ['array'],
+            'tagIds.*' => ['integer', Rule::exists('tags', 'id')->whereNull('deleted_at')],
             'run_date' => ['nullable', 'required_if:schedule_type,'.ScheduleType::ONCE->value, 'date'],
             'delay_days' => ['nullable', 'required_if:schedule_type,'.ScheduleType::AFTER_SIGNUP->value, 'integer', 'min:0'],
             'weekday' => ['nullable', 'required_if:schedule_type,'.ScheduleType::WEEKLY->value, 'integer', 'between:0,6'],
