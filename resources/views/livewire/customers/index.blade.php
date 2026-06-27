@@ -36,12 +36,13 @@
             @endforeach
         </select>
 
-        <input
-            type="number"
-            wire:model.live="tag_id"
-            placeholder="{{ __('Tag ID') }}"
-            class="h-10 rounded-md border border-zinc-200 bg-white px-3 text-sm text-zinc-900 placeholder:text-zinc-400 focus:border-zinc-400 focus:outline-none focus:ring-2 focus:ring-zinc-200 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white dark:focus:border-zinc-500 dark:focus:ring-zinc-700"
-        />
+        <select wire:model.live="tag_id" class="h-10 rounded-md border border-zinc-200 bg-white px-3 text-sm text-zinc-900 focus:border-zinc-400 focus:outline-none focus:ring-2 focus:ring-zinc-200 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white dark:focus:border-zinc-500 dark:focus:ring-zinc-700">
+            <option value="">{{ __('All Tags') }}</option>
+
+            @foreach($tags as $tag)
+                <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+            @endforeach
+        </select>
     </div>
 
     <x-ui.table>
@@ -51,6 +52,7 @@
                 <th class="px-4 py-3 text-left font-medium text-zinc-600 dark:text-zinc-300">{{ __('Email') }}</th>
                 <th class="px-4 py-3 text-left font-medium text-zinc-600 dark:text-zinc-300">{{ __('Phone') }}</th>
                 <th class="px-4 py-3 text-left font-medium text-zinc-600 dark:text-zinc-300">{{ __('Source') }}</th>
+                <th class="px-4 py-3 text-left font-medium text-zinc-600 dark:text-zinc-300">{{ __('Tags') }}</th>
                 <th class="px-4 py-3 text-left font-medium text-zinc-600 dark:text-zinc-300">{{ __('Subscription Status') }}</th>
                 <th class="px-4 py-3 text-right font-medium text-zinc-600 dark:text-zinc-300">{{ __('Actions') }}</th>
             </tr>
@@ -64,6 +66,15 @@
                     <td class="px-4 py-3 text-zinc-600 dark:text-zinc-300">{{ $customer->phone ?: '---' }}</td>
                     <td class="px-4 py-3 text-zinc-600 dark:text-zinc-300">
                         {{ $customer->source ? str($customer->source->value)->headline() : '---' }}
+                    </td>
+                    <td class="px-4 py-3">
+                        <div class="flex flex-wrap gap-1.5">
+                            @forelse($customer->tags as $tag)
+                                <x-ui.badge>{{ $tag->name }}</x-ui.badge>
+                            @empty
+                                <span class="text-sm text-zinc-500 dark:text-zinc-400">---</span>
+                            @endforelse
+                        </div>
                     </td>
                     <td class="px-4 py-3">
                         @php
@@ -103,7 +114,7 @@
                     </td>
                 </tr>
             @empty
-                <x-ui.table-empty colspan="6" :title="__('No customers found.')" :message="__('Try changing the filters or create a new customer.')" />
+                <x-ui.table-empty colspan="7" :title="__('No customers found.')" :message="__('Try changing the filters or create a new customer.')" />
             @endforelse
         </tbody>
     </x-ui.table>

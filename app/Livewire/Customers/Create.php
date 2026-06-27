@@ -3,7 +3,9 @@
 namespace App\Livewire\Customers;
 
 use App\Enums\UserSource;
+use App\Models\Tag;
 use App\Services\Customer\CustomerService;
+use Illuminate\Validation\Rule;
 use Livewire\Component;
 
 class Create extends Component
@@ -14,11 +16,17 @@ class Create extends Component
 
     public ?string $phone = null;
 
+    /** @var array<int, int|string> */
+    public array $tagIds = [];
+
     public function save(CustomerService $service)
     {
         $this->validate([
-            'name' => 'required',
-            'email' => 'required|email|unique:customers,email',
+            'name' => ['required', 'string'],
+            'email' => ['required', 'email', 'unique:customers,email'],
+            'phone' => ['nullable', 'string'],
+            'tagIds' => ['array'],
+            'tagIds.*' => ['integer', Rule::exists('tags', 'id')->whereNull('deleted_at')],
         ]);
 
         $service->create([
@@ -26,6 +34,7 @@ class Create extends Component
             'email' => $this->email,
             'phone' => $this->phone,
             'source' => UserSource::MANUAL,
+            'tag_ids' => $this->tagIds,
         ]);
 
         return redirect()->route('customers.index');
@@ -33,6 +42,10 @@ class Create extends Component
 
     public function render()
     {
-        return view('livewire.customers.create');
+        return view('livewire.customers.create', [
+            'tags' => Tag::query()
+                ->orderBy('name')
+                ->get(['id', 'name']),
+        ]);
     }
 }

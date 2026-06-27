@@ -3,6 +3,7 @@
 namespace App\Livewire\Customers;
 
 use App\Models\Customer;
+use App\Models\Tag;
 use App\Services\Customer\CustomerQuery;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -17,7 +18,7 @@ class Index extends Component
 
     public ?string $subscription = null;
 
-    public ?int $tag_id = null;
+    public string $tag_id = '';
 
     public function updatingSearch()
     {
@@ -54,6 +55,9 @@ class Index extends Component
                 'subscription' => $this->subscription,
                 'tag_id' => $this->tag_id,
             ])->paginate(15),
+            'tags' => Tag::query()
+                ->orderBy('name')
+                ->get(['id', 'name']),
         ]);
     }
 }
