@@ -47,6 +47,10 @@
                     </flux:sidebar.item>
                 @endif
 
+                <flux:sidebar.item icon="cog-6-tooth" :href="route('application-settings.edit')" :current="request()->routeIs('application-settings.*')" wire:navigate>
+                    {{ __('Settings') }}
+                </flux:sidebar.item>
+
             </flux:sidebar.group>
         </flux:sidebar.nav>
 

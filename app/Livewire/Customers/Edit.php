@@ -36,9 +36,9 @@ class Edit extends Component
     public function update(CustomerService $service): void
     {
         $this->validate([
-            'name' => ['required', 'string'],
-            'email' => ['required', 'email', 'unique:customers,email,'.$this->customer->id],
-            'phone' => ['nullable', 'string'],
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'email', 'max:255', 'unique:customers,email,'.$this->customer->id],
+            'phone' => ['nullable', 'string', 'max:255'],
             'tagIds' => ['array'],
             'tagIds.*' => ['integer', Rule::exists('tags', 'id')->whereNull('deleted_at')],
         ]);
@@ -52,7 +52,7 @@ class Edit extends Component
 
         session()->flash('success', 'Customer updated successfully.');
 
-        $this->redirectRoute('customers.index');
+        $this->redirectRoute('customers.index', navigate: true);
     }
 
     public function render()
