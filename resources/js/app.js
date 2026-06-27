@@ -1,5 +1,6 @@
-const chartPalette = ['#2563eb', '#10b981', '#f59e0b', '#ef4444'];
-let ApexChartsConstructor;
+import Chart from 'chart.js/auto';
+
+const chartPalette = ['#2563eb', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6'];
 
 function isDarkMode() {
     return document.documentElement.classList.contains('dark');
@@ -24,145 +25,132 @@ function chartTheme() {
     };
 }
 
-function baseOptions(element) {
-    const theme = chartTheme();
-    const labels = parseChartData(element, 'chartLabels', []);
+function normalizeDatasets(series, type) {
+    if (! Array.isArray(series)) {
+        return [];
+    }
 
-    return {
-        chart: {
-            background: 'transparent',
-            fontFamily: 'inherit',
-            height: 280,
-            parentHeightOffset: 0,
-            toolbar: { show: false },
-            zoom: { enabled: false },
-        },
-        colors: chartPalette,
-        dataLabels: { enabled: false },
-        grid: {
-            borderColor: theme.gridColor,
-            strokeDashArray: 4,
-        },
-        labels,
-        legend: {
-            labels: { colors: theme.foreColor },
-        },
-        stroke: {
-            curve: 'smooth',
-            width: 3,
-        },
-        theme: { mode: theme.mode },
-        tooltip: { theme: theme.tooltipTheme },
-        xaxis: {
-            categories: labels,
-            axisBorder: { show: false },
-            axisTicks: { show: false },
-            labels: {
-                rotate: -45,
-                style: { colors: theme.foreColor },
-            },
-        },
-        yaxis: {
-            labels: {
-                formatter: (value) => Math.round(value),
-                style: { colors: theme.foreColor },
-            },
-        },
-    };
+    if (series.length > 0 && typeof series[0] === 'object' && 'data' in series[0]) {
+        return series.map((item, index) => ({
+            label: item.label || item.name || `Series ${index + 1}`,
+            data: item.data || [],
+            borderColor: item.borderColor || chartPalette[index % chartPalette.length],
+            backgroundColor: item.backgroundColor || (type === 'doughnut'
+                ? chartPalette
+                : chartPalette[index % chartPalette.length]),
+            fill: item.fill ?? (type === 'line'),
+            tension: item.tension ?? 0.35,
+        }));
+    }
+
+    return [{
+        label: 'Value',
+        data: series,
+        backgroundColor: chartPalette,
+        borderColor: chartPalette,
+    }];
 }
 
-function optionsFor(element) {
-    const type = element.dataset.chartType;
-    const series = parseChartData(element, 'chartSeries', []);
-    const options = baseOptions(element);
+function chartType(type) {
+    if (type === 'area') {
+        return 'line';
+    }
 
     if (type === 'donut') {
-        return {
-            ...options,
-            chart: {
-                ...options.chart,
-                height: 260,
-                type: 'donut',
-            },
-            labels: parseChartData(element, 'chartLabels', []),
-            plotOptions: {
-                pie: {
-                    donut: {
-                        size: '72%',
-                    },
-                },
-            },
-            series,
-            stroke: {
-                colors: [isDarkMode() ? '#18181b' : '#ffffff'],
-                width: 2,
-            },
-        };
+        return 'doughnut';
     }
 
-    if (type === 'bar') {
-        return {
-            ...options,
-            chart: {
-                ...options.chart,
-                type: 'bar',
-            },
-            plotOptions: {
-                bar: {
-                    borderRadius: 5,
-                    columnWidth: '52%',
-                },
-            },
-            series,
-            stroke: {
-                show: false,
-            },
-        };
-    }
+    return type || 'line';
+}
+
+function baseOptions(element) {
+    const theme = chartTheme();
+    const type = chartType(element.dataset.chartType);
 
     return {
-        ...options,
-        chart: {
-            ...options.chart,
-            type: 'area',
-        },
-        fill: {
-            gradient: {
-                opacityFrom: 0.32,
-                opacityTo: 0,
-                shadeIntensity: 0.4,
-                type: 'vertical',
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                position: type === 'doughnut' ? 'bottom' : 'top',
+                labels: {
+                    color: theme.foreColor,
+                    boxWidth: 10,
+                    boxHeight: 10,
+                    usePointStyle: true,
+                },
             },
-            type: 'gradient',
+            tooltip: {
+                mode: 'index',
+                intersect: false,
+            },
         },
-        series,
+        interaction: {
+            intersect: false,
+            mode: 'index',
+        },
+        scales: type === 'doughnut' ? {} : {
+            x: {
+                grid: {
+                    display: false,
+                },
+                ticks: {
+                    color: theme.foreColor,
+                    maxRotation: 0,
+                    autoSkip: true,
+                    maxTicksLimit: 8,
+                },
+            },
+            y: {
+                beginAtZero: true,
+                grid: {
+                    color: theme.gridColor,
+                },
+                ticks: {
+                    color: theme.foreColor,
+                    precision: 0,
+                },
+            },
+        },
     };
 }
 
-async function getApexCharts() {
-    if (! ApexChartsConstructor) {
-        ApexChartsConstructor = (await import('apexcharts')).default;
-    }
+function configFor(element) {
+    const type = chartType(element.dataset.chartType);
+    const labels = parseChartData(element, 'chartLabels', []);
+    const series = parseChartData(element, 'chartSeries', []);
 
-    return ApexChartsConstructor;
+    return {
+        type,
+        data: {
+            labels,
+            datasets: normalizeDatasets(series, type),
+        },
+        options: baseOptions(element),
+    };
 }
 
-async function renderDashboardCharts() {
+function renderDashboardCharts() {
     const elements = document.querySelectorAll('.js-dashboard-chart');
 
     if (elements.length === 0) {
         return;
     }
 
-    const ApexCharts = await getApexCharts();
-
     elements.forEach((element) => {
         if (element._dashboardChart) {
             element._dashboardChart.destroy();
         }
 
-        element._dashboardChart = new ApexCharts(element, optionsFor(element));
-        element._dashboardChart.render();
+        const canvas = element.matches('canvas')
+            ? element
+            : element.querySelector('canvas');
+
+        if (! canvas) {
+            return;
+        }
+
+        element._dashboardChart = new Chart(canvas, configFor(element));
     });
 }
 

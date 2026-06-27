@@ -132,11 +132,13 @@
                 </div>
 
                 <div
-                    class="js-dashboard-chart mt-4 min-h-72"
+                    class="js-dashboard-chart mt-4 h-72"
                     data-chart-type="area"
                     data-chart-labels='@json($dailyChart['labels'])'
                     data-chart-series='@json($dailyChart['series'])'
-                ></div>
+                >
+                    <canvas></canvas>
+                </div>
             </section>
 
             <section>
