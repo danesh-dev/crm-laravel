@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\DB;
 
 class DashboardStatsService
 {
-    private const CACHE_PREFIX = 'dashboard.v3.';
+    private const CACHE_PREFIX = 'dashboard.v4.';
 
     public function __construct(
         private AutomationDisplayService $automationDisplay,
@@ -110,7 +110,7 @@ class DashboardStatsService
             return [
                 'customer_growth' => $this->singleSeriesChart(
                     __('Customers'),
-                    $this->dailyModelCounts(Customer::query(), 'created_at', $start, $end),
+                    $this->dailyCustomerSignupCounts($start, $end),
                     '#2563eb',
                 ),
                 'email_sent_failed' => $this->multiSeriesChart([
@@ -410,6 +410,25 @@ class DashboardStatsService
             $start,
             $end,
         );
+    }
+
+    private function dailyCustomerSignupCounts(CarbonInterface $start, CarbonInterface $end): array
+    {
+        return Customer::query()
+            ->where(function ($query) use ($start, $end): void {
+                $query
+                    ->whereBetween('signup_at', [$start, $end])
+                    ->orWhere(function ($query) use ($start, $end): void {
+                        $query
+                            ->whereNull('signup_at')
+                            ->whereBetween('created_at', [$start, $end]);
+                    });
+            })
+            ->selectRaw('DATE(COALESCE(signup_at, created_at)) as aggregate_date, count(*) as aggregate')
+            ->groupByRaw('DATE(COALESCE(signup_at, created_at))')
+            ->pluck('aggregate', 'aggregate_date')
+            ->map(fn ($count): int => (int) $count)
+            ->all();
     }
 
     private function oldestPendingJobDate(): ?string

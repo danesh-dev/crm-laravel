@@ -5,6 +5,12 @@
     @inject('customerStatus', 'App\Services\Customer\CustomerStatusService')
 
     <x-slot:actions>
+        @if(auth()->user()->hasRole('Super Admin'))
+            <x-ui.button :href="route('imports.customers.index')" variant="secondary" icon="arrow-up-tray" wire:navigate>
+                {{ __('Import') }}
+            </x-ui.button>
+        @endif
+
         <x-ui.button :href="route('customers.create')" icon="plus" wire:navigate>
             {{ __('New Customer') }}
         </x-ui.button>

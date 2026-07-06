@@ -51,6 +51,10 @@ class AutomationEngine
         Automation $automation
     ): void {
 
+        if (! $automation->schedule) {
+            return;
+        }
+
         match ($automation->schedule_type) {
 
             ScheduleType::ONCE => $this->processOnce($automation),
@@ -91,9 +95,7 @@ class AutomationEngine
         Automation $automation
     ): void {
 
-        $days = $automation
-            ->schedule
-            ->delay_days;
+        $days = $automation->schedule->delay_days ?? 0;
 
         $customers = $this->matcher
             ->query($automation)
@@ -129,7 +131,7 @@ class AutomationEngine
 
         if (
             now()->dayOfWeek !==
-            $automation->schedule->weekday
+            $automation->schedule?->weekday
         ) {
             return;
         }
@@ -150,7 +152,7 @@ class AutomationEngine
 
         if (
             now()->day !==
-            $automation->schedule->month_day
+            $automation->schedule?->month_day
         ) {
             return;
         }
@@ -192,7 +194,7 @@ class AutomationEngine
     private function scheduledFor(Automation $automation): CarbonInterface
     {
         $date = $automation->schedule_type === ScheduleType::ONCE
-            ? $automation->schedule->run_date->copy()
+            ? $automation->schedule?->run_date?->copy() ?? now()
             : now();
 
         $sendTime = $automation->schedule?->send_time;
