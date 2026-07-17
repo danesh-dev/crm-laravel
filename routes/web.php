@@ -9,7 +9,7 @@ use App\Livewire\Customers\Show;
 use App\Livewire\Dashboard\Index as DashboardIndex;
 use Illuminate\Support\Facades\Route;
 
-Route::view('/', 'welcome')->name('home');
+Route::redirect('/', '/dashboard')->name('home');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     // dashboard

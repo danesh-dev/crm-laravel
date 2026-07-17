@@ -1,6 +1,6 @@
-# ============================================================
+############################################
 # Composer dependencies
-# ============================================================
+############################################
 FROM composer:2 AS vendor
 
 WORKDIR /app
@@ -19,18 +19,16 @@ COPY . .
 RUN composer dump-autoload --optimize
 
 
-# ============================================================
-# Frontend build
-# ============================================================
+############################################
+# Frontend assets
+############################################
 FROM node:22-alpine AS frontend
 
 WORKDIR /app
-
+RUN npm install -g npm@11.6.2
 COPY package*.json ./
 
-# If your package-lock.json is fixed, replace with:
-# RUN npm ci
-RUN npm install
+RUN npm ci
 
 COPY . .
 
@@ -40,46 +38,35 @@ COPY --from=vendor /app/vendor ./vendor
 RUN npm run build
 
 
-# ============================================================
-# Runtime
-# ============================================================
-FROM dunglas/frankenphp:1.6-php8.4-alpine
+############################################
+# Production image
+############################################
+FROM dunglas/frankenphp:php8.4
 
 RUN install-php-extensions \
     pdo_pgsql \
-    pgsql \
-    bcmath \
-    exif \
-    intl \
     pcntl \
-    opcache \
+    bcmath \
+    intl \
     zip
 
 WORKDIR /app
 
-# Application source
-COPY . .
+COPY --from=vendor /app /app
 
-# Composer dependencies
-COPY --from=vendor /app/vendor ./vendor
+COPY --from=frontend /app/public/build /app/public/build
 
-# Built frontend assets
-COPY --from=frontend /app/public/build ./public/build
-
-# Storage
 RUN mkdir -p \
     storage/framework/cache \
-    storage/framework/views \
     storage/framework/sessions \
+    storage/framework/views \
     storage/logs \
-    bootstrap/cache \
- && chown -R www-data:www-data storage bootstrap/cache
+    bootstrap/cache
 
-# Laravel package discovery
-RUN php artisan package:discover --ansi
+RUN chown -R www-data:www-data \
+    storage \
+    bootstrap/cache
 
-USER www-data
+EXPOSE 8000
 
-EXPOSE 80
-
-CMD ["php","artisan","octane:frankenphp","--host=0.0.0.0","--port=80"]
+CMD ["php", "artisan", "octane:frankenphp", "--host=0.0.0.0", "--port=8000"]
