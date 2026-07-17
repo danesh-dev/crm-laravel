@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-#[Fillable(['customer_id', 'started_at', 'expires_at', 'cancelled_at'])]
+#[Fillable(['customer_id', 'provider_subscription_id', 'plan', 'started_at', 'expires_at', 'cancelled_at'])]
 class Subscription extends Model
 {
     public function customer(): BelongsTo

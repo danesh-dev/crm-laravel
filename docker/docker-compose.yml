@@ -1,0 +1,83 @@
+name: crm
+
+x-app-service: &app-service
+  image: crm-laravel
+  restart: unless-stopped
+  env_file:
+    - ../.env
+  depends_on:
+    db:
+      condition: service_healthy
+  volumes:
+    - app_storage:/app/storage
+  networks:
+    - default
+
+services:
+  app:
+    <<: *app-service
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      
+      # Router (IP-based, no domain)
+      - "traefik.http.routers.crm.rule=PathPrefix(`/`)"
+      - "traefik.http.routers.crm.entrypoints=web"
+      
+      # Service
+      - "traefik.http.services.crm.loadbalancer.server.port=8000"
+    networks:
+      - proxy
+      - default
+
+
+  queue:
+    <<: *app-service
+    command:
+      - php
+      - artisan
+      - queue:work
+      - ${QUEUE_CONNECTION:-database}
+      - --sleep=${QUEUE_SLEEP:-3}
+      - --tries=${QUEUE_TRIES:-3}
+      - --timeout=${QUEUE_TIMEOUT:-120}
+      - --memory=${QUEUE_MEMORY:-256}
+    stop_signal: SIGTERM
+
+  scheduler:
+    <<: *app-service
+    command:
+      - php
+      - artisan
+      - schedule:work
+    stop_signal: SIGTERM
+
+  db:
+    image: postgres:16
+    container_name: crm_postgres
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:5432:5432"
+    env_file:
+      - .env
+    volumes:
+      - ./volumes/postgres/data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+    networks:
+      - default
+
+
+networks:
+  proxy:
+    external: true
+  default:
+    external: false
+
+volumes:
+  app_storage:
+  postgres_data:
