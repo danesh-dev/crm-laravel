@@ -10,3 +10,6 @@ Artisan::command('inspire', function () {
 
 Schedule::command('automation:run')
     ->everyTenSeconds();
+
+Schedule::command('email-deliveries:process')
+    ->everyMinute();

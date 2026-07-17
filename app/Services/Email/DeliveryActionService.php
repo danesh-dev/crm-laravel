@@ -26,7 +26,8 @@ class DeliveryActionService
             'error_message' => null,
         ]);
 
-        SendEmailDeliveryJob::dispatch($delivery->id);
+        SendEmailDeliveryJob::dispatch($delivery->id)
+            ->delay($delivery->scheduled_for);
     }
 
     public function cancel(EmailDelivery $delivery): void

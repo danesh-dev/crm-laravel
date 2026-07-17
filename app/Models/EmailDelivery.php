@@ -39,12 +39,12 @@ class EmailDelivery extends Model
 
     public function scopePending(Builder $query): void
     {
-        $query->where('status', EmailDeliveryStatus::PENDING);
+        $query->where('status', EmailDeliveryStatus::PENDING->value);
     }
 
     public function scopeDue(Builder $query): void
     {
-        $query->where('scheduled_for', '<=', now());
+        $query->where('scheduled_for', '<=', now(config('app.timezone')));
     }
 
     protected function casts(): array

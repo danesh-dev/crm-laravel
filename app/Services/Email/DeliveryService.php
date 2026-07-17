@@ -16,16 +16,24 @@ class DeliveryService
 
     public function send(EmailDelivery $delivery): void
     {
-        if ($delivery->status === EmailDeliveryStatus::CANCELLED) {
+        $now = now(config('app.timezone'));
+
+        $claimed = EmailDelivery::query()
+            ->whereKey($delivery->id)
+            ->where('status', EmailDeliveryStatus::PENDING->value)
+            ->where('scheduled_for', '<=', $now)
+            ->update([
+                'status' => EmailDeliveryStatus::PROCESSING,
+                'processing_at' => $now,
+            ]);
+
+        if ($claimed === 0) {
             return;
         }
 
         try {
 
-            $delivery->update([
-                'status' => EmailDeliveryStatus::PROCESSING,
-                'processing_at' => now(),
-            ]);
+            $delivery->refresh();
 
             $customer = $delivery->customer;
             $template = $delivery->emailTemplate;

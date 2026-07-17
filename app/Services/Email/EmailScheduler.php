@@ -39,7 +39,7 @@ class EmailScheduler
 
         SendEmailDeliveryJob::dispatch(
             $delivery->id
-        );
+        )->delay($delivery->scheduled_for);
 
         return $delivery;
     }

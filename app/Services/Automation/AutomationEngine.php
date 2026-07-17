@@ -43,7 +43,7 @@ class AutomationEngine
         return $this->scheduleCustomers(
             automation: $automation,
             customers: $this->matcher->query($automation),
-            scheduledFor: now(),
+            scheduledFor: $this->now(),
         );
     }
 
@@ -69,7 +69,7 @@ class AutomationEngine
         Automation $automation
     ): void {
 
-        if (! $automation->schedule?->run_date?->isToday()) {
+        if (! $automation->schedule?->run_date?->isSameDay($this->now())) {
             return;
         }
 
@@ -99,7 +99,7 @@ class AutomationEngine
             ->query($automation)
             ->whereDate(
                 'signup_at',
-                now()->subDays($days)->toDateString()
+                $this->now()->subDays($days)->toDateString()
             );
 
         $this->scheduleCustomers(
@@ -128,7 +128,7 @@ class AutomationEngine
     ): void {
 
         if (
-            now()->dayOfWeek !==
+            $this->now()->dayOfWeek !==
             $automation->schedule->weekday
         ) {
             return;
@@ -149,7 +149,7 @@ class AutomationEngine
     ): void {
 
         if (
-            now()->day !==
+            $this->now()->day !==
             $automation->schedule->month_day
         ) {
             return;
@@ -193,7 +193,7 @@ class AutomationEngine
     {
         $date = $automation->schedule_type === ScheduleType::ONCE
             ? $automation->schedule->run_date->copy()
-            : now();
+            : $this->now();
 
         $sendTime = $automation->schedule?->send_time;
 
@@ -205,5 +205,10 @@ class AutomationEngine
             hour: (int) $sendTime->format('H'),
             minute: (int) $sendTime->format('i')
         );
+    }
+
+    private function now(): CarbonInterface
+    {
+        return now(config('app.timezone'));
     }
 }
