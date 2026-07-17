@@ -5,13 +5,15 @@ namespace App\Services\Email;
 use App\Enums\EmailDeliveryStatus;
 use App\Mail\AutomationMail;
 use App\Models\EmailDelivery;
+use App\Services\Settings\MailSettingsService;
 use Illuminate\Support\Facades\Mail;
 use Throwable;
 
 class DeliveryService
 {
     public function __construct(
-        protected TemplateRenderer $renderer
+        protected TemplateRenderer $renderer,
+        protected MailSettingsService $mailSettings,
     ) {}
 
     public function send(EmailDelivery $delivery): void
@@ -47,6 +49,8 @@ class DeliveryService
                 $template->body_html,
                 $customer
             );
+
+            $this->mailSettings->refresh();
 
             Mail::to($customer->email)
                 ->send(

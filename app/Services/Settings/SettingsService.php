@@ -101,15 +101,9 @@ class SettingsService
             'app.name' => $settings['company_name'],
             'app.timezone' => $settings['timezone'],
             'queue.default' => $settings['queue_connection'],
-            'mail.default' => $settings['mail_driver'],
-            'mail.from.name' => $settings['sender_name'],
-            'mail.from.address' => $settings['sender_email'],
-            'mail.mailers.smtp.host' => $settings['mail_host'],
-            'mail.mailers.smtp.port' => (int) $settings['mail_port'],
-            'mail.mailers.smtp.encryption' => blank($settings['mail_encryption']) ? null : $settings['mail_encryption'],
-            'mail.mailers.smtp.username' => $settings['mail_username'],
-            'mail.mailers.smtp.password' => $settings['mail_password'],
         ]);
+
+        app(MailSettingsService::class)->apply($settings);
 
         date_default_timezone_set($settings['timezone']);
     }
