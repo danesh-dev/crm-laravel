@@ -23,6 +23,12 @@
                     {{ __('Customers') }}
                 </flux:sidebar.item>
 
+                <!-- @if(auth()->user()->hasRole('Super Admin'))
+                    <flux:sidebar.item icon="arrow-up-tray" :href="route('imports.customers.index')" :current="request()->routeIs('imports.*')" wire:navigate class="ps-8">
+                        {{ __('Import Customers') }}
+                    </flux:sidebar.item>
+                @endif -->
+
                 <flux:sidebar.item icon="envelope" :href="route('templates.index')" :current="request()->routeIs('templates.*')" wire:navigate>
                     {{ __('Email Templates') }}
                 </flux:sidebar.item>

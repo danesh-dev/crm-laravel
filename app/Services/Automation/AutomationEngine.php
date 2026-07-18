@@ -51,6 +51,10 @@ class AutomationEngine
         Automation $automation
     ): void {
 
+        if (! $automation->schedule) {
+            return;
+        }
+
         match ($automation->schedule_type) {
 
             ScheduleType::ONCE => $this->processOnce($automation),
@@ -91,9 +95,7 @@ class AutomationEngine
         Automation $automation
     ): void {
 
-        $days = $automation
-            ->schedule
-            ->delay_days;
+        $days = $automation->schedule->delay_days ?? 0;
 
         $customers = $this->matcher
             ->query($automation)
