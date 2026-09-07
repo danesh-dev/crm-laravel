@@ -1,7 +1,7 @@
 ############################################
 # Composer dependencies
 ############################################
-FROM composer:2 AS vendor
+FROM composer:2.8 AS vendor
 
 WORKDIR /app
 
@@ -41,7 +41,7 @@ RUN npm run build
 ############################################
 # Production image
 ############################################
-FROM dunglas/frankenphp:php8.4
+FROM dunglas/frankenphp:1.6-php8.4-alpine
 
 RUN install-php-extensions \
     pdo_pgsql \

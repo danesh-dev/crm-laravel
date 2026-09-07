@@ -9,9 +9,14 @@
         {
             "name": "bacon/bacon-qr-code",
             "version": "v3.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Bacon/BaconQrCode.git",
+                "reference": "4da2233e72eeecd9be3b62e0dc2cc9ed8e2e31c2"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/bacon/bacon-qr-code/v3.1.1/bacon-bacon-qr-code-v3.1.1.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/Bacon/BaconQrCode/4da2233e72eeecd9be3b62e0dc2cc9ed8e2e31c2",
                 "reference": "4da2233e72eeecd9be3b62e0dc2cc9ed8e2e31c2",
                 "shasum": ""
             },
@@ -43,8 +48,7 @@
                 {
                     "name": "Ben Scholzen 'DASPRiD'",
                     "email": "mail@dasprids.de",
-                    "homepage": "https://dasprids.de/",
-                    "role": "Developer"
+                    "homepage": "https://dasprids.de/"
                 }
             ],
             "description": "BaconQrCode is a QR code generator for PHP.",
@@ -58,9 +62,14 @@
         {
             "name": "beste/clock",
             "version": "3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/beste/clock.git",
+                "reference": "7004b55fcd54737b539886244b3a3b2188181974"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/beste/clock/3.0.0/beste-clock-3.0.0.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/beste/clock/7004b55fcd54737b539886244b3a3b2188181974",
                 "reference": "7004b55fcd54737b539886244b3a3b2188181974",
                 "shasum": ""
             },
@@ -120,9 +129,14 @@
         {
             "name": "beste/in-memory-cache",
             "version": "1.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/beste/in-memory-cache-php.git",
+                "reference": "d6991967b05e820cb1bcd2d31ca11ea8b1ca3f77"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/beste/in-memory-cache/1.5.0/beste-in-memory-cache-1.5.0.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/beste/in-memory-cache-php/d6991967b05e820cb1bcd2d31ca11ea8b1ca3f77",
                 "reference": "d6991967b05e820cb1bcd2d31ca11ea8b1ca3f77",
                 "shasum": ""
             },
@@ -178,9 +192,14 @@
         {
             "name": "beste/json",
             "version": "1.7.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/beste/json.git",
+                "reference": "976525f1ce2323a4e044364269d60b402603e216"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/beste/json/1.7.0/beste-json-1.7.0.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/beste/json/976525f1ce2323a4e044364269d60b402603e216",
                 "reference": "976525f1ce2323a4e044364269d60b402603e216",
                 "shasum": ""
             },
@@ -235,9 +254,14 @@
         {
             "name": "brick/math",
             "version": "0.17.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/brick/math.git",
+                "reference": "8189e751995f9e15729c1aa2f89fa8f166ffe818"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/brick/math/0.17.2/brick-math-0.17.2.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/brick/math/8189e751995f9e15729c1aa2f89fa8f166ffe818",
                 "reference": "8189e751995f9e15729c1aa2f89fa8f166ffe818",
                 "shasum": ""
             },
@@ -288,9 +312,14 @@
         {
             "name": "carbonphp/carbon-doctrine-types",
             "version": "3.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/CarbonPHP/carbon-doctrine-types.git",
+                "reference": "18ba5ddfec8976260ead6e866180bd5d2f71aa1d"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/carbonphp/carbon-doctrine-types/3.2.0/carbonphp-carbon-doctrine-types-3.2.0.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/CarbonPHP/carbon-doctrine-types/18ba5ddfec8976260ead6e866180bd5d2f71aa1d",
                 "reference": "18ba5ddfec8976260ead6e866180bd5d2f71aa1d",
                 "shasum": ""
             },
@@ -351,9 +380,14 @@
         {
             "name": "cuyz/valinor",
             "version": "2.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/CuyZ/Valinor.git",
+                "reference": "3b0afa3a287ed7f3a69aab223726cf1139454c34"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/cuyz/valinor/2.4.0/cuyz-valinor-2.4.0.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/CuyZ/Valinor/3b0afa3a287ed7f3a69aab223726cf1139454c34",
                 "reference": "3b0afa3a287ed7f3a69aab223726cf1139454c34",
                 "shasum": ""
             },
@@ -422,9 +456,14 @@
         {
             "name": "dasprid/enum",
             "version": "1.0.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/DASPRiD/Enum.git",
+                "reference": "b5874fa9ed0043116c72162ec7f4fb50e02e7cce"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/dasprid/enum/1.0.7/dasprid-enum-1.0.7.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/DASPRiD/Enum/b5874fa9ed0043116c72162ec7f4fb50e02e7cce",
                 "reference": "b5874fa9ed0043116c72162ec7f4fb50e02e7cce",
                 "shasum": ""
             },
@@ -448,8 +487,7 @@
                 {
                     "name": "Ben Scholzen 'DASPRiD'",
                     "email": "mail@dasprids.de",
-                    "homepage": "https://dasprids.de/",
-                    "role": "Developer"
+                    "homepage": "https://dasprids.de/"
                 }
             ],
             "description": "PHP 7.1 enum implementation",
@@ -466,9 +504,14 @@
         {
             "name": "dflydev/dot-access-data",
             "version": "v3.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dflydev/dflydev-dot-access-data.git",
+                "reference": "a23a2bf4f31d3518f3ecb38660c95715dfead60f"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/dflydev/dot-access-data/v3.0.3/dflydev-dot-access-data-v3.0.3.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/dflydev/dflydev-dot-access-data/a23a2bf4f31d3518f3ecb38660c95715dfead60f",
                 "reference": "a23a2bf4f31d3518f3ecb38660c95715dfead60f",
                 "shasum": ""
             },
@@ -535,9 +578,14 @@
         {
             "name": "doctrine/deprecations",
             "version": "1.1.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/doctrine/deprecations.git",
+                "reference": "d4fe3e6fd9bb9e72557a19674f44d8ac7db4c6ca"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/doctrine/deprecations/1.1.6/doctrine-deprecations-1.1.6.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/doctrine/deprecations/d4fe3e6fd9bb9e72557a19674f44d8ac7db4c6ca",
                 "reference": "d4fe3e6fd9bb9e72557a19674f44d8ac7db4c6ca",
                 "shasum": ""
             },
@@ -577,9 +625,14 @@
         {
             "name": "doctrine/inflector",
             "version": "2.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/doctrine/inflector.git",
+                "reference": "6d6c96277ea252fc1304627204c3d5e6e15faa3b"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/doctrine/inflector/2.1.0/doctrine-inflector-2.1.0.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/doctrine/inflector/6d6c96277ea252fc1304627204c3d5e6e15faa3b",
                 "reference": "6d6c96277ea252fc1304627204c3d5e6e15faa3b",
                 "shasum": ""
             },
@@ -661,9 +714,14 @@
         {
             "name": "doctrine/lexer",
             "version": "3.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/doctrine/lexer.git",
+                "reference": "31ad66abc0fc9e1a1f2d9bc6a42668d2fbbcd6dd"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/doctrine/lexer/3.0.1/doctrine-lexer-3.0.1.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/doctrine/lexer/31ad66abc0fc9e1a1f2d9bc6a42668d2fbbcd6dd",
                 "reference": "31ad66abc0fc9e1a1f2d9bc6a42668d2fbbcd6dd",
                 "shasum": ""
             },
@@ -732,9 +790,14 @@
         {
             "name": "dragonmantank/cron-expression",
             "version": "v3.6.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dragonmantank/cron-expression.git",
+                "reference": "d61a8a9604ec1f8c3d150d09db6ce98b32675013"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/dragonmantank/cron-expression/v3.6.0/dragonmantank-cron-expression-v3.6.0.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/dragonmantank/cron-expression/d61a8a9604ec1f8c3d150d09db6ce98b32675013",
                 "reference": "d61a8a9604ec1f8c3d150d09db6ce98b32675013",
                 "shasum": ""
             },
@@ -790,9 +853,14 @@
         {
             "name": "egulias/email-validator",
             "version": "4.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/egulias/EmailValidator.git",
+                "reference": "d42c8731f0624ad6bdc8d3e5e9a4524f68801cfa"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/egulias/email-validator/4.0.4/egulias-email-validator-4.0.4.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/egulias/EmailValidator/d42c8731f0624ad6bdc8d3e5e9a4524f68801cfa",
                 "reference": "d42c8731f0624ad6bdc8d3e5e9a4524f68801cfa",
                 "shasum": ""
             },
@@ -851,9 +919,14 @@
         {
             "name": "fig/http-message-util",
             "version": "1.1.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/http-message-util.git",
+                "reference": "9d94dc0154230ac39e5bf89398b324a86f63f765"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/fig/http-message-util/1.1.5/fig-http-message-util-1.1.5.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/php-fig/http-message-util/9d94dc0154230ac39e5bf89398b324a86f63f765",
                 "reference": "9d94dc0154230ac39e5bf89398b324a86f63f765",
                 "shasum": ""
             },
@@ -901,9 +974,14 @@
         {
             "name": "firebase/php-jwt",
             "version": "v7.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/googleapis/php-jwt.git",
+                "reference": "b374a5d1a4f1f67fadc2165cdb284645945e2fc0"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/firebase/php-jwt/v7.1.0/firebase-php-jwt-v7.1.0.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/googleapis/php-jwt/b374a5d1a4f1f67fadc2165cdb284645945e2fc0",
                 "reference": "b374a5d1a4f1f67fadc2165cdb284645945e2fc0",
                 "shasum": ""
             },
@@ -937,13 +1015,11 @@
             "authors": [
                 {
                     "name": "Neuman Vong",
-                    "email": "neuman+pear@twilio.com",
-                    "role": "Developer"
+                    "email": "neuman+pear@twilio.com"
                 },
                 {
                     "name": "Anant Narayanan",
-                    "email": "anant@php.net",
-                    "role": "Developer"
+                    "email": "anant@php.net"
                 }
             ],
             "description": "A simple library to encode and decode JSON Web Tokens (JWT) in PHP. Should conform to the current spec.",
@@ -961,9 +1037,14 @@
         {
             "name": "flowframe/laravel-trend",
             "version": "v0.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Flowframe/laravel-trend.git",
+                "reference": "1b968af2c1e1d633dc4bc78131660ae6eb67e252"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/flowframe/laravel-trend/v0.5.0/flowframe-laravel-trend-v0.5.0.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/Flowframe/laravel-trend/1b968af2c1e1d633dc4bc78131660ae6eb67e252",
                 "reference": "1b968af2c1e1d633dc4bc78131660ae6eb67e252",
                 "shasum": ""
             },
@@ -1003,8 +1084,7 @@
             "authors": [
                 {
                     "name": "Lars Klopstra",
-                    "email": "lars@flowframe.nl",
-                    "role": "Developer"
+                    "email": "lars@flowframe.nl"
                 }
             ],
             "description": "Easily generate model trends",
@@ -1029,9 +1109,14 @@
         {
             "name": "fruitcake/php-cors",
             "version": "v1.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fruitcake/php-cors.git",
+                "reference": "38aaa6c3fd4c157ffe2a4d10aa8b9b16ba8de379"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/fruitcake/php-cors/v1.4.0/fruitcake-php-cors-v1.4.0.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/fruitcake/php-cors/38aaa6c3fd4c157ffe2a4d10aa8b9b16ba8de379",
                 "reference": "38aaa6c3fd4c157ffe2a4d10aa8b9b16ba8de379",
                 "shasum": ""
             },
@@ -1094,9 +1179,14 @@
         {
             "name": "google/auth",
             "version": "v1.51.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/googleapis/google-auth-library-php.git",
+                "reference": "4c4776e398ff255e81b3b8c4373983f5e1b765bf"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/google/auth/v1.51.0/google-auth-v1.51.0.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/googleapis/google-auth-library-php/4c4776e398ff255e81b3b8c4373983f5e1b765bf",
                 "reference": "4c4776e398ff255e81b3b8c4373983f5e1b765bf",
                 "shasum": ""
             },
@@ -1150,9 +1240,14 @@
         {
             "name": "google/cloud-core",
             "version": "v1.72.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/googleapis/google-cloud-php-core.git",
+                "reference": "2be1708d7a1f425551ec420e96f17cdbd0962497"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/google/cloud-core/v1.72.3/google-cloud-core-v1.72.3.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/googleapis/google-cloud-php-core/2be1708d7a1f425551ec420e96f17cdbd0962497",
                 "reference": "2be1708d7a1f425551ec420e96f17cdbd0962497",
                 "shasum": ""
             },
@@ -1211,9 +1306,14 @@
         {
             "name": "google/cloud-storage",
             "version": "v1.51.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/googleapis/google-cloud-php-storage.git",
+                "reference": "9ba3d5e8cbd53bf67fab644b5be310e719533def"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/google/cloud-storage/v1.51.0/google-cloud-storage-v1.51.0.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/googleapis/google-cloud-php-storage/9ba3d5e8cbd53bf67fab644b5be310e719533def",
                 "reference": "9ba3d5e8cbd53bf67fab644b5be310e719533def",
                 "shasum": ""
             },
@@ -1263,9 +1363,14 @@
         {
             "name": "google/common-protos",
             "version": "4.14.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/googleapis/common-protos-php.git",
+                "reference": "4eb6813b8068653e055fc8a63dbda3446f3e8869"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/google/common-protos/4.14.1/google-common-protos-4.14.1.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/googleapis/common-protos-php/4eb6813b8068653e055fc8a63dbda3446f3e8869",
                 "reference": "4eb6813b8068653e055fc8a63dbda3446f3e8869",
                 "shasum": ""
             },
@@ -1316,9 +1421,14 @@
         {
             "name": "google/gax",
             "version": "v1.43.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/googleapis/gax-php.git",
+                "reference": "274943381e30ec88aea9f486de27a11054ee27fb"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/google/gax/v1.43.2/google-gax-v1.43.2.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/googleapis/gax-php/274943381e30ec88aea9f486de27a11054ee27fb",
                 "reference": "274943381e30ec88aea9f486de27a11054ee27fb",
                 "shasum": ""
             },
@@ -1374,9 +1484,14 @@
         {
             "name": "google/grpc-gcp",
             "version": "0.4.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/GoogleCloudPlatform/grpc-gcp-php.git",
+                "reference": "1049c0c15b6a1789fdeb52af688a94d540932469"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/google/grpc-gcp/0.4.2/google-grpc-gcp-0.4.2.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/GoogleCloudPlatform/grpc-gcp-php/1049c0c15b6a1789fdeb52af688a94d540932469",
                 "reference": "1049c0c15b6a1789fdeb52af688a94d540932469",
                 "shasum": ""
             },
@@ -1413,9 +1528,14 @@
         {
             "name": "google/longrunning",
             "version": "0.7.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/googleapis/php-longrunning.git",
+                "reference": "cac9bedf199239ae2b1acd4a8e4ea2276bd9f55a"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/google/longrunning/0.7.1/google-longrunning-0.7.1.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/googleapis/php-longrunning/cac9bedf199239ae2b1acd4a8e4ea2276bd9f55a",
                 "reference": "cac9bedf199239ae2b1acd4a8e4ea2276bd9f55a",
                 "shasum": ""
             },
@@ -1428,7 +1548,6 @@
                 "component": {
                     "id": "longrunning",
                     "path": "LongRunning",
-                    "entry": null,
                     "target": "googleapis/php-longrunning"
                 }
             },
@@ -1451,9 +1570,14 @@
         {
             "name": "google/protobuf",
             "version": "v5.35.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/protocolbuffers/protobuf-php.git",
+                "reference": "55bb4a7d6739b5af0927b96213c1371a3afb7cfb"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/google/protobuf/v5.35.1/google-protobuf-v5.35.1.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/protocolbuffers/protobuf-php/55bb4a7d6739b5af0927b96213c1371a3afb7cfb",
                 "reference": "55bb4a7d6739b5af0927b96213c1371a3afb7cfb",
                 "shasum": ""
             },
@@ -1489,9 +1613,14 @@
         {
             "name": "graham-campbell/result-type",
             "version": "v1.1.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/GrahamCampbell/Result-Type.git",
+                "reference": "e01f4a821471308ba86aa202fed6698b6b695e3b"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/graham-campbell/result-type/v1.1.4/graham-campbell-result-type-v1.1.4.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/GrahamCampbell/Result-Type/e01f4a821471308ba86aa202fed6698b6b695e3b",
                 "reference": "e01f4a821471308ba86aa202fed6698b6b695e3b",
                 "shasum": ""
             },
@@ -1545,9 +1674,14 @@
         {
             "name": "grpc/grpc",
             "version": "1.81.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/grpc/grpc-php.git",
+                "reference": "47046d6b2a6cc7e68806a287d6a1fee57e0c40da"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/grpc/grpc/1.81.0/grpc-grpc-1.81.0.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/grpc/grpc-php/47046d6b2a6cc7e68806a287d6a1fee57e0c40da",
                 "reference": "47046d6b2a6cc7e68806a287d6a1fee57e0c40da",
                 "shasum": ""
             },
@@ -1583,9 +1717,14 @@
         {
             "name": "guzzlehttp/guzzle",
             "version": "7.12.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/guzzle/guzzle.git",
+                "reference": "d34627490fbc03bf5c5d7cfed81f2faa19519425"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/guzzlehttp/guzzle/7.12.1/guzzlehttp-guzzle-7.12.1.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/guzzle/guzzle/d34627490fbc03bf5c5d7cfed81f2faa19519425",
                 "reference": "d34627490fbc03bf5c5d7cfed81f2faa19519425",
                 "shasum": ""
             },
@@ -1705,9 +1844,14 @@
         {
             "name": "guzzlehttp/promises",
             "version": "2.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/guzzle/promises.git",
+                "reference": "4360e982f87f5f258bf872d094647791db2f4c8e"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/guzzlehttp/promises/2.5.0/guzzlehttp-promises-2.5.0.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/guzzle/promises/4360e982f87f5f258bf872d094647791db2f4c8e",
                 "reference": "4360e982f87f5f258bf872d094647791db2f4c8e",
                 "shasum": ""
             },
@@ -1783,9 +1927,14 @@
         {
             "name": "guzzlehttp/psr7",
             "version": "2.12.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/guzzle/psr7.git",
+                "reference": "172ef2f4e9824c1e058b7f30be8ae25a02c0f2b7"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/guzzlehttp/psr7/2.12.1/guzzlehttp-psr7-2.12.1.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/guzzle/psr7/172ef2f4e9824c1e058b7f30be8ae25a02c0f2b7",
                 "reference": "172ef2f4e9824c1e058b7f30be8ae25a02c0f2b7",
                 "shasum": ""
             },
@@ -1896,9 +2045,14 @@
         {
             "name": "guzzlehttp/uri-template",
             "version": "v1.0.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/guzzle/uri-template.git",
+                "reference": "7fe811c23a9e3cd712b4389eaeb50b5456d8c529"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/guzzlehttp/uri-template/v1.0.7/guzzlehttp-uri-template-v1.0.7.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/guzzle/uri-template/7fe811c23a9e3cd712b4389eaeb50b5456d8c529",
                 "reference": "7fe811c23a9e3cd712b4389eaeb50b5456d8c529",
                 "shasum": ""
             },
@@ -1976,9 +2130,14 @@
         {
             "name": "kreait/firebase-php",
             "version": "8.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/beste/firebase-php.git",
+                "reference": "7a1007c8151e1bf7be9f6b0f9a1e37b1f734f59e"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/kreait/firebase-php/8.2.0/kreait-firebase-php-8.2.0.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/beste/firebase-php/7a1007c8151e1bf7be9f6b0f9a1e37b1f734f59e",
                 "reference": "7a1007c8151e1bf7be9f6b0f9a1e37b1f734f59e",
                 "shasum": ""
             },
@@ -2063,9 +2222,14 @@
         {
             "name": "kreait/firebase-tokens",
             "version": "5.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/beste/firebase-tokens-php.git",
+                "reference": "5dc119c8c29fcab1fb3a35ed5164dee0d33e4430"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/kreait/firebase-tokens/5.3.0/kreait-firebase-tokens-5.3.0.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/beste/firebase-tokens-php/5dc119c8c29fcab1fb3a35ed5164dee0d33e4430",
                 "reference": "5dc119c8c29fcab1fb3a35ed5164dee0d33e4430",
                 "shasum": ""
             },
@@ -2131,9 +2295,14 @@
         {
             "name": "kreait/laravel-firebase",
             "version": "7.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/beste/laravel-firebase.git",
+                "reference": "a9f63c54089c9a5aa7bce5cabd9a57b2dcbeed64"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/kreait/laravel-firebase/7.2.1/kreait-laravel-firebase-7.2.1.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/beste/laravel-firebase/a9f63c54089c9a5aa7bce5cabd9a57b2dcbeed64",
                 "reference": "a9f63c54089c9a5aa7bce5cabd9a57b2dcbeed64",
                 "shasum": ""
             },
@@ -2200,9 +2369,14 @@
         {
             "name": "laminas/laminas-diactoros",
             "version": "3.8.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laminas/laminas-diactoros.git",
+                "reference": "60c182916b2749480895601649563970f3f12ec4"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/laminas/laminas-diactoros/3.8.0/laminas-laminas-diactoros-3.8.0.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/laminas/laminas-diactoros/60c182916b2749480895601649563970f3f12ec4",
                 "reference": "60c182916b2749480895601649563970f3f12ec4",
                 "shasum": ""
             },
@@ -2282,9 +2456,14 @@
         {
             "name": "laravel/fortify",
             "version": "v1.37.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/fortify.git",
+                "reference": "5d4b6a53527edd19ecc4f13e8e74ec91bdefab0c"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/laravel/fortify/v1.37.2/laravel-fortify-v1.37.2.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/laravel/fortify/5d4b6a53527edd19ecc4f13e8e74ec91bdefab0c",
                 "reference": "5d4b6a53527edd19ecc4f13e8e74ec91bdefab0c",
                 "shasum": ""
             },
@@ -2340,9 +2519,14 @@
         {
             "name": "laravel/framework",
             "version": "v13.16.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/framework.git",
+                "reference": "6135650d69bd9442e470bb1b343422081b076f1e"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/laravel/framework/v13.16.1/laravel-framework-v13.16.1.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/laravel/framework/6135650d69bd9442e470bb1b343422081b076f1e",
                 "reference": "6135650d69bd9442e470bb1b343422081b076f1e",
                 "shasum": ""
             },
@@ -2558,9 +2742,14 @@
         {
             "name": "laravel/octane",
             "version": "v2.17.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/octane.git",
+                "reference": "058ae4d7109eed40836dc42960f9388b9bf71f73"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/laravel/octane/v2.17.5/laravel-octane-v2.17.5.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/laravel/octane/058ae4d7109eed40836dc42960f9388b9bf71f73",
                 "reference": "058ae4d7109eed40836dc42960f9388b9bf71f73",
                 "shasum": ""
             },
@@ -2641,9 +2830,14 @@
         {
             "name": "laravel/passkeys",
             "version": "v0.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/passkeys-server.git",
+                "reference": "a76656ada41b2b4a591f075eddae5ddc67e8ab9c"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/laravel/passkeys/v0.2.1/laravel-passkeys-v0.2.1.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/laravel/passkeys-server/a76656ada41b2b4a591f075eddae5ddc67e8ab9c",
                 "reference": "a76656ada41b2b4a591f075eddae5ddc67e8ab9c",
                 "shasum": ""
             },
@@ -2703,9 +2897,14 @@
         {
             "name": "laravel/prompts",
             "version": "v0.3.18",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/prompts.git",
+                "reference": "a19af51bb144bf87f08397921fa619f85c7d4e72"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/laravel/prompts/v0.3.18/laravel-prompts-v0.3.18.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/laravel/prompts/a19af51bb144bf87f08397921fa619f85c7d4e72",
                 "reference": "a19af51bb144bf87f08397921fa619f85c7d4e72",
                 "shasum": ""
             },
@@ -2756,9 +2955,14 @@
         {
             "name": "laravel/serializable-closure",
             "version": "v2.0.13",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/serializable-closure.git",
+                "reference": "b566ee0dd251f3c4078bed003a7ce015f5ea6dce"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/laravel/serializable-closure/v2.0.13/laravel-serializable-closure-v2.0.13.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/laravel/serializable-closure/b566ee0dd251f3c4078bed003a7ce015f5ea6dce",
                 "reference": "b566ee0dd251f3c4078bed003a7ce015f5ea6dce",
                 "shasum": ""
             },
@@ -2811,9 +3015,14 @@
         {
             "name": "laravel/tinker",
             "version": "v3.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/tinker.git",
+                "reference": "4faba77764bd33411735936acdf30446d058c78b"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/laravel/tinker/v3.0.2/laravel-tinker-v3.0.2.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/laravel/tinker/4faba77764bd33411735936acdf30446d058c78b",
                 "reference": "4faba77764bd33411735936acdf30446d058c78b",
                 "shasum": ""
             },
@@ -2874,9 +3083,14 @@
         {
             "name": "lcobucci/jwt",
             "version": "5.6.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/lcobucci/jwt.git",
+                "reference": "bb3e9f21e4196e8afc41def81ef649c164bca25e"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/lcobucci/jwt/5.6.0/lcobucci-jwt-5.6.0.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/lcobucci/jwt/bb3e9f21e4196e8afc41def81ef649c164bca25e",
                 "reference": "bb3e9f21e4196e8afc41def81ef649c164bca25e",
                 "shasum": ""
             },
@@ -2913,8 +3127,7 @@
             "authors": [
                 {
                     "name": "Luís Cobucci",
-                    "email": "lcobucci@gmail.com",
-                    "role": "Developer"
+                    "email": "lcobucci@gmail.com"
                 }
             ],
             "description": "A simple library to work with JSON Web Token and JSON Web Signature",
@@ -2941,9 +3154,14 @@
         {
             "name": "league/commonmark",
             "version": "2.8.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thephpleague/commonmark.git",
+                "reference": "59fb075d2101740c337c7216e3f32b36c204218b"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/league/commonmark/2.8.2/league-commonmark-2.8.2.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/thephpleague/commonmark/59fb075d2101740c337c7216e3f32b36c204218b",
                 "reference": "59fb075d2101740c337c7216e3f32b36c204218b",
                 "shasum": ""
             },
@@ -2996,8 +3214,7 @@
                 {
                     "name": "Colin O'Dell",
                     "email": "colinodell@gmail.com",
-                    "homepage": "https://www.colinodell.com",
-                    "role": "Lead Developer"
+                    "homepage": "https://www.colinodell.com"
                 }
             ],
             "description": "Highly-extensible PHP Markdown parser which fully supports the CommonMark spec and GitHub-Flavored Markdown (GFM)",
@@ -3042,9 +3259,14 @@
         {
             "name": "league/config",
             "version": "v1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thephpleague/config.git",
+                "reference": "754b3604fb2984c71f4af4a9cbe7b57f346ec1f3"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/league/config/v1.2.0/league-config-v1.2.0.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/thephpleague/config/754b3604fb2984c71f4af4a9cbe7b57f346ec1f3",
                 "reference": "754b3604fb2984c71f4af4a9cbe7b57f346ec1f3",
                 "shasum": ""
             },
@@ -3078,8 +3300,7 @@
                 {
                     "name": "Colin O'Dell",
                     "email": "colinodell@gmail.com",
-                    "homepage": "https://www.colinodell.com",
-                    "role": "Lead Developer"
+                    "homepage": "https://www.colinodell.com"
                 }
             ],
             "description": "Define configuration arrays with strict schemas and access values with dot notation",
@@ -3118,9 +3339,14 @@
         {
             "name": "league/flysystem",
             "version": "3.35.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thephpleague/flysystem.git",
+                "reference": "d0a405f03d980461e4b6e08cfed2c162650f9f6b"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/league/flysystem/3.35.0/league-flysystem-3.35.0.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/thephpleague/flysystem/d0a405f03d980461e4b6e08cfed2c162650f9f6b",
                 "reference": "d0a405f03d980461e4b6e08cfed2c162650f9f6b",
                 "shasum": ""
             },
@@ -3195,9 +3421,14 @@
         {
             "name": "league/flysystem-local",
             "version": "3.31.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thephpleague/flysystem-local.git",
+                "reference": "2f669db18a4c20c755c2bb7d3a7b0b2340488079"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/league/flysystem-local/3.31.0/league-flysystem-local-3.31.0.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/thephpleague/flysystem-local/2f669db18a4c20c755c2bb7d3a7b0b2340488079",
                 "reference": "2f669db18a4c20c755c2bb7d3a7b0b2340488079",
                 "shasum": ""
             },
@@ -3238,9 +3469,14 @@
         {
             "name": "league/mime-type-detection",
             "version": "1.16.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thephpleague/mime-type-detection.git",
+                "reference": "2d6702ff215bf922936ccc1ad31007edc76451b9"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/league/mime-type-detection/1.16.0/league-mime-type-detection-1.16.0.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/thephpleague/mime-type-detection/2d6702ff215bf922936ccc1ad31007edc76451b9",
                 "reference": "2d6702ff215bf922936ccc1ad31007edc76451b9",
                 "shasum": ""
             },
@@ -3288,9 +3524,14 @@
         {
             "name": "league/uri",
             "version": "7.8.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thephpleague/uri.git",
+                "reference": "08cf38e3924d4f56238125547b5720496fac8fd4"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/league/uri/7.8.1/league-uri-7.8.1.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/thephpleague/uri/08cf38e3924d4f56238125547b5720496fac8fd4",
                 "reference": "08cf38e3924d4f56238125547b5720496fac8fd4",
                 "shasum": ""
             },
@@ -3380,9 +3621,14 @@
         {
             "name": "league/uri-interfaces",
             "version": "7.8.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thephpleague/uri-interfaces.git",
+                "reference": "85d5c77c5d6d3af6c54db4a78246364908f3c928"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/league/uri-interfaces/7.8.1/league-uri-interfaces-7.8.1.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/thephpleague/uri-interfaces/85d5c77c5d6d3af6c54db4a78246364908f3c928",
                 "reference": "85d5c77c5d6d3af6c54db4a78246364908f3c928",
                 "shasum": ""
             },
@@ -3458,9 +3704,14 @@
         {
             "name": "livewire/flux",
             "version": "v2.15.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/livewire/flux.git",
+                "reference": "c570fb836278e9be881d08b7e386a1a62ab9faf7"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/livewire/flux/v2.15.0/livewire-flux-v2.15.0.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/livewire/flux/c570fb836278e9be881d08b7e386a1a62ab9faf7",
                 "reference": "c570fb836278e9be881d08b7e386a1a62ab9faf7",
                 "shasum": ""
             },
@@ -3518,9 +3769,14 @@
         {
             "name": "livewire/livewire",
             "version": "v4.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/livewire/livewire.git",
+                "reference": "6a9dd03f45a4b200abfd0ff644745b23fa7baaaa"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/livewire/livewire/v4.3.1/livewire-livewire-v4.3.1.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/livewire/livewire/6a9dd03f45a4b200abfd0ff644745b23fa7baaaa",
                 "reference": "6a9dd03f45a4b200abfd0ff644745b23fa7baaaa",
                 "shasum": ""
             },
@@ -3588,9 +3844,14 @@
         {
             "name": "monolog/monolog",
             "version": "3.10.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Seldaek/monolog.git",
+                "reference": "b321dd6749f0bf7189444158a3ce785cc16d69b0"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/monolog/monolog/3.10.0/monolog-monolog-3.10.0.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/Seldaek/monolog/b321dd6749f0bf7189444158a3ce785cc16d69b0",
                 "reference": "b321dd6749f0bf7189444158a3ce785cc16d69b0",
                 "shasum": ""
             },
@@ -3685,9 +3946,14 @@
         {
             "name": "mtdowling/jmespath.php",
             "version": "2.9.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jmespath/jmespath.php.git",
+                "reference": "9c208ba27ae7d90853c288b3795d6702eb251d34"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/mtdowling/jmespath.php/2.9.1/mtdowling-jmespath.php-2.9.1.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/jmespath/jmespath.php/9c208ba27ae7d90853c288b3795d6702eb251d34",
                 "reference": "9c208ba27ae7d90853c288b3795d6702eb251d34",
                 "shasum": ""
             },
@@ -3745,9 +4011,14 @@
         {
             "name": "nesbot/carbon",
             "version": "3.13.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/CarbonPHP/carbon.git",
+                "reference": "40f6618f052df16b545f626fbf9a878e6497d16a"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/nesbot/carbon/3.13.0/nesbot-carbon-3.13.0.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/CarbonPHP/carbon/40f6618f052df16b545f626fbf9a878e6497d16a",
                 "reference": "40f6618f052df16b545f626fbf9a878e6497d16a",
                 "shasum": ""
             },
@@ -3844,9 +4115,14 @@
         {
             "name": "nette/schema",
             "version": "v1.3.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nette/schema.git",
+                "reference": "f0ab1a3cda782dbc5da270d28545236aa80c4002"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/nette/schema/v1.3.5/nette-schema-v1.3.5.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/nette/schema/f0ab1a3cda782dbc5da270d28545236aa80c4002",
                 "reference": "f0ab1a3cda782dbc5da270d28545236aa80c4002",
                 "shasum": ""
             },
@@ -3905,9 +4181,14 @@
         {
             "name": "nette/utils",
             "version": "v4.1.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nette/utils.git",
+                "reference": "7da6c396d7ebe142bc857c20479d5e70a5e1aac7"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/nette/utils/v4.1.4/nette-utils-v4.1.4.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/nette/utils/7da6c396d7ebe142bc857c20479d5e70a5e1aac7",
                 "reference": "7da6c396d7ebe142bc857c20479d5e70a5e1aac7",
                 "shasum": ""
             },
@@ -3990,9 +4271,14 @@
         {
             "name": "nikic/php-parser",
             "version": "v5.7.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nikic/PHP-Parser.git",
+                "reference": "dca41cd15c2ac9d055ad70dbfd011130757d1f82"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/nikic/php-parser/v5.7.0/nikic-php-parser-v5.7.0.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/nikic/PHP-Parser/dca41cd15c2ac9d055ad70dbfd011130757d1f82",
                 "reference": "dca41cd15c2ac9d055ad70dbfd011130757d1f82",
                 "shasum": ""
             },
@@ -4042,9 +4328,14 @@
         {
             "name": "nunomaduro/termwind",
             "version": "v2.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nunomaduro/termwind.git",
+                "reference": "712a31b768f5daea284c2169a7d227031001b9a8"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/nunomaduro/termwind/v2.4.0/nunomaduro-termwind-v2.4.0.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/nunomaduro/termwind/712a31b768f5daea284c2169a7d227031001b9a8",
                 "reference": "712a31b768f5daea284c2169a7d227031001b9a8",
                 "shasum": ""
             },
@@ -4123,9 +4414,14 @@
         {
             "name": "paragonie/constant_time_encoding",
             "version": "v3.1.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/paragonie/constant_time_encoding.git",
+                "reference": "d5b01a39b3415c2cd581d3bd3a3575c1ebbd8e77"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/paragonie/constant_time_encoding/v3.1.3/paragonie-constant_time_encoding-v3.1.3.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/paragonie/constant_time_encoding/d5b01a39b3415c2cd581d3bd3a3575c1ebbd8e77",
                 "reference": "d5b01a39b3415c2cd581d3bd3a3575c1ebbd8e77",
                 "shasum": ""
             },
@@ -4151,14 +4447,12 @@
                 {
                     "name": "Paragon Initiative Enterprises",
                     "email": "security@paragonie.com",
-                    "homepage": "https://paragonie.com",
-                    "role": "Maintainer"
+                    "homepage": "https://paragonie.com"
                 },
                 {
                     "name": "Steve 'Sc00bz' Thomas",
                     "email": "steve@tobtu.com",
-                    "homepage": "https://www.tobtu.com",
-                    "role": "Original Developer"
+                    "homepage": "https://www.tobtu.com"
                 }
             ],
             "description": "Constant-time Implementations of RFC 4648 Encoding (Base-64, Base-32, Base-16)",
@@ -4186,9 +4480,14 @@
         {
             "name": "phpdocumentor/reflection-common",
             "version": "2.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phpDocumentor/ReflectionCommon.git",
+                "reference": "1d01c49d4ed62f25aa84a747ad35d5a16924662b"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/phpdocumentor/reflection-common/2.2.0/phpdocumentor-reflection-common-2.2.0.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/phpDocumentor/ReflectionCommon/1d01c49d4ed62f25aa84a747ad35d5a16924662b",
                 "reference": "1d01c49d4ed62f25aa84a747ad35d5a16924662b",
                 "shasum": ""
             },
@@ -4233,9 +4532,14 @@
         {
             "name": "phpdocumentor/reflection-docblock",
             "version": "6.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phpDocumentor/ReflectionDocBlock.git",
+                "reference": "7bae67520aa9f5ecc506d646810bd40d9da54582"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/phpdocumentor/reflection-docblock/6.0.3/phpdocumentor-reflection-docblock-6.0.3.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/phpDocumentor/ReflectionDocBlock/7bae67520aa9f5ecc506d646810bd40d9da54582",
                 "reference": "7bae67520aa9f5ecc506d646810bd40d9da54582",
                 "shasum": ""
             },
@@ -4292,9 +4596,14 @@
         {
             "name": "phpdocumentor/type-resolver",
             "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phpDocumentor/TypeResolver.git",
+                "reference": "327a05bbee54120d4786a0dc67aad30226ad4cf9"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/phpdocumentor/type-resolver/2.0.0/phpdocumentor-type-resolver-2.0.0.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/phpDocumentor/TypeResolver/327a05bbee54120d4786a0dc67aad30226ad4cf9",
                 "reference": "327a05bbee54120d4786a0dc67aad30226ad4cf9",
                 "shasum": ""
             },
@@ -4344,9 +4653,14 @@
         {
             "name": "phpoption/phpoption",
             "version": "1.9.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/schmittjoh/php-option.git",
+                "reference": "75365b91986c2405cf5e1e012c5595cd487a98be"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/phpoption/phpoption/1.9.5/phpoption-phpoption-1.9.5.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/schmittjoh/php-option/75365b91986c2405cf5e1e012c5595cd487a98be",
                 "reference": "75365b91986c2405cf5e1e012c5595cd487a98be",
                 "shasum": ""
             },
@@ -4413,9 +4727,14 @@
         {
             "name": "phpstan/phpdoc-parser",
             "version": "2.3.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phpstan/phpdoc-parser.git",
+                "reference": "a004701b11273a26cd7955a61d67a7f1e525a45a"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/phpstan/phpdoc-parser/2.3.2/phpstan-phpdoc-parser-2.3.2.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/phpstan/phpdoc-parser/a004701b11273a26cd7955a61d67a7f1e525a45a",
                 "reference": "a004701b11273a26cd7955a61d67a7f1e525a45a",
                 "shasum": ""
             },
@@ -4454,9 +4773,14 @@
         {
             "name": "pragmarx/google2fa",
             "version": "v9.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/antonioribeiro/google2fa.git",
+                "reference": "e6bc62dd6ae83acc475f57912e27466019a1f2cf"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/pragmarx/google2fa/v9.0.0/pragmarx-google2fa-v9.0.0.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/antonioribeiro/google2fa/e6bc62dd6ae83acc475f57912e27466019a1f2cf",
                 "reference": "e6bc62dd6ae83acc475f57912e27466019a1f2cf",
                 "shasum": ""
             },
@@ -4480,8 +4804,7 @@
             "authors": [
                 {
                     "name": "Antonio Carlos Ribeiro",
-                    "email": "acr@antoniocarlosribeiro.com",
-                    "role": "Creator & Designer"
+                    "email": "acr@antoniocarlosribeiro.com"
                 }
             ],
             "description": "A One Time Password Authentication package, compatible with Google Authenticator.",
@@ -4500,9 +4823,14 @@
         {
             "name": "psr/cache",
             "version": "3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/cache.git",
+                "reference": "aa5030cfa5405eccfdcb1083ce040c2cb8d253bf"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/psr/cache/3.0.0/psr-cache-3.0.0.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/php-fig/cache/aa5030cfa5405eccfdcb1083ce040c2cb8d253bf",
                 "reference": "aa5030cfa5405eccfdcb1083ce040c2cb8d253bf",
                 "shasum": ""
             },
@@ -4543,9 +4871,14 @@
         {
             "name": "psr/clock",
             "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/clock.git",
+                "reference": "e41a24703d4560fd0acb709162f73b8adfc3aa0d"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/psr/clock/1.0.0/psr-clock-1.0.0.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/php-fig/clock/e41a24703d4560fd0acb709162f73b8adfc3aa0d",
                 "reference": "e41a24703d4560fd0acb709162f73b8adfc3aa0d",
                 "shasum": ""
             },
@@ -4585,9 +4918,14 @@
         {
             "name": "psr/container",
             "version": "2.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/container.git",
+                "reference": "c71ecc56dfe541dbd90c5360474fbc405f8d5963"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/psr/container/2.0.2/psr-container-2.0.2.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/php-fig/container/c71ecc56dfe541dbd90c5360474fbc405f8d5963",
                 "reference": "c71ecc56dfe541dbd90c5360474fbc405f8d5963",
                 "shasum": ""
             },
@@ -4632,9 +4970,14 @@
         {
             "name": "psr/event-dispatcher",
             "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/event-dispatcher.git",
+                "reference": "dbefd12671e8a14ec7f180cab83036ed26714bb0"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/psr/event-dispatcher/1.0.0/psr-event-dispatcher-1.0.0.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/php-fig/event-dispatcher/dbefd12671e8a14ec7f180cab83036ed26714bb0",
                 "reference": "dbefd12671e8a14ec7f180cab83036ed26714bb0",
                 "shasum": ""
             },
@@ -4676,9 +5019,14 @@
         {
             "name": "psr/http-client",
             "version": "1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/http-client.git",
+                "reference": "bb5906edc1c324c9a05aa0873d40117941e5fa90"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/psr/http-client/1.0.3/psr-http-client-1.0.3.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/php-fig/http-client/bb5906edc1c324c9a05aa0873d40117941e5fa90",
                 "reference": "bb5906edc1c324c9a05aa0873d40117941e5fa90",
                 "shasum": ""
             },
@@ -4722,9 +5070,14 @@
         {
             "name": "psr/http-factory",
             "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/http-factory.git",
+                "reference": "2b4765fddfe3b508ac62f829e852b1501d3f6e8a"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/psr/http-factory/1.1.0/psr-http-factory-1.1.0.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/php-fig/http-factory/2b4765fddfe3b508ac62f829e852b1501d3f6e8a",
                 "reference": "2b4765fddfe3b508ac62f829e852b1501d3f6e8a",
                 "shasum": ""
             },
@@ -4771,9 +5124,14 @@
         {
             "name": "psr/http-message",
             "version": "2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/http-message.git",
+                "reference": "402d35bcb92c70c026d1a6a9883f06b2ead23d71"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/psr/http-message/2.0/psr-http-message-2.0.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/php-fig/http-message/402d35bcb92c70c026d1a6a9883f06b2ead23d71",
                 "reference": "402d35bcb92c70c026d1a6a9883f06b2ead23d71",
                 "shasum": ""
             },
@@ -4818,9 +5176,14 @@
         {
             "name": "psr/log",
             "version": "3.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/log.git",
+                "reference": "f16e1d5863e37f8d8c2a01719f5b34baa2b714d3"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/psr/log/3.0.2/psr-log-3.0.2.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/php-fig/log/f16e1d5863e37f8d8c2a01719f5b34baa2b714d3",
                 "reference": "f16e1d5863e37f8d8c2a01719f5b34baa2b714d3",
                 "shasum": ""
             },
@@ -4862,9 +5225,14 @@
         {
             "name": "psr/simple-cache",
             "version": "3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/simple-cache.git",
+                "reference": "764e0b3939f5ca87cb904f570ef9be2d78a07865"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/psr/simple-cache/3.0.0/psr-simple-cache-3.0.0.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/php-fig/simple-cache/764e0b3939f5ca87cb904f570ef9be2d78a07865",
                 "reference": "764e0b3939f5ca87cb904f570ef9be2d78a07865",
                 "shasum": ""
             },
@@ -4907,9 +5275,14 @@
         {
             "name": "psy/psysh",
             "version": "v0.12.23",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bobthecow/psysh.git",
+                "reference": "4dcc0f08047d52bbde475eda481146fd8e27e1a4"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/psy/psysh/v0.12.23/psy-psysh-v0.12.23.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/bobthecow/psysh/4dcc0f08047d52bbde475eda481146fd8e27e1a4",
                 "reference": "4dcc0f08047d52bbde475eda481146fd8e27e1a4",
                 "shasum": ""
             },
@@ -4980,9 +5353,14 @@
         {
             "name": "ralouphie/getallheaders",
             "version": "3.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ralouphie/getallheaders.git",
+                "reference": "120b605dfeb996808c31b6477290a714d356e822"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/ralouphie/getallheaders/3.0.3/ralouphie-getallheaders-3.0.3.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/ralouphie/getallheaders/120b605dfeb996808c31b6477290a714d356e822",
                 "reference": "120b605dfeb996808c31b6477290a714d356e822",
                 "shasum": ""
             },
@@ -5018,9 +5396,14 @@
         {
             "name": "ramsey/collection",
             "version": "2.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ramsey/collection.git",
+                "reference": "344572933ad0181accbf4ba763e85a0306a8c5e2"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/ramsey/collection/2.1.1/ramsey-collection-2.1.1.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/ramsey/collection/344572933ad0181accbf4ba763e85a0306a8c5e2",
                 "reference": "344572933ad0181accbf4ba763e85a0306a8c5e2",
                 "shasum": ""
             },
@@ -5088,9 +5471,14 @@
         {
             "name": "ramsey/uuid",
             "version": "4.9.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ramsey/uuid.git",
+                "reference": "1df15849d00943a67d677dc9cfd80795f038c9f8"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/ramsey/uuid/4.9.3/ramsey-uuid-4.9.3.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/ramsey/uuid/1df15849d00943a67d677dc9cfd80795f038c9f8",
                 "reference": "1df15849d00943a67d677dc9cfd80795f038c9f8",
                 "shasum": ""
             },
@@ -5160,9 +5548,14 @@
         {
             "name": "rize/uri-template",
             "version": "0.4.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rize/UriTemplate.git",
+                "reference": "7ad22944daede547b4542e1c977ec4a81aa20832"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/rize/uri-template/0.4.2/rize-uri-template-0.4.2.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/rize/UriTemplate/7ad22944daede547b4542e1c977ec4a81aa20832",
                 "reference": "7ad22944daede547b4542e1c977ec4a81aa20832",
                 "shasum": ""
             },
@@ -5218,9 +5611,14 @@
         {
             "name": "spatie/laravel-activitylog",
             "version": "4.12.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/laravel-activitylog.git",
+                "reference": "2a2024fcac05628b0d1bfdbb1b94dda8b0661dc0"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/spatie/laravel-activitylog/4.12.3/spatie-laravel-activitylog-4.12.3.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/spatie/laravel-activitylog/2a2024fcac05628b0d1bfdbb1b94dda8b0661dc0",
                 "reference": "2a2024fcac05628b0d1bfdbb1b94dda8b0661dc0",
                 "shasum": ""
             },
@@ -5259,20 +5657,17 @@
                 {
                     "name": "Freek Van der Herten",
                     "email": "freek@spatie.be",
-                    "homepage": "https://spatie.be",
-                    "role": "Developer"
+                    "homepage": "https://spatie.be"
                 },
                 {
                     "name": "Sebastian De Deyne",
                     "email": "sebastian@spatie.be",
-                    "homepage": "https://spatie.be",
-                    "role": "Developer"
+                    "homepage": "https://spatie.be"
                 },
                 {
                     "name": "Tom Witkowski",
                     "email": "dev.gummibeer@gmail.com",
-                    "homepage": "https://gummibeer.de",
-                    "role": "Developer"
+                    "homepage": "https://gummibeer.de"
                 }
             ],
             "description": "A very simple activity logger to monitor the users of your website or application",
@@ -5303,9 +5698,14 @@
         {
             "name": "spatie/laravel-package-tools",
             "version": "1.93.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/laravel-package-tools.git",
+                "reference": "d5552849801f2642aea710557463234b59ef65eb"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/spatie/laravel-package-tools/1.93.1/spatie-laravel-package-tools-1.93.1.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/spatie/laravel-package-tools/d5552849801f2642aea710557463234b59ef65eb",
                 "reference": "d5552849801f2642aea710557463234b59ef65eb",
                 "shasum": ""
             },
@@ -5333,8 +5733,7 @@
             "authors": [
                 {
                     "name": "Freek Van der Herten",
-                    "email": "freek@spatie.be",
-                    "role": "Developer"
+                    "email": "freek@spatie.be"
                 }
             ],
             "description": "Tools for creating Laravel packages",
@@ -5358,9 +5757,14 @@
         {
             "name": "spatie/laravel-permission",
             "version": "8.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/laravel-permission.git",
+                "reference": "70a6ab04108616b438e0839598f473b513281644"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/spatie/laravel-permission/8.0.0/spatie-laravel-permission-8.0.0.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/spatie/laravel-permission/70a6ab04108616b438e0839598f473b513281644",
                 "reference": "70a6ab04108616b438e0839598f473b513281644",
                 "shasum": ""
             },
@@ -5408,8 +5812,7 @@
                 {
                     "name": "Freek Van der Herten",
                     "email": "freek@spatie.be",
-                    "homepage": "https://spatie.be",
-                    "role": "Developer"
+                    "homepage": "https://spatie.be"
                 }
             ],
             "description": "Permission handling for Laravel 12 and up",
@@ -5439,9 +5842,14 @@
         {
             "name": "spomky-labs/cbor-php",
             "version": "3.2.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Spomky-Labs/cbor-php.git",
+                "reference": "dd6eb84e6d92f7b8bd0da56b4b4dd7235aed0c32"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/spomky-labs/cbor-php/3.2.3/spomky-labs-cbor-php-3.2.3.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/Spomky-Labs/cbor-php/dd6eb84e6d92f7b8bd0da56b4b4dd7235aed0c32",
                 "reference": "dd6eb84e6d92f7b8bd0da56b4b4dd7235aed0c32",
                 "shasum": ""
             },
@@ -5504,9 +5912,14 @@
         {
             "name": "spomky-labs/pki-framework",
             "version": "1.4.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Spomky-Labs/pki-framework.git",
+                "reference": "aa576cbd07128075bef97ac2f8af9854e67513d8"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/spomky-labs/pki-framework/1.4.2/spomky-labs-pki-framework-1.4.2.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/Spomky-Labs/pki-framework/aa576cbd07128075bef97ac2f8af9854e67513d8",
                 "reference": "aa576cbd07128075bef97ac2f8af9854e67513d8",
                 "shasum": ""
             },
@@ -5551,13 +5964,11 @@
             "authors": [
                 {
                     "name": "Joni Eskelinen",
-                    "email": "jonieske@gmail.com",
-                    "role": "Original developer"
+                    "email": "jonieske@gmail.com"
                 },
                 {
                     "name": "Florent Morselli",
-                    "email": "florent.morselli@spomky-labs.com",
-                    "role": "Spomky-Labs PKI Framework developer"
+                    "email": "florent.morselli@spomky-labs.com"
                 }
             ],
             "description": "A PHP framework for managing Public Key Infrastructures. It comprises X.509 public key certificates, attribute certificates, certification requests and certification path validation.",
@@ -5608,9 +6019,14 @@
         {
             "name": "symfony/cache",
             "version": "v7.4.13",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/cache.git",
+                "reference": "4c09e18a92cce126cc0d1155825279fca8cd0673"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/symfony/cache/v7.4.13/symfony-cache-v7.4.13.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/symfony/cache/4c09e18a92cce126cc0d1155825279fca8cd0673",
                 "reference": "4c09e18a92cce126cc0d1155825279fca8cd0673",
                 "shasum": ""
             },
@@ -5706,9 +6122,14 @@
         {
             "name": "symfony/cache-contracts",
             "version": "v3.7.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/cache-contracts.git",
+                "reference": "225e8a254166bd3442e370c6f50145465db63831"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/symfony/cache-contracts/v3.7.0/symfony-cache-contracts-v3.7.0.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/symfony/cache-contracts/225e8a254166bd3442e370c6f50145465db63831",
                 "reference": "225e8a254166bd3442e370c6f50145465db63831",
                 "shasum": ""
             },
@@ -5780,9 +6201,14 @@
         {
             "name": "symfony/clock",
             "version": "v7.4.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/clock.git",
+                "reference": "674fa3b98e21531dd040e613479f5f6fa8f32111"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/symfony/clock/v7.4.8/symfony-clock-v7.4.8.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/symfony/clock/674fa3b98e21531dd040e613479f5f6fa8f32111",
                 "reference": "674fa3b98e21531dd040e613479f5f6fa8f32111",
                 "shasum": ""
             },
@@ -5852,9 +6278,14 @@
         {
             "name": "symfony/console",
             "version": "v7.4.13",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/console.git",
+                "reference": "85095d2573eaefaf35e40b9513a9bf09f72cd217"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/symfony/console/v7.4.13/symfony-console-v7.4.13.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/symfony/console/85095d2573eaefaf35e40b9513a9bf09f72cd217",
                 "reference": "85095d2573eaefaf35e40b9513a9bf09f72cd217",
                 "shasum": ""
             },
@@ -5944,9 +6375,14 @@
         {
             "name": "symfony/css-selector",
             "version": "v7.4.9",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/css-selector.git",
+                "reference": "b75663ed96cf4756e28e3105476f220f92886cc4"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/symfony/css-selector/v7.4.9/symfony-css-selector-v7.4.9.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/symfony/css-selector/b75663ed96cf4756e28e3105476f220f92886cc4",
                 "reference": "b75663ed96cf4756e28e3105476f220f92886cc4",
                 "shasum": ""
             },
@@ -6007,9 +6443,14 @@
         {
             "name": "symfony/deprecation-contracts",
             "version": "v3.7.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/deprecation-contracts.git",
+                "reference": "50f59d1f3ca46d41ac911f97a78626b6756af35b"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/symfony/deprecation-contracts/v3.7.0/symfony-deprecation-contracts-v3.7.0.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/symfony/deprecation-contracts/50f59d1f3ca46d41ac911f97a78626b6756af35b",
                 "reference": "50f59d1f3ca46d41ac911f97a78626b6756af35b",
                 "shasum": ""
             },
@@ -6072,9 +6513,14 @@
         {
             "name": "symfony/error-handler",
             "version": "v7.4.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/error-handler.git",
+                "reference": "8dd79d8af777ee6cba2fd4d98da6ffb839f3c0fa"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/symfony/error-handler/v7.4.8/symfony-error-handler-v7.4.8.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/symfony/error-handler/8dd79d8af777ee6cba2fd4d98da6ffb839f3c0fa",
                 "reference": "8dd79d8af777ee6cba2fd4d98da6ffb839f3c0fa",
                 "shasum": ""
             },
@@ -6148,9 +6594,14 @@
         {
             "name": "symfony/event-dispatcher",
             "version": "v7.4.9",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/event-dispatcher.git",
+                "reference": "e4a2e29753c7801f7a8340e066cfa788f3bc8101"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/symfony/event-dispatcher/v7.4.9/symfony-event-dispatcher-v7.4.9.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/symfony/event-dispatcher/e4a2e29753c7801f7a8340e066cfa788f3bc8101",
                 "reference": "e4a2e29753c7801f7a8340e066cfa788f3bc8101",
                 "shasum": ""
             },
@@ -6227,9 +6678,14 @@
         {
             "name": "symfony/event-dispatcher-contracts",
             "version": "v3.7.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/event-dispatcher-contracts.git",
+                "reference": "ccba7060602b7fed0b03c85bf025257f76d9ef32"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/symfony/event-dispatcher-contracts/v3.7.0/symfony-event-dispatcher-contracts-v3.7.0.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/symfony/event-dispatcher-contracts/ccba7060602b7fed0b03c85bf025257f76d9ef32",
                 "reference": "ccba7060602b7fed0b03c85bf025257f76d9ef32",
                 "shasum": ""
             },
@@ -6301,9 +6757,14 @@
         {
             "name": "symfony/finder",
             "version": "v7.4.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/finder.git",
+                "reference": "e0be088d22278583a82da281886e8c3592fbf149"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/symfony/finder/v7.4.8/symfony-finder-v7.4.8.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/symfony/finder/e0be088d22278583a82da281886e8c3592fbf149",
                 "reference": "e0be088d22278583a82da281886e8c3592fbf149",
                 "shasum": ""
             },
@@ -6363,9 +6824,14 @@
         {
             "name": "symfony/http-foundation",
             "version": "v7.4.13",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/http-foundation.git",
+                "reference": "bc354f47c62301e990b7874fa662326368508e2c"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/symfony/http-foundation/v7.4.13/symfony-http-foundation-v7.4.13.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/symfony/http-foundation/bc354f47c62301e990b7874fa662326368508e2c",
                 "reference": "bc354f47c62301e990b7874fa662326368508e2c",
                 "shasum": ""
             },
@@ -6439,9 +6905,14 @@
         {
             "name": "symfony/http-kernel",
             "version": "v7.4.13",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/http-kernel.git",
+                "reference": "9df847980c436451f4f51d1284491bb4356dd989"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/symfony/http-kernel/v7.4.13/symfony-http-kernel-v7.4.13.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/symfony/http-kernel/9df847980c436451f4f51d1284491bb4356dd989",
                 "reference": "9df847980c436451f4f51d1284491bb4356dd989",
                 "shasum": ""
             },
@@ -6552,9 +7023,14 @@
         {
             "name": "symfony/mailer",
             "version": "v7.4.12",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/mailer.git",
+                "reference": "5cefb712a25f320579615ba9e1942abaeade7dff"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/symfony/mailer/v7.4.12/symfony-mailer-v7.4.12.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/symfony/mailer/5cefb712a25f320579615ba9e1942abaeade7dff",
                 "reference": "5cefb712a25f320579615ba9e1942abaeade7dff",
                 "shasum": ""
             },
@@ -6630,9 +7106,14 @@
         {
             "name": "symfony/mime",
             "version": "v7.4.13",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/mime.git",
+                "reference": "a845722765c4f6b2ce88beaf4f4479975b186770"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/symfony/mime/v7.4.13/symfony-mime-v7.4.13.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/symfony/mime/a845722765c4f6b2ce88beaf4f4479975b186770",
                 "reference": "a845722765c4f6b2ce88beaf4f4479975b186770",
                 "shasum": ""
             },
@@ -6713,9 +7194,14 @@
         {
             "name": "symfony/polyfill-ctype",
             "version": "v1.37.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-ctype.git",
+                "reference": "141046a8f9477948ff284fa65be2095baafb94f2"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/symfony/polyfill-ctype/v1.37.0/symfony-polyfill-ctype-v1.37.0.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/symfony/polyfill-ctype/141046a8f9477948ff284fa65be2095baafb94f2",
                 "reference": "141046a8f9477948ff284fa65be2095baafb94f2",
                 "shasum": ""
             },
@@ -6790,9 +7276,14 @@
         {
             "name": "symfony/polyfill-intl-grapheme",
             "version": "v1.38.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-intl-grapheme.git",
+                "reference": "e9247d281d694a5120554d9afaf54e070e88a603"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/symfony/polyfill-intl-grapheme/v1.38.1/symfony-polyfill-intl-grapheme-v1.38.1.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/symfony/polyfill-intl-grapheme/e9247d281d694a5120554d9afaf54e070e88a603",
                 "reference": "e9247d281d694a5120554d9afaf54e070e88a603",
                 "shasum": ""
             },
@@ -6866,9 +7357,14 @@
         {
             "name": "symfony/polyfill-intl-idn",
             "version": "v1.38.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-intl-idn.git",
+                "reference": "dc21118016c039a66235cf93d96b435ffb282412"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/symfony/polyfill-intl-idn/v1.38.1/symfony-polyfill-intl-idn-v1.38.1.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/symfony/polyfill-intl-idn/dc21118016c039a66235cf93d96b435ffb282412",
                 "reference": "dc21118016c039a66235cf93d96b435ffb282412",
                 "shasum": ""
             },
@@ -6947,9 +7443,14 @@
         {
             "name": "symfony/polyfill-intl-normalizer",
             "version": "v1.38.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-intl-normalizer.git",
+                "reference": "2d446c214bdbe5b71bde5011b060a05fece3ae6b"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/symfony/polyfill-intl-normalizer/v1.38.0/symfony-polyfill-intl-normalizer-v1.38.0.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/symfony/polyfill-intl-normalizer/2d446c214bdbe5b71bde5011b060a05fece3ae6b",
                 "reference": "2d446c214bdbe5b71bde5011b060a05fece3ae6b",
                 "shasum": ""
             },
@@ -7026,9 +7527,14 @@
         {
             "name": "symfony/polyfill-mbstring",
             "version": "v1.38.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-mbstring.git",
+                "reference": "d3d318bad5e7a1bfbd026009c8bfb8d8f99ae6b6"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/symfony/polyfill-mbstring/v1.38.2/symfony-polyfill-mbstring-v1.38.2.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/symfony/polyfill-mbstring/d3d318bad5e7a1bfbd026009c8bfb8d8f99ae6b6",
                 "reference": "d3d318bad5e7a1bfbd026009c8bfb8d8f99ae6b6",
                 "shasum": ""
             },
@@ -7105,9 +7611,14 @@
         {
             "name": "symfony/polyfill-php80",
             "version": "v1.37.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-php80.git",
+                "reference": "dfb55726c3a76ea3b6459fcfda1ec2d80a682411"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/symfony/polyfill-php80/v1.37.0/symfony-polyfill-php80-v1.37.0.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/symfony/polyfill-php80/dfb55726c3a76ea3b6459fcfda1ec2d80a682411",
                 "reference": "dfb55726c3a76ea3b6459fcfda1ec2d80a682411",
                 "shasum": ""
             },
@@ -7183,9 +7694,14 @@
         {
             "name": "symfony/polyfill-php83",
             "version": "v1.38.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-php83.git",
+                "reference": "796a26abb75ce49f3a84433cd81bf1009d73d5f8"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/symfony/polyfill-php83/v1.38.2/symfony-polyfill-php83-v1.38.2.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/symfony/polyfill-php83/796a26abb75ce49f3a84433cd81bf1009d73d5f8",
                 "reference": "796a26abb75ce49f3a84433cd81bf1009d73d5f8",
                 "shasum": ""
             },
@@ -7257,9 +7773,14 @@
         {
             "name": "symfony/polyfill-php84",
             "version": "v1.38.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-php84.git",
+                "reference": "f4e1dfaee5b74aba5964fe1fd4dfc7ba5e3085fa"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/symfony/polyfill-php84/v1.38.1/symfony-polyfill-php84-v1.38.1.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/symfony/polyfill-php84/f4e1dfaee5b74aba5964fe1fd4dfc7ba5e3085fa",
                 "reference": "f4e1dfaee5b74aba5964fe1fd4dfc7ba5e3085fa",
                 "shasum": ""
             },
@@ -7331,9 +7852,14 @@
         {
             "name": "symfony/polyfill-php85",
             "version": "v1.38.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-php85.git",
+                "reference": "ba2ba04f3352cfa2dcbbcb90aee13ed967f505b1"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/symfony/polyfill-php85/v1.38.1/symfony-polyfill-php85-v1.38.1.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/symfony/polyfill-php85/ba2ba04f3352cfa2dcbbcb90aee13ed967f505b1",
                 "reference": "ba2ba04f3352cfa2dcbbcb90aee13ed967f505b1",
                 "shasum": ""
             },
@@ -7405,9 +7931,14 @@
         {
             "name": "symfony/polyfill-php86",
             "version": "v1.38.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-php86.git",
+                "reference": "fcec68d64f46dc84e1f6ffcf2c6dda40ff3143ad"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/symfony/polyfill-php86/v1.38.0/symfony-polyfill-php86-v1.38.0.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/symfony/polyfill-php86/fcec68d64f46dc84e1f6ffcf2c6dda40ff3143ad",
                 "reference": "fcec68d64f46dc84e1f6ffcf2c6dda40ff3143ad",
                 "shasum": ""
             },
@@ -7479,9 +8010,14 @@
         {
             "name": "symfony/polyfill-uuid",
             "version": "v1.37.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-uuid.git",
+                "reference": "26dfec253c4cf3e51b541b52ddf7e42cb0908e94"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/symfony/polyfill-uuid/v1.37.0/symfony-polyfill-uuid-v1.37.0.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/symfony/polyfill-uuid/26dfec253c4cf3e51b541b52ddf7e42cb0908e94",
                 "reference": "26dfec253c4cf3e51b541b52ddf7e42cb0908e94",
                 "shasum": ""
             },
@@ -7556,9 +8092,14 @@
         {
             "name": "symfony/process",
             "version": "v7.4.13",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/process.git",
+                "reference": "f5804be144caceb570f6747519999636b664f24c"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/symfony/process/v7.4.13/symfony-process-v7.4.13.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/symfony/process/f5804be144caceb570f6747519999636b664f24c",
                 "reference": "f5804be144caceb570f6747519999636b664f24c",
                 "shasum": ""
             },
@@ -7615,9 +8156,14 @@
         {
             "name": "symfony/property-access",
             "version": "v7.4.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/property-access.git",
+                "reference": "b7dad9dae8b8a47ef7ecc76c8569e7d8c7d90cfc"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/symfony/property-access/v7.4.8/symfony-property-access-v7.4.8.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/symfony/property-access/b7dad9dae8b8a47ef7ecc76c8569e7d8c7d90cfc",
                 "reference": "b7dad9dae8b8a47ef7ecc76c8569e7d8c7d90cfc",
                 "shasum": ""
             },
@@ -7690,9 +8236,14 @@
         {
             "name": "symfony/property-info",
             "version": "v7.4.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/property-info.git",
+                "reference": "ac5e82528b986c4f7cfccbf7764b5d2e824d6175"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/symfony/property-info/v7.4.8/symfony-property-info-v7.4.8.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/symfony/property-info/ac5e82528b986c4f7cfccbf7764b5d2e824d6175",
                 "reference": "ac5e82528b986c4f7cfccbf7764b5d2e824d6175",
                 "shasum": ""
             },
@@ -7774,9 +8325,14 @@
         {
             "name": "symfony/psr-http-message-bridge",
             "version": "v7.4.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/psr-http-message-bridge.git",
+                "reference": "76f1a57719a4a04c0ea18678a6c9305b5dcb9da8"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/symfony/psr-http-message-bridge/v7.4.8/symfony-psr-http-message-bridge-v7.4.8.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/symfony/psr-http-message-bridge/76f1a57719a4a04c0ea18678a6c9305b5dcb9da8",
                 "reference": "76f1a57719a4a04c0ea18678a6c9305b5dcb9da8",
                 "shasum": ""
             },
@@ -7856,9 +8412,14 @@
         {
             "name": "symfony/routing",
             "version": "v7.4.13",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/routing.git",
+                "reference": "3a162171bb008e5e0f15dce6581373a4c0e8390d"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/symfony/routing/v7.4.13/symfony-routing-v7.4.13.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/symfony/routing/3a162171bb008e5e0f15dce6581373a4c0e8390d",
                 "reference": "3a162171bb008e5e0f15dce6581373a4c0e8390d",
                 "shasum": ""
             },
@@ -7935,9 +8496,14 @@
         {
             "name": "symfony/serializer",
             "version": "v7.4.10",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/serializer.git",
+                "reference": "268c5aa6c4bd675eddd89348e7ecac292a843ddd"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/symfony/serializer/v7.4.10/symfony-serializer-v7.4.10.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/symfony/serializer/268c5aa6c4bd675eddd89348e7ecac292a843ddd",
                 "reference": "268c5aa6c4bd675eddd89348e7ecac292a843ddd",
                 "shasum": ""
             },
@@ -8033,9 +8599,14 @@
         {
             "name": "symfony/service-contracts",
             "version": "v3.7.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/service-contracts.git",
+                "reference": "d25d82433a80eba6aa0e6c24b61d7370d99e444a"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/symfony/service-contracts/v3.7.0/symfony-service-contracts-v3.7.0.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/symfony/service-contracts/d25d82433a80eba6aa0e6c24b61d7370d99e444a",
                 "reference": "d25d82433a80eba6aa0e6c24b61d7370d99e444a",
                 "shasum": ""
             },
@@ -8114,9 +8685,14 @@
         {
             "name": "symfony/string",
             "version": "v7.4.13",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/string.git",
+                "reference": "961683010db3b27ec6ebcd7308e6e1ee8fa7ffde"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/symfony/string/v7.4.13/symfony-string-v7.4.13.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/symfony/string/961683010db3b27ec6ebcd7308e6e1ee8fa7ffde",
                 "reference": "961683010db3b27ec6ebcd7308e6e1ee8fa7ffde",
                 "shasum": ""
             },
@@ -8199,9 +8775,14 @@
         {
             "name": "symfony/translation",
             "version": "v7.4.10",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/translation.git",
+                "reference": "ada7578c30dd5feaa8259cff3e885069ea81ddde"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/symfony/translation/v7.4.10/symfony-translation-v7.4.10.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/symfony/translation/ada7578c30dd5feaa8259cff3e885069ea81ddde",
                 "reference": "ada7578c30dd5feaa8259cff3e885069ea81ddde",
                 "shasum": ""
             },
@@ -8293,9 +8874,14 @@
         {
             "name": "symfony/translation-contracts",
             "version": "v3.7.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/translation-contracts.git",
+                "reference": "0ab302977a952b42fd51475c4ebac81f8da0a95d"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/symfony/translation-contracts/v3.7.0/symfony-translation-contracts-v3.7.0.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/symfony/translation-contracts/0ab302977a952b42fd51475c4ebac81f8da0a95d",
                 "reference": "0ab302977a952b42fd51475c4ebac81f8da0a95d",
                 "shasum": ""
             },
@@ -8369,9 +8955,14 @@
         {
             "name": "symfony/type-info",
             "version": "v7.4.9",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/type-info.git",
+                "reference": "cafeedbf157b890e94ac5b83eaed85595106d5d6"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/symfony/type-info/v7.4.9/symfony-type-info-v7.4.9.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/symfony/type-info/cafeedbf157b890e94ac5b83eaed85595106d5d6",
                 "reference": "cafeedbf157b890e94ac5b83eaed85595106d5d6",
                 "shasum": ""
             },
@@ -8446,9 +9037,14 @@
         {
             "name": "symfony/uid",
             "version": "v7.4.9",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/uid.git",
+                "reference": "2676b524340abcfe4d6151ec698463cebafee439"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/symfony/uid/v7.4.9/symfony-uid-v7.4.9.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/symfony/uid/2676b524340abcfe4d6151ec698463cebafee439",
                 "reference": "2676b524340abcfe4d6151ec698463cebafee439",
                 "shasum": ""
             },
@@ -8518,9 +9114,14 @@
         {
             "name": "symfony/var-dumper",
             "version": "v7.4.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/var-dumper.git",
+                "reference": "9510c3966f749a1d1ff0059e1eabef6cc621e7fd"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/symfony/var-dumper/v7.4.8/symfony-var-dumper-v7.4.8.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/symfony/var-dumper/9510c3966f749a1d1ff0059e1eabef6cc621e7fd",
                 "reference": "9510c3966f749a1d1ff0059e1eabef6cc621e7fd",
                 "shasum": ""
             },
@@ -8599,9 +9200,14 @@
         {
             "name": "symfony/var-exporter",
             "version": "v7.4.9",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/var-exporter.git",
+                "reference": "22e03a49c95ef054a43601cd159b222bfab1c701"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/symfony/var-exporter/v7.4.9/symfony-var-exporter-v7.4.9.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/symfony/var-exporter/22e03a49c95ef054a43601cd159b222bfab1c701",
                 "reference": "22e03a49c95ef054a43601cd159b222bfab1c701",
                 "shasum": ""
             },
@@ -8674,9 +9280,14 @@
         {
             "name": "tijsverkoyen/css-to-inline-styles",
             "version": "v2.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tijsverkoyen/CssToInlineStyles.git",
+                "reference": "f0292ccf0ec75843d65027214426b6b163b48b41"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/tijsverkoyen/css-to-inline-styles/v2.4.0/tijsverkoyen-css-to-inline-styles-v2.4.0.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/tijsverkoyen/CssToInlineStyles/f0292ccf0ec75843d65027214426b6b163b48b41",
                 "reference": "f0292ccf0ec75843d65027214426b6b163b48b41",
                 "shasum": ""
             },
@@ -8708,8 +9319,7 @@
             "authors": [
                 {
                     "name": "Tijs Verkoyen",
-                    "email": "css_to_inline_styles@verkoyen.eu",
-                    "role": "Developer"
+                    "email": "css_to_inline_styles@verkoyen.eu"
                 }
             ],
             "description": "CssToInlineStyles is a class that enables you to convert HTML-pages/files into HTML-pages/files with inline styles. This is very useful when you're sending emails.",
@@ -8723,9 +9333,14 @@
         {
             "name": "vlucas/phpdotenv",
             "version": "v5.6.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/vlucas/phpdotenv.git",
+                "reference": "955e7815d677a3eaa7075231212f2110983adecc"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/vlucas/phpdotenv/v5.6.3/vlucas-phpdotenv-v5.6.3.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/vlucas/phpdotenv/955e7815d677a3eaa7075231212f2110983adecc",
                 "reference": "955e7815d677a3eaa7075231212f2110983adecc",
                 "shasum": ""
             },
@@ -8801,9 +9416,14 @@
         {
             "name": "voku/portable-ascii",
             "version": "2.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/voku/portable-ascii.git",
+                "reference": "8e1051fe39379367aecf014f41744ce7539a856f"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/voku/portable-ascii/2.1.1/voku-portable-ascii-2.1.1.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/voku/portable-ascii/8e1051fe39379367aecf014f41744ce7539a856f",
                 "reference": "8e1051fe39379367aecf014f41744ce7539a856f",
                 "shasum": ""
             },
@@ -8869,9 +9489,14 @@
         {
             "name": "web-auth/cose-lib",
             "version": "4.5.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/web-auth/cose-lib.git",
+                "reference": "5b38660f90070a8e45f3dbc9528ade3b608dd77d"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/web-auth/cose-lib/4.5.2/web-auth-cose-lib-4.5.2.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/web-auth/cose-lib/5b38660f90070a8e45f3dbc9528ade3b608dd77d",
                 "reference": "5b38660f90070a8e45f3dbc9528ade3b608dd77d",
                 "shasum": ""
             },
@@ -8934,9 +9559,14 @@
         {
             "name": "web-auth/webauthn-lib",
             "version": "5.3.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/web-auth/webauthn-lib.git",
+                "reference": "9e0986d999f4102e24ac8a598d3a80d98b56c19f"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/web-auth/webauthn-lib/5.3.5/web-auth-webauthn-lib-5.3.5.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/web-auth/webauthn-lib/9e0986d999f4102e24ac8a598d3a80d98b56c19f",
                 "reference": "9e0986d999f4102e24ac8a598d3a80d98b56c19f",
                 "shasum": ""
             },
@@ -9014,9 +9644,14 @@
         {
             "name": "webmozart/assert",
             "version": "2.4.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/webmozarts/assert.git",
+                "reference": "2ccb7c2e821038c03a3e6e1700c570c158c55f70"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/webmozart/assert/2.4.1/webmozart-assert-2.4.1.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/webmozarts/assert/2ccb7c2e821038c03a3e6e1700c570c158c55f70",
                 "reference": "2ccb7c2e821038c03a3e6e1700c570c158c55f70",
                 "shasum": ""
             },
@@ -9076,9 +9711,14 @@
         {
             "name": "fakerphp/faker",
             "version": "v1.24.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/FakerPHP/Faker.git",
+                "reference": "e0ee18eb1e6dc3cda3ce9fd97e5a0689a88a64b5"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/fakerphp/faker/v1.24.1/fakerphp-faker-v1.24.1.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/FakerPHP/Faker/e0ee18eb1e6dc3cda3ce9fd97e5a0689a88a64b5",
                 "reference": "e0ee18eb1e6dc3cda3ce9fd97e5a0689a88a64b5",
                 "shasum": ""
             },
@@ -9133,9 +9773,14 @@
         {
             "name": "filp/whoops",
             "version": "2.18.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/filp/whoops.git",
+                "reference": "d2102955e48b9fd9ab24280a7ad12ed552752c4d"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/filp/whoops/2.18.4/filp-whoops-2.18.4.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/filp/whoops/d2102955e48b9fd9ab24280a7ad12ed552752c4d",
                 "reference": "d2102955e48b9fd9ab24280a7ad12ed552752c4d",
                 "shasum": ""
             },
@@ -9169,8 +9814,7 @@
             "authors": [
                 {
                     "name": "Filipe Dobreira",
-                    "homepage": "https://github.com/filp",
-                    "role": "Developer"
+                    "homepage": "https://github.com/filp"
                 }
             ],
             "description": "php error handling for cool kids",
@@ -9198,9 +9842,14 @@
         {
             "name": "hamcrest/hamcrest-php",
             "version": "v2.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hamcrest/hamcrest-php.git",
+                "reference": "f8b1c0173b22fa6ec77a81fe63e5b01eba7e6487"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/hamcrest/hamcrest-php/v2.1.1/hamcrest-hamcrest-php-v2.1.1.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/hamcrest/hamcrest-php/f8b1c0173b22fa6ec77a81fe63e5b01eba7e6487",
                 "reference": "f8b1c0173b22fa6ec77a81fe63e5b01eba7e6487",
                 "shasum": ""
             },
@@ -9243,9 +9892,14 @@
         {
             "name": "laravel/boost",
             "version": "v2.4.10",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/boost.git",
+                "reference": "080189f51c8d27c0792a03483a70adc7770f6eeb"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/laravel/boost/v2.4.10/laravel-boost-v2.4.10.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/laravel/boost/080189f51c8d27c0792a03483a70adc7770f6eeb",
                 "reference": "080189f51c8d27c0792a03483a70adc7770f6eeb",
                 "shasum": ""
             },
@@ -9303,9 +9957,14 @@
         {
             "name": "laravel/mcp",
             "version": "v0.8.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/mcp.git",
+                "reference": "fdc39c9e21048801508765cb4d72bd9e8501b51f"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/laravel/mcp/v0.8.1/laravel-mcp-v0.8.1.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/laravel/mcp/fdc39c9e21048801508765cb4d72bd9e8501b51f",
                 "reference": "fdc39c9e21048801508765cb4d72bd9e8501b51f",
                 "shasum": ""
             },
@@ -9371,9 +10030,14 @@
         {
             "name": "laravel/pail",
             "version": "v1.2.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/pail.git",
+                "reference": "2f7d27dada8effc48b8c424445a69cca7007daaa"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/laravel/pail/v1.2.7/laravel-pail-v1.2.7.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/laravel/pail/2f7d27dada8effc48b8c424445a69cca7007daaa",
                 "reference": "2f7d27dada8effc48b8c424445a69cca7007daaa",
                 "shasum": ""
             },
@@ -9445,9 +10109,14 @@
         {
             "name": "laravel/pint",
             "version": "v1.29.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/pint.git",
+                "reference": "da1d1111a6aa2e082d2a388b194afe1ba0a05d14"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/laravel/pint/v1.29.3/laravel-pint-v1.29.3.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/laravel/pint/da1d1111a6aa2e082d2a388b194afe1ba0a05d14",
                 "reference": "da1d1111a6aa2e082d2a388b194afe1ba0a05d14",
                 "shasum": ""
             },
@@ -9507,9 +10176,14 @@
         {
             "name": "laravel/roster",
             "version": "v0.5.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/roster.git",
+                "reference": "5089de7615f72f78e831590ff9d0435fed0102bb"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/laravel/roster/v0.5.1/laravel-roster-v0.5.1.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/laravel/roster/5089de7615f72f78e831590ff9d0435fed0102bb",
                 "reference": "5089de7615f72f78e831590ff9d0435fed0102bb",
                 "shasum": ""
             },
@@ -9562,9 +10236,14 @@
         {
             "name": "laravel/sail",
             "version": "v1.62.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/sail.git",
+                "reference": "3aaeefc979f8ba6586fbc5b6e0b1b3638058f98e"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/laravel/sail/v1.62.0/laravel-sail-v1.62.0.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/laravel/sail/3aaeefc979f8ba6586fbc5b6e0b1b3638058f98e",
                 "reference": "3aaeefc979f8ba6586fbc5b6e0b1b3638058f98e",
                 "shasum": ""
             },
@@ -9619,9 +10298,14 @@
         {
             "name": "mockery/mockery",
             "version": "1.6.12",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mockery/mockery.git",
+                "reference": "1f4efdd7d3beafe9807b08156dfcb176d18f1699"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/mockery/mockery/1.6.12/mockery-mockery-1.6.12.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/mockery/mockery/1f4efdd7d3beafe9807b08156dfcb176d18f1699",
                 "reference": "1f4efdd7d3beafe9807b08156dfcb176d18f1699",
                 "shasum": ""
             },
@@ -9654,20 +10338,17 @@
                 {
                     "name": "Pádraic Brady",
                     "email": "padraic.brady@gmail.com",
-                    "homepage": "https://github.com/padraic",
-                    "role": "Author"
+                    "homepage": "https://github.com/padraic"
                 },
                 {
                     "name": "Dave Marshall",
                     "email": "dave.marshall@atstsolutions.co.uk",
-                    "homepage": "https://davedevelopment.co.uk",
-                    "role": "Developer"
+                    "homepage": "https://davedevelopment.co.uk"
                 },
                 {
                     "name": "Nathanael Esayeas",
                     "email": "nathanael.esayeas@protonmail.com",
-                    "homepage": "https://github.com/ghostwriter",
-                    "role": "Lead Developer"
+                    "homepage": "https://github.com/ghostwriter"
                 }
             ],
             "description": "Mockery is a simple yet flexible PHP mock object framework",
@@ -9696,9 +10377,14 @@
         {
             "name": "myclabs/deep-copy",
             "version": "1.13.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/myclabs/DeepCopy.git",
+                "reference": "07d290f0c47959fd5eed98c95ee5602db07e0b6a"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/myclabs/deep-copy/1.13.4/myclabs-deep-copy-1.13.4.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/myclabs/DeepCopy/07d290f0c47959fd5eed98c95ee5602db07e0b6a",
                 "reference": "07d290f0c47959fd5eed98c95ee5602db07e0b6a",
                 "shasum": ""
             },
@@ -9750,9 +10436,14 @@
         {
             "name": "nunomaduro/collision",
             "version": "v8.9.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nunomaduro/collision.git",
+                "reference": "716af8f95a470e9094cfca09ed897b023be191a5"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/nunomaduro/collision/v8.9.4/nunomaduro-collision-v8.9.4.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/nunomaduro/collision/716af8f95a470e9094cfca09ed897b023be191a5",
                 "reference": "716af8f95a470e9094cfca09ed897b023be191a5",
                 "shasum": ""
             },
@@ -9840,9 +10531,14 @@
         {
             "name": "phar-io/manifest",
             "version": "2.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phar-io/manifest.git",
+                "reference": "54750ef60c58e43759730615a392c31c80e23176"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/phar-io/manifest/2.0.4/phar-io-manifest-2.0.4.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/phar-io/manifest/54750ef60c58e43759730615a392c31c80e23176",
                 "reference": "54750ef60c58e43759730615a392c31c80e23176",
                 "shasum": ""
             },
@@ -9871,18 +10567,15 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "email": "arne@blankerts.de",
-                    "role": "Developer"
+                    "email": "arne@blankerts.de"
                 },
                 {
                     "name": "Sebastian Heuer",
-                    "email": "sebastian@phpeople.de",
-                    "role": "Developer"
+                    "email": "sebastian@phpeople.de"
                 },
                 {
                     "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de",
-                    "role": "Developer"
+                    "email": "sebastian@phpunit.de"
                 }
             ],
             "description": "Component for reading phar.io manifest information from a PHP Archive (PHAR)",
@@ -9901,9 +10594,14 @@
         {
             "name": "phar-io/version",
             "version": "3.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phar-io/version.git",
+                "reference": "4f7fd7836c6f332bb2933569e566a0d6c4cbed74"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/phar-io/version/3.2.1/phar-io-version-3.2.1.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/phar-io/version/4f7fd7836c6f332bb2933569e566a0d6c4cbed74",
                 "reference": "4f7fd7836c6f332bb2933569e566a0d6c4cbed74",
                 "shasum": ""
             },
@@ -9922,18 +10620,15 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "email": "arne@blankerts.de",
-                    "role": "Developer"
+                    "email": "arne@blankerts.de"
                 },
                 {
                     "name": "Sebastian Heuer",
-                    "email": "sebastian@phpeople.de",
-                    "role": "Developer"
+                    "email": "sebastian@phpeople.de"
                 },
                 {
                     "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de",
-                    "role": "Developer"
+                    "email": "sebastian@phpunit.de"
                 }
             ],
             "description": "Library for handling version information and constraints",
@@ -9946,9 +10641,14 @@
         {
             "name": "phpunit/php-code-coverage",
             "version": "12.5.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
+                "reference": "186dab580576598076de6818596d12b61801880e"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/phpunit/php-code-coverage/12.5.7/phpunit-php-code-coverage-12.5.7.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/sebastianbergmann/php-code-coverage/186dab580576598076de6818596d12b61801880e",
                 "reference": "186dab580576598076de6818596d12b61801880e",
                 "shasum": ""
             },
@@ -9989,8 +10689,7 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de",
-                    "role": "lead"
+                    "email": "sebastian@phpunit.de"
                 }
             ],
             "description": "Library that provides collection, processing, and rendering functionality for PHP code coverage information.",
@@ -10028,9 +10727,14 @@
         {
             "name": "phpunit/php-file-iterator",
             "version": "6.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sebastianbergmann/php-file-iterator.git",
+                "reference": "3d1cd096ef6bea4bf2762ba586e35dbd317cbfd5"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/phpunit/php-file-iterator/6.0.1/phpunit-php-file-iterator-6.0.1.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/sebastianbergmann/php-file-iterator/3d1cd096ef6bea4bf2762ba586e35dbd317cbfd5",
                 "reference": "3d1cd096ef6bea4bf2762ba586e35dbd317cbfd5",
                 "shasum": ""
             },
@@ -10057,8 +10761,7 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de",
-                    "role": "lead"
+                    "email": "sebastian@phpunit.de"
                 }
             ],
             "description": "FilterIterator implementation that filters files based on a list of suffixes.",
@@ -10095,9 +10798,14 @@
         {
             "name": "phpunit/php-invoker",
             "version": "6.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sebastianbergmann/php-invoker.git",
+                "reference": "12b54e689b07a25a9b41e57736dfab6ec9ae5406"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/phpunit/php-invoker/6.0.0/phpunit-php-invoker-6.0.0.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/sebastianbergmann/php-invoker/12b54e689b07a25a9b41e57736dfab6ec9ae5406",
                 "reference": "12b54e689b07a25a9b41e57736dfab6ec9ae5406",
                 "shasum": ""
             },
@@ -10128,8 +10836,7 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de",
-                    "role": "lead"
+                    "email": "sebastian@phpunit.de"
                 }
             ],
             "description": "Invoke callables with a timeout",
@@ -10153,9 +10860,14 @@
         {
             "name": "phpunit/php-text-template",
             "version": "5.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sebastianbergmann/php-text-template.git",
+                "reference": "e1367a453f0eda562eedb4f659e13aa900d66c53"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/phpunit/php-text-template/5.0.0/phpunit-php-text-template-5.0.0.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/sebastianbergmann/php-text-template/e1367a453f0eda562eedb4f659e13aa900d66c53",
                 "reference": "e1367a453f0eda562eedb4f659e13aa900d66c53",
                 "shasum": ""
             },
@@ -10182,8 +10894,7 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de",
-                    "role": "lead"
+                    "email": "sebastian@phpunit.de"
                 }
             ],
             "description": "Simple template engine.",
@@ -10207,9 +10918,14 @@
         {
             "name": "phpunit/php-timer",
             "version": "8.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sebastianbergmann/php-timer.git",
+                "reference": "f258ce36aa457f3aa3339f9ed4c81fc66dc8c2cc"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/phpunit/php-timer/8.0.0/phpunit-php-timer-8.0.0.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/sebastianbergmann/php-timer/f258ce36aa457f3aa3339f9ed4c81fc66dc8c2cc",
                 "reference": "f258ce36aa457f3aa3339f9ed4c81fc66dc8c2cc",
                 "shasum": ""
             },
@@ -10236,8 +10952,7 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de",
-                    "role": "lead"
+                    "email": "sebastian@phpunit.de"
                 }
             ],
             "description": "Utility class for timing",
@@ -10261,9 +10976,14 @@
         {
             "name": "phpunit/phpunit",
             "version": "12.5.30",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sebastianbergmann/phpunit.git",
+                "reference": "900400a5b616d6fb306f9549f6da33ba615d3fbb"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/phpunit/phpunit/12.5.30/phpunit-phpunit-12.5.30.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/sebastianbergmann/phpunit/900400a5b616d6fb306f9549f6da33ba615d3fbb",
                 "reference": "900400a5b616d6fb306f9549f6da33ba615d3fbb",
                 "shasum": ""
             },
@@ -10318,8 +11038,7 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de",
-                    "role": "lead"
+                    "email": "sebastian@phpunit.de"
                 }
             ],
             "description": "The PHP Unit Testing framework.",
@@ -10345,9 +11064,14 @@
         {
             "name": "sebastian/cli-parser",
             "version": "4.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sebastianbergmann/cli-parser.git",
+                "reference": "7d05781b13f7dec9043a629a21d086ed74582a15"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/sebastian/cli-parser/4.2.1/sebastian-cli-parser-4.2.1.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/sebastianbergmann/cli-parser/7d05781b13f7dec9043a629a21d086ed74582a15",
                 "reference": "7d05781b13f7dec9043a629a21d086ed74582a15",
                 "shasum": ""
             },
@@ -10374,8 +11098,7 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de",
-                    "role": "lead"
+                    "email": "sebastian@phpunit.de"
                 }
             ],
             "description": "Library for parsing CLI options",
@@ -10408,9 +11131,14 @@
         {
             "name": "sebastian/comparator",
             "version": "7.1.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sebastianbergmann/comparator.git",
+                "reference": "7c65c1e79836812819705b473a90c12399542485"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/sebastian/comparator/7.1.8/sebastian-comparator-7.1.8.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/sebastianbergmann/comparator/7c65c1e79836812819705b473a90c12399542485",
                 "reference": "7c65c1e79836812819705b473a90c12399542485",
                 "shasum": ""
             },
@@ -10494,9 +11222,14 @@
         {
             "name": "sebastian/complexity",
             "version": "5.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sebastianbergmann/complexity.git",
+                "reference": "bad4316aba5303d0221f43f8cee37eb58d384bbb"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/sebastian/complexity/5.0.0/sebastian-complexity-5.0.0.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/sebastianbergmann/complexity/bad4316aba5303d0221f43f8cee37eb58d384bbb",
                 "reference": "bad4316aba5303d0221f43f8cee37eb58d384bbb",
                 "shasum": ""
             },
@@ -10524,8 +11257,7 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de",
-                    "role": "lead"
+                    "email": "sebastian@phpunit.de"
                 }
             ],
             "description": "Library for calculating the complexity of PHP code units",
@@ -10546,9 +11278,14 @@
         {
             "name": "sebastian/diff",
             "version": "7.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sebastianbergmann/diff.git",
+                "reference": "7ab1ea946c012266ca32390913653d844ecd085f"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/sebastian/diff/7.0.0/sebastian-diff-7.0.0.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/sebastianbergmann/diff/7ab1ea946c012266ca32390913653d844ecd085f",
                 "reference": "7ab1ea946c012266ca32390913653d844ecd085f",
                 "shasum": ""
             },
@@ -10607,9 +11344,14 @@
         {
             "name": "sebastian/environment",
             "version": "8.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sebastianbergmann/environment.git",
+                "reference": "9d32c685773823b1983e256ae4ecd48a10d6e439"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/sebastian/environment/8.1.2/sebastian-environment-8.1.2.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/sebastianbergmann/environment/9d32c685773823b1983e256ae4ecd48a10d6e439",
                 "reference": "9d32c685773823b1983e256ae4ecd48a10d6e439",
                 "shasum": ""
             },
@@ -10677,9 +11419,14 @@
         {
             "name": "sebastian/exporter",
             "version": "7.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sebastianbergmann/exporter.git",
+                "reference": "c5e21b5de653ce0a769fb36f5cdfcb5e7a32cf23"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/sebastian/exporter/7.0.3/sebastian-exporter-7.0.3.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/sebastianbergmann/exporter/c5e21b5de653ce0a769fb36f5cdfcb5e7a32cf23",
                 "reference": "c5e21b5de653ce0a769fb36f5cdfcb5e7a32cf23",
                 "shasum": ""
             },
@@ -10761,9 +11508,14 @@
         {
             "name": "sebastian/global-state",
             "version": "8.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sebastianbergmann/global-state.git",
+                "reference": "b164d3274d6537ab462591c5755f76a8f5b1aae9"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/sebastian/global-state/8.0.3/sebastian-global-state-8.0.3.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/sebastianbergmann/global-state/b164d3274d6537ab462591c5755f76a8f5b1aae9",
                 "reference": "b164d3274d6537ab462591c5755f76a8f5b1aae9",
                 "shasum": ""
             },
@@ -10829,9 +11581,14 @@
         {
             "name": "sebastian/lines-of-code",
             "version": "4.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sebastianbergmann/lines-of-code.git",
+                "reference": "d543b8ef219dcd8da262cbb958639a96bedba10e"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/sebastian/lines-of-code/4.0.1/sebastian-lines-of-code-4.0.1.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/sebastianbergmann/lines-of-code/d543b8ef219dcd8da262cbb958639a96bedba10e",
                 "reference": "d543b8ef219dcd8da262cbb958639a96bedba10e",
                 "shasum": ""
             },
@@ -10859,8 +11616,7 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de",
-                    "role": "lead"
+                    "email": "sebastian@phpunit.de"
                 }
             ],
             "description": "Library for counting the lines of code in PHP source code",
@@ -10893,9 +11649,14 @@
         {
             "name": "sebastian/object-enumerator",
             "version": "7.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sebastianbergmann/object-enumerator.git",
+                "reference": "1effe8e9b8e068e9ae228e542d5d11b5d16db894"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/sebastian/object-enumerator/7.0.0/sebastian-object-enumerator-7.0.0.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/sebastianbergmann/object-enumerator/1effe8e9b8e068e9ae228e542d5d11b5d16db894",
                 "reference": "1effe8e9b8e068e9ae228e542d5d11b5d16db894",
                 "shasum": ""
             },
@@ -10945,9 +11706,14 @@
         {
             "name": "sebastian/object-reflector",
             "version": "5.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sebastianbergmann/object-reflector.git",
+                "reference": "4bfa827c969c98be1e527abd576533293c634f6a"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/sebastian/object-reflector/5.0.0/sebastian-object-reflector-5.0.0.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/sebastianbergmann/object-reflector/4bfa827c969c98be1e527abd576533293c634f6a",
                 "reference": "4bfa827c969c98be1e527abd576533293c634f6a",
                 "shasum": ""
             },
@@ -10995,9 +11761,14 @@
         {
             "name": "sebastian/recursion-context",
             "version": "7.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sebastianbergmann/recursion-context.git",
+                "reference": "0b01998a7d5b1f122911a66bebcb8d46f0c82d8c"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/sebastian/recursion-context/7.0.1/sebastian-recursion-context-7.0.1.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/sebastianbergmann/recursion-context/0b01998a7d5b1f122911a66bebcb8d46f0c82d8c",
                 "reference": "0b01998a7d5b1f122911a66bebcb8d46f0c82d8c",
                 "shasum": ""
             },
@@ -11065,9 +11836,14 @@
         {
             "name": "sebastian/type",
             "version": "6.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sebastianbergmann/type.git",
+                "reference": "82ff822c2edc46724be9f7411d3163021f602773"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/sebastian/type/6.0.4/sebastian-type-6.0.4.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/sebastianbergmann/type/82ff822c2edc46724be9f7411d3163021f602773",
                 "reference": "82ff822c2edc46724be9f7411d3163021f602773",
                 "shasum": ""
             },
@@ -11094,8 +11870,7 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de",
-                    "role": "lead"
+                    "email": "sebastian@phpunit.de"
                 }
             ],
             "description": "Collection of value objects that represent the types of the PHP type system",
@@ -11128,9 +11903,14 @@
         {
             "name": "sebastian/version",
             "version": "6.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sebastianbergmann/version.git",
+                "reference": "3e6ccf7657d4f0a59200564b08cead899313b53c"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/sebastian/version/6.0.0/sebastian-version-6.0.0.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/sebastianbergmann/version/3e6ccf7657d4f0a59200564b08cead899313b53c",
                 "reference": "3e6ccf7657d4f0a59200564b08cead899313b53c",
                 "shasum": ""
             },
@@ -11154,8 +11934,7 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de",
-                    "role": "lead"
+                    "email": "sebastian@phpunit.de"
                 }
             ],
             "description": "Library that helps with managing the version number of Git-hosted PHP projects",
@@ -11176,9 +11955,14 @@
         {
             "name": "staabm/side-effects-detector",
             "version": "1.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/staabm/side-effects-detector.git",
+                "reference": "d8334211a140ce329c13726d4a715adbddd0a163"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/staabm/side-effects-detector/1.0.5/staabm-side-effects-detector-1.0.5.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/staabm/side-effects-detector/d8334211a140ce329c13726d4a715adbddd0a163",
                 "reference": "d8334211a140ce329c13726d4a715adbddd0a163",
                 "shasum": ""
             },
@@ -11222,9 +12006,14 @@
         {
             "name": "symfony/yaml",
             "version": "v7.4.13",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/yaml.git",
+                "reference": "a7ec3b1156faf8815db7683ec7c1e7338e6f977c"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/symfony/yaml/v7.4.13/symfony-yaml-v7.4.13.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/symfony/yaml/a7ec3b1156faf8815db7683ec7c1e7338e6f977c",
                 "reference": "a7ec3b1156faf8815db7683ec7c1e7338e6f977c",
                 "shasum": ""
             },
@@ -11292,9 +12081,14 @@
         {
             "name": "theseer/tokenizer",
             "version": "2.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/theseer/tokenizer.git",
+                "reference": "7989e43bf381af0eac72e4f0ca5bcbfa81658be4"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://package-mirror.liara.ir/repository/composer/theseer/tokenizer/2.0.1/theseer-tokenizer-2.0.1.zip",
+                "url": "https://package-mirror.liara.ir/artifactory/api/composer/composer/vcs-dists/zip/theseer/tokenizer/7989e43bf381af0eac72e4f0ca5bcbfa81658be4",
                 "reference": "7989e43bf381af0eac72e4f0ca5bcbfa81658be4",
                 "shasum": ""
             },
@@ -11316,8 +12110,7 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "email": "arne@blankerts.de",
-                    "role": "Developer"
+                    "email": "arne@blankerts.de"
                 }
             ],
             "description": "A small library for converting tokenized PHP source code into XML and potentially other formats",
