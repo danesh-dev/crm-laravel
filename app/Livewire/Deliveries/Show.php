@@ -27,6 +27,7 @@ class Show extends Component
                     'customer',
                     'automation.emailTemplate',
                     'emailTemplate',
+                    'batch',
                 ])
                 ->findOrFail($this->deliveryId),
         ]);

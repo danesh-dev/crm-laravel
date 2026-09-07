@@ -14,6 +14,7 @@ class DeliveryQuery
                 'customer:id,name,email,phone,source,signup_at,last_login_at',
                 'automation:id,name',
                 'emailTemplate:id,name,subject',
+                'batch:id,recipient_count,status',
             ])
             ->when(
                 $filters['status'] ?? null,

@@ -2,18 +2,25 @@
 
 namespace App\Services\Email;
 
-use App\Models\Customer;
+use App\Models\EmailTemplate;
+use InvalidArgumentException;
 
 class TemplateRenderer
 {
-    public function render(
-        string $content,
-        Customer $customer
-    ): string {
-        return strtr($content, [
-            '{{name}}' => $customer->name,
-            '{{email}}' => $customer->email,
-            '{{signup_date}}' => optional($customer->signup_at)?->format('Y-m-d') ?? '',
-        ]);
+    public function renderTemplate(EmailTemplate $template): array
+    {
+        return [
+            'subject' => $this->render($template->subject),
+            'body' => $this->render($template->body_html),
+        ];
+    }
+
+    public function render(string $content): string
+    {
+        if (preg_match('/{{.*?}}/s', $content)) {
+            throw new InvalidArgumentException('Template variables are not supported for automation emails.');
+        }
+
+        return $content;
     }
 }

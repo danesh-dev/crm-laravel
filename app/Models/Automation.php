@@ -38,6 +38,11 @@ class Automation extends Model
         return $this->hasMany(EmailDelivery::class);
     }
 
+    public function emailDeliveryBatches(): HasMany
+    {
+        return $this->hasMany(EmailDeliveryBatch::class);
+    }
+
     public function tags(): BelongsToMany
     {
         return $this->belongsToMany(Tag::class);

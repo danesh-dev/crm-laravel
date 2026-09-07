@@ -2,7 +2,6 @@
 
 namespace App\Livewire\EmailTemplates;
 
-use App\Models\Customer;
 use App\Services\Email\TemplatePreviewService;
 use App\Services\EmailTemplate\EmailTemplateService;
 use Illuminate\Support\Facades\Auth;
@@ -18,28 +17,11 @@ class Create extends Component
 
     public ?string $preview = null;
 
-    public ?int $previewCustomerId = null;
-
     public function generatePreview(
         TemplatePreviewService $previewService
     ): void {
 
-        $customer = Customer::find($this->previewCustomerId);
-
-        if (! $customer) {
-            session()->flash('error', 'Customer not found.');
-
-            return;
-        }
-
-        $this->preview = $previewService->preview(
-            $this->body_html,
-            $customer
-        );
-
-        logger()->info('preview generated', [
-            'preview' => $this->preview,
-        ]);
+        $this->preview = $previewService->preview($this->body_html);
     }
 
     public function save(
@@ -67,17 +49,6 @@ class Create extends Component
 
     public function render()
     {
-        return view(
-            'livewire.email-templates.create', [
-                'customers' => Customer::query()
-                    ->orderBy('name')
-                    ->get(),
-            ]
-        );
-    }
-
-    public function mount(): void
-    {
-        $this->previewCustomerId = Customer::query()->value('id');
+        return view('livewire.email-templates.create');
     }
 }

@@ -45,13 +45,7 @@
                 <h2 class="text-base font-semibold text-zinc-950 dark:text-white">{{ __('Preview') }}</h2>
 
                 <div class="mt-5 space-y-4">
-                    <flux:select wire:model="previewCustomerId" :label="__('Preview Customer')">
-                        @foreach($customers as $customer)
-                            <flux:select.option value="{{ $customer->id }}">
-                                {{ $customer->name }} ({{ $customer->email }})
-                            </flux:select.option>
-                        @endforeach
-                    </flux:select>
+                    <p class="text-sm text-zinc-500 dark:text-zinc-400">{{ __('Automation templates are static. Every recipient receives exactly the same content.') }}</p>
 
                     <x-ui.button type="button" variant="secondary" class="w-full" wire:click="generatePreview">
                         {{ __('Generate Preview') }}

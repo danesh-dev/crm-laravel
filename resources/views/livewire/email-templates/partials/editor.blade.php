@@ -46,14 +46,6 @@
             </label>
         </div>
 
-        <div class="h-6 w-px bg-zinc-200 dark:bg-zinc-700"></div>
-
-        <div class="flex flex-wrap gap-1">
-            @foreach(\App\Support\TemplateVariables::all() as $variable)
-                <button type="button" class="{{ $buttonClass }}" data-editor-variable="{{ $variable }}">{{ $variable }}</button>
-            @endforeach
-        </div>
-
         <div class="ms-auto flex flex-wrap gap-1">
             <button type="button" class="{{ $buttonClass }}" data-editor-mode="design">{{ __('Edit') }}</button>
             <button type="button" class="{{ $buttonClass }}" data-editor-mode="source">{{ __('Source') }}</button>

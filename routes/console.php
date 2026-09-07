@@ -9,7 +9,9 @@ Artisan::command('inspire', function () {
 })->purpose('Display an inspiring quote');
 
 Schedule::command('automation:run')
-    ->everyTenSeconds();
+    ->everyTenSeconds()
+    ->withoutOverlapping();
 
 Schedule::command('email-deliveries:process')
-    ->everyMinute();
+    ->everyMinute()
+    ->withoutOverlapping();

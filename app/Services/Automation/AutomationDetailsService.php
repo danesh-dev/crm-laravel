@@ -14,6 +14,7 @@ class AutomationDetailsService
             ->with([
                 'customer:id,name,email',
                 'emailTemplate:id,name',
+                'batch:id,recipient_count,status',
             ])
             ->where('automation_id', $automation->id)
             ->latest()
@@ -23,6 +24,7 @@ class AutomationDetailsService
                 'automation_id',
                 'customer_id',
                 'email_template_id',
+                'email_delivery_batch_id',
                 'status',
                 'scheduled_for',
                 'sent_at',

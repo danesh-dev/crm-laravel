@@ -3,7 +3,7 @@
 namespace App\Services\Email;
 
 use App\Enums\EmailDeliveryStatus;
-use App\Jobs\SendEmailDeliveryJob;
+use App\Jobs\SendEmailBatchJob;
 use App\Models\EmailDelivery;
 use Illuminate\Validation\ValidationException;
 
@@ -17,6 +17,12 @@ class DeliveryActionService
             ]);
         }
 
+        if ($delivery->email_delivery_batch_id !== null) {
+            SendEmailBatchJob::dispatch($delivery->email_delivery_batch_id);
+
+            return;
+        }
+
         $delivery->update([
             'status' => EmailDeliveryStatus::PENDING,
             'processing_at' => null,
@@ -25,9 +31,6 @@ class DeliveryActionService
             'provider_message_id' => null,
             'error_message' => null,
         ]);
-
-        SendEmailDeliveryJob::dispatch($delivery->id)
-            ->delay($delivery->scheduled_for);
     }
 
     public function cancel(EmailDelivery $delivery): void

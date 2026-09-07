@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class EmailTemplate extends Model
 {
     use SoftDeletes;
+
     public function creator(): BelongsTo
     {
         return $this->belongsTo(User::class, 'created_by');
@@ -25,5 +26,10 @@ class EmailTemplate extends Model
     public function emailDeliveries(): HasMany
     {
         return $this->hasMany(EmailDelivery::class);
+    }
+
+    public function emailDeliveryBatches(): HasMany
+    {
+        return $this->hasMany(EmailDeliveryBatch::class);
     }
 }

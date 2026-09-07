@@ -53,6 +53,14 @@
                 </div>
 
                 <dl class="mt-5 grid gap-4 sm:grid-cols-2">
+                    @if($delivery->batch)
+                        <div class="sm:col-span-2 rounded-md border border-zinc-200 bg-zinc-50 p-3 dark:border-zinc-700 dark:bg-zinc-950">
+                            <dt class="text-sm text-zinc-500 dark:text-zinc-400">{{ __('Delivery Batch #:id', ['id' => $delivery->batch->id]) }}</dt>
+                            <dd class="mt-1 font-medium text-zinc-950 dark:text-white">
+                                {{ __('Recipients: :count · SMTP messages: 1 · Status: :status', ['count' => $delivery->batch->recipient_count, 'status' => str($delivery->batch->status->value)->headline()]) }}
+                            </dd>
+                        </div>
+                    @endif
                     <div>
                         <dt class="text-sm text-zinc-500 dark:text-zinc-400">{{ __('ID') }}</dt>
                         <dd class="mt-1 font-medium text-zinc-950 dark:text-white">{{ $delivery->id }}</dd>

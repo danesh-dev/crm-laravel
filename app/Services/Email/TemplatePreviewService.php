@@ -2,15 +2,11 @@
 
 namespace App\Services\Email;
 
-use App\Models\Customer;
-
 class TemplatePreviewService
 {
-    public function preview(
-        string $content,
-        Customer $customer
-    ): string {
+    public function preview(string $content): string
+    {
         return app(TemplateRenderer::class)
-            ->render($content, $customer);
+            ->render($content);
     }
 }

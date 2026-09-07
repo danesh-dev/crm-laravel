@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
     'automation_id',
     'customer_id',
     'email_template_id',
+    'email_delivery_batch_id',
     'status',
     'scheduled_for',
     'processing_at',
@@ -35,6 +36,11 @@ class EmailDelivery extends Model
     public function emailTemplate(): BelongsTo
     {
         return $this->belongsTo(EmailTemplate::class);
+    }
+
+    public function batch(): BelongsTo
+    {
+        return $this->belongsTo(EmailDeliveryBatch::class, 'email_delivery_batch_id');
     }
 
     public function scopePending(Builder $query): void

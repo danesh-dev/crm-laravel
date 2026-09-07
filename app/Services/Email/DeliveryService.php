@@ -2,9 +2,9 @@
 
 namespace App\Services\Email;
 
-use App\Enums\EmailDeliveryStatus;
+use App\Enums\EmailDeliveryBatchStatus;
 use App\Mail\AutomationMail;
-use App\Models\EmailDelivery;
+use App\Models\EmailDeliveryBatch;
 use App\Services\Settings\MailSettingsService;
 use Illuminate\Support\Facades\Mail;
 use Throwable;
@@ -14,18 +14,26 @@ class DeliveryService
     public function __construct(
         protected TemplateRenderer $renderer,
         protected MailSettingsService $mailSettings,
+        protected MailQuotaService $quota,
     ) {}
 
-    public function send(EmailDelivery $delivery): void
+    public function sendBatch(EmailDeliveryBatch $batch): void
     {
         $now = now(config('app.timezone'));
+        $smtpAccepted = false;
 
-        $claimed = EmailDelivery::query()
-            ->whereKey($delivery->id)
-            ->where('status', EmailDeliveryStatus::PENDING->value)
+        $claimed = EmailDeliveryBatch::query()
+            ->whereKey($batch->id)
+            ->where(function ($query) use ($now): void {
+                $query->where('status', EmailDeliveryBatchStatus::QUEUED->value)
+                    ->orWhere(function ($query) use ($now): void {
+                        $query->where('status', EmailDeliveryBatchStatus::PROCESSING->value)
+                            ->where('processing_at', '<=', $now->copy()->subSeconds(75));
+                    });
+            })
             ->where('scheduled_for', '<=', $now)
             ->update([
-                'status' => EmailDeliveryStatus::PROCESSING,
+                'status' => EmailDeliveryBatchStatus::PROCESSING,
                 'processing_at' => $now,
             ]);
 
@@ -35,43 +43,49 @@ class DeliveryService
 
         try {
 
-            $delivery->refresh();
+            $batch->refresh()->load(['emailTemplate', 'deliveries.customer:id,email']);
+            $rendered = $this->renderer->renderTemplate($batch->emailTemplate);
+            $recipients = $batch->deliveries
+                ->pluck('customer.email')
+                ->filter()
+                ->values()
+                ->all();
 
-            $customer = $delivery->customer;
-            $template = $delivery->emailTemplate;
-
-            $subject = $this->renderer->render(
-                $template->subject,
-                $customer
-            );
-
-            $body = $this->renderer->render(
-                $template->body_html,
-                $customer
-            );
+            if (count($recipients) !== $batch->recipient_count) {
+                throw new \RuntimeException('The batch recipient list changed after quota was reserved.');
+            }
 
             $this->mailSettings->refresh();
 
-            Mail::to($customer->email)
+            $sending = EmailDeliveryBatch::query()
+                ->whereKey($batch->id)
+                ->where('status', EmailDeliveryBatchStatus::PROCESSING->value)
+                ->update([
+                    'status' => EmailDeliveryBatchStatus::SENDING,
+                    'sending_at' => now(config('app.timezone')),
+                ]);
+
+            if ($sending === 0) {
+                return;
+            }
+
+            Mail::to((string) config('mail.from.address'))
+                ->bcc($recipients)
                 ->send(
                     new AutomationMail(
-                        $subject,
-                        $body
+                        $rendered['subject'],
+                        $rendered['body']
                     )
                 );
 
-            $delivery->update([
-                'status' => EmailDeliveryStatus::SENT,
-                'sent_at' => now(),
-            ]);
+            $smtpAccepted = true;
+
+            $this->quota->complete($batch);
 
         } catch (Throwable $e) {
-
-            $delivery->update([
-                'status' => EmailDeliveryStatus::FAILED,
-                'failed_at' => now(),
-                'error_message' => $e->getMessage(),
-            ]);
+            if (! $smtpAccepted) {
+                $this->quota->release($batch, $e->getMessage());
+            }
 
             throw $e;
         }

@@ -76,6 +76,7 @@
                 <th class="px-4 py-3 text-left font-medium text-zinc-600 dark:text-zinc-300">{{ __('Email') }}</th>
                 <th class="px-4 py-3 text-left font-medium text-zinc-600 dark:text-zinc-300">{{ __('Automation') }}</th>
                 <th class="px-4 py-3 text-left font-medium text-zinc-600 dark:text-zinc-300">{{ __('Template') }}</th>
+                <th class="px-4 py-3 text-left font-medium text-zinc-600 dark:text-zinc-300">{{ __('Batch') }}</th>
                 <th class="px-4 py-3 text-left font-medium text-zinc-600 dark:text-zinc-300">{{ __('Status') }}</th>
                 <th class="px-4 py-3 text-left font-medium text-zinc-600 dark:text-zinc-300">{{ __('Scheduled At') }}</th>
                 <th class="px-4 py-3 text-left font-medium text-zinc-600 dark:text-zinc-300">{{ __('Processing At') }}</th>
@@ -92,6 +93,13 @@
                     <td class="px-4 py-3 text-zinc-600 dark:text-zinc-300">{{ $delivery->customer?->email ?? '---' }}</td>
                     <td class="px-4 py-3 text-zinc-600 dark:text-zinc-300">{{ $delivery->automation?->name ?? '---' }}</td>
                     <td class="px-4 py-3 text-zinc-600 dark:text-zinc-300">{{ $delivery->emailTemplate?->name ?? '---' }}</td>
+                    <td class="px-4 py-3 text-zinc-600 dark:text-zinc-300">
+                        @if($delivery->batch)
+                            #{{ $delivery->batch->id }} · {{ trans_choice(':count recipient|:count recipients', $delivery->batch->recipient_count) }}
+                        @else
+                            ---
+                        @endif
+                    </td>
                     <td class="px-4 py-3">
                         <x-ui.badge :variant="$statusPresenter->badgeVariant($delivery->status)">
                             {{ str($delivery->status->value)->headline() }}
@@ -133,7 +141,7 @@
                     </td>
                 </tr>
             @empty
-                <x-ui.table-empty colspan="10" :title="__('No deliveries found.')" :message="__('Try changing the filters or wait for automations to schedule email deliveries.')" />
+                <x-ui.table-empty colspan="11" :title="__('No deliveries found.')" :message="__('Try changing the filters or wait for automations to schedule email deliveries.')" />
             @endforelse
         </tbody>
     </x-ui.table>

@@ -179,6 +179,18 @@
         </section>
 
         <section class="rounded-lg border border-zinc-200 bg-white p-5 shadow-sm dark:border-zinc-700 dark:bg-zinc-900">
+            <h2 class="text-base font-semibold text-zinc-950 dark:text-white">{{ __('Delivery Mode') }}</h2>
+            <div class="mt-4 rounded-lg border border-zinc-200 bg-zinc-50 p-4 dark:border-zinc-700 dark:bg-zinc-950">
+                <div class="font-medium text-zinc-950 dark:text-white">{{ __('Bulk BCC') }}</div>
+                <p class="mt-1 text-sm text-zinc-500 dark:text-zinc-400">{{ __('Recipients are grouped into BCC batches. All recipients receive the same email content.') }}</p>
+                <dl class="mt-4 grid gap-3 text-sm sm:grid-cols-2">
+                    <div><dt class="text-zinc-500 dark:text-zinc-400">{{ __('Daily recipient limit') }}</dt><dd class="font-medium">{{ config('mail.automation.daily_limit') }}</dd></div>
+                    <div><dt class="text-zinc-500 dark:text-zinc-400">{{ __('Batch size') }}</dt><dd class="font-medium">{{ config('mail.automation.bcc_batch_size') }}</dd></div>
+                </dl>
+            </div>
+        </section>
+
+        <section class="rounded-lg border border-zinc-200 bg-white p-5 shadow-sm dark:border-zinc-700 dark:bg-zinc-900">
             <h2 class="text-base font-semibold text-zinc-950 dark:text-white">{{ __('Email Template') }}</h2>
 
             <div class="mt-5">

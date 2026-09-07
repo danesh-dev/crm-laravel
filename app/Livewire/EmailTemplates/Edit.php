@@ -2,7 +2,6 @@
 
 namespace App\Livewire\EmailTemplates;
 
-use App\Models\Customer;
 use App\Models\EmailTemplate;
 use App\Services\Email\TemplatePreviewService;
 use App\Services\EmailTemplate\EmailTemplateService;
@@ -20,8 +19,6 @@ class Edit extends Component
 
     public ?string $preview = null;
 
-    public ?int $previewCustomerId = null;
-
     public function mount(
         EmailTemplate $emailTemplate
     ): void {
@@ -32,26 +29,13 @@ class Edit extends Component
         $this->subject = $emailTemplate->subject;
         $this->body_html = $emailTemplate->body_html;
 
-        $this->previewCustomerId =
-            Customer::query()->value('id');
     }
 
     public function generatePreview(
         TemplatePreviewService $previewService
     ): void {
 
-        $customer = Customer::find(
-            $this->previewCustomerId
-        );
-
-        if (! $customer) {
-            return;
-        }
-
-        $this->preview = $previewService->preview(
-            $this->body_html,
-            $customer
-        );
+        $this->preview = $previewService->preview($this->body_html);
     }
 
     public function save(
@@ -81,13 +65,6 @@ class Edit extends Component
 
     public function render()
     {
-        return view(
-            'livewire.email-templates.edit',
-            [
-                'customers' => Customer::query()
-                    ->orderBy('name')
-                    ->get(),
-            ]
-        );
+        return view('livewire.email-templates.edit');
     }
 }
