@@ -1,3 +1,5 @@
+# syntax=docker/dockerfile:1.7
+
 ############################################
 # Composer dependencies
 ############################################
@@ -7,12 +9,14 @@ WORKDIR /app
 
 COPY composer.json composer.lock ./
 
-RUN composer install \
-    --no-dev \
-    --prefer-dist \
-    --no-interaction \
-    --no-scripts \
-    --optimize-autoloader
+RUN --mount=type=cache,target=/tmp/composer-cache \
+    COMPOSER_CACHE_DIR=/tmp/composer-cache \
+    composer install \
+        --no-dev \
+        --prefer-dist \
+        --no-interaction \
+        --no-scripts \
+        --optimize-autoloader
 
 COPY . .
 
@@ -25,14 +29,19 @@ RUN composer dump-autoload --optimize
 FROM node:22-alpine AS frontend
 
 WORKDIR /app
-RUN npm install -g npm@11.6.2
-COPY package*.json ./
 
-RUN npm ci
+RUN npm install -g npm@11.6.2
+
+COPY package.json package-lock.json ./
+
+RUN --mount=type=cache,target=/root/.npm \
+    npm ci \
+        --no-audit \
+        --no-fund
 
 COPY . .
 
-# Flux CSS lives inside vendor/
+# Flux CSS is loaded from Laravel vendor/
 COPY --from=vendor /app/vendor ./vendor
 
 RUN npm run build
@@ -61,11 +70,10 @@ RUN mkdir -p \
     storage/framework/sessions \
     storage/framework/views \
     storage/logs \
-    bootstrap/cache
-
-RUN chown -R www-data:www-data \
-    storage \
-    bootstrap/cache
+    bootstrap/cache \
+    && chown -R www-data:www-data \
+        storage \
+        bootstrap/cache
 
 EXPOSE 8000
 

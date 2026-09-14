@@ -53,6 +53,9 @@ class Index extends Component
                 'deliveries' => $query
                     ->apply($this->filters())
                     ->paginate(20),
+                'failedDeliveryCount' => $query
+                    ->failed($this->filters())
+                    ->count(),
                 'automations' => Automation::query()
                     ->select(['id', 'name'])
                     ->orderBy('name')
@@ -89,6 +92,17 @@ class Index extends Component
         } catch (ValidationException $exception) {
             $this->message = collect($exception->errors())->flatten()->first();
         }
+    }
+
+    public function retryFilteredFailures(DeliveryActionService $service): void
+    {
+        $this->message = null;
+        $result = $service->retryFilteredFailures($this->filters());
+
+        session()->flash('success', __(
+            ':queued queued for retry, :skipped skipped, :deferred deferred because of quota.',
+            $result
+        ));
     }
 
     private function filters(): array

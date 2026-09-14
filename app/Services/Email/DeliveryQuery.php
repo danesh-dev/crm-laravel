@@ -2,6 +2,7 @@
 
 namespace App\Services\Email;
 
+use App\Enums\EmailDeliveryStatus;
 use App\Models\EmailDelivery;
 use Illuminate\Database\Eloquent\Builder;
 
@@ -48,5 +49,11 @@ class DeliveryQuery
                 }
             )
             ->latest();
+    }
+
+    public function failed(array $filters): Builder
+    {
+        return $this->apply($filters)
+            ->where('status', EmailDeliveryStatus::FAILED->value);
     }
 }

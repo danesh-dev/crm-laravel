@@ -26,7 +26,7 @@ class AutomationEngine
         Automation::query()
             ->active()
             ->with('schedule')
-            ->chunkById(100, function ($automations) {
+            ->chunkById(80, function ($automations) {
 
                 foreach ($automations as $automation) {
 

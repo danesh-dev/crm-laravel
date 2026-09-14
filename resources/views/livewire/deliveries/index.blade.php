@@ -16,7 +16,7 @@
         </div>
     @endif
 
-    <div class="grid gap-3 rounded-lg border border-zinc-200 bg-white p-4 shadow-sm sm:grid-cols-2 xl:grid-cols-6 dark:border-zinc-700 dark:bg-zinc-900">
+    <div class="grid gap-3 rounded-lg border border-zinc-200 bg-white p-4 shadow-sm sm:grid-cols-2 xl:grid-cols-7 dark:border-zinc-700 dark:bg-zinc-900">
         <input
             type="text"
             wire:model.live.debounce.300ms="search"
@@ -63,6 +63,21 @@
             aria-label="{{ __('Date to') }}"
             class="h-10 rounded-md border border-zinc-200 bg-white px-3 text-sm text-zinc-900 focus:border-zinc-400 focus:outline-none focus:ring-2 focus:ring-zinc-200 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white dark:focus:border-zinc-500 dark:focus:ring-zinc-700"
         />
+
+        <x-ui.button
+            variant="secondary"
+            icon="arrow-path"
+            wire:click="retryFilteredFailures"
+            wire:confirm="{{ __('Retry all :count failed deliveries matching the current filters?', ['count' => $failedDeliveryCount]) }}"
+            wire:loading.attr="disabled"
+            wire:target="retryFilteredFailures"
+            :disabled="$failedDeliveryCount === 0"
+        >
+            <span wire:loading.remove wire:target="retryFilteredFailures">
+                {{ __('Retry Failed (:count)', ['count' => $failedDeliveryCount]) }}
+            </span>
+            <span wire:loading wire:target="retryFilteredFailures">{{ __('Retrying...') }}</span>
+        </x-ui.button>
     </div>
 
     <div wire:loading.delay class="text-sm text-zinc-500 dark:text-zinc-400">

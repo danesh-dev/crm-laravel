@@ -8,6 +8,7 @@ use App\Enums\ScheduleType;
 use App\Enums\TargetUserType;
 use App\Enums\UserSource;
 use App\Jobs\SendEmailBatchJob;
+use App\Livewire\Deliveries\Index as DeliveriesIndex;
 use App\Mail\AutomationMail;
 use App\Models\Automation;
 use App\Models\Customer;
@@ -17,6 +18,7 @@ use App\Models\EmailTemplate;
 use App\Models\MailDailyQuota;
 use App\Models\User;
 use App\Services\Automation\AutomationEngine;
+use App\Services\Email\DeliveryActionService;
 use App\Services\Email\DeliveryService;
 use App\Services\Email\EmailBatchDispatcher;
 use App\Services\Email\MailQuotaService;
@@ -25,7 +27,9 @@ use App\Services\Settings\MailSettingsService;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Queue;
 use InvalidArgumentException;
+use Livewire\Livewire;
 use Mockery;
 use RuntimeException;
 use Tests\TestCase;
@@ -321,6 +325,125 @@ class AutomationEmailBatchDeliveryTest extends TestCase
         $this->assertSame(EmailDeliveryBatchStatus::FAILED, $batch->fresh()->status);
     }
 
+    public function test_filtered_failures_across_pages_are_rebatched_using_current_size(): void
+    {
+        Queue::fake();
+        $this->createDeliveries(55);
+        $batch = app(MailQuotaService::class)->reserveNextBatch();
+        app(MailQuotaService::class)->release($batch, 'Known SMTP failure');
+        config(['mail.automation.bcc_batch_size' => 20]);
+
+        $result = app(DeliveryActionService::class)->retryFilteredFailures($this->emptyFilters());
+
+        $this->assertSame(['queued' => 55, 'skipped' => 0, 'deferred' => 0], $result);
+        $this->assertSame([20, 20, 15], EmailDeliveryBatch::query()
+            ->whereKeyNot($batch->id)
+            ->orderBy('id')
+            ->pluck('recipient_count')
+            ->all());
+        Queue::assertPushed(SendEmailBatchJob::class, 3);
+    }
+
+    public function test_bulk_retry_uses_the_same_search_filter_as_the_delivery_list(): void
+    {
+        Queue::fake();
+        $this->createDeliveries(3);
+        $batch = app(MailQuotaService::class)->reserveNextBatch();
+        app(MailQuotaService::class)->release($batch, 'Known SMTP failure');
+
+        $result = app(DeliveryActionService::class)->retryFilteredFailures([
+            ...$this->emptyFilters(),
+            'search' => 'customer2@example.com',
+        ]);
+
+        $this->assertSame(1, $result['queued']);
+        $this->assertSame(1, EmailDelivery::query()->where('status', EmailDeliveryStatus::PROCESSING)->count());
+        $this->assertSame(2, EmailDelivery::query()->where('status', EmailDeliveryStatus::FAILED)->count());
+    }
+
+    public function test_bulk_retry_respects_automation_template_and_date_filters(): void
+    {
+        Queue::fake();
+        $this->createDeliveries(2);
+        $firstDelivery = EmailDelivery::query()->firstOrFail();
+        $firstBatch = app(MailQuotaService::class)->reserveNextBatch();
+        app(MailQuotaService::class)->release($firstBatch, 'First known failure');
+
+        $this->createDeliveries(1, null, 'other-customer');
+        $secondBatch = app(MailQuotaService::class)->reserveNextBatch();
+        app(MailQuotaService::class)->release($secondBatch, 'Second known failure');
+
+        $result = app(DeliveryActionService::class)->retryFilteredFailures([
+            ...$this->emptyFilters(),
+            'automation_id' => (string) $firstDelivery->automation_id,
+            'email_template_id' => (string) $firstDelivery->email_template_id,
+            'date_from' => now()->toDateString(),
+            'date_to' => now()->toDateString(),
+        ]);
+
+        $this->assertSame(2, $result['queued']);
+        $this->assertSame(1, EmailDelivery::query()->where('status', EmailDeliveryStatus::FAILED)->count());
+    }
+
+    public function test_bulk_retry_is_idempotent_and_does_not_touch_non_failed_deliveries(): void
+    {
+        Queue::fake();
+        $this->createDeliveries(3);
+        $batch = app(MailQuotaService::class)->reserveNextBatch();
+        app(MailQuotaService::class)->release($batch, 'Known SMTP failure');
+        EmailDelivery::query()->firstOrFail()->update(['status' => EmailDeliveryStatus::CANCELLED]);
+
+        $first = app(DeliveryActionService::class)->retryFilteredFailures($this->emptyFilters());
+        $second = app(DeliveryActionService::class)->retryFilteredFailures($this->emptyFilters());
+
+        $this->assertSame(2, $first['queued']);
+        $this->assertSame(['queued' => 0, 'skipped' => 0, 'deferred' => 0], $second);
+        $this->assertSame(1, EmailDelivery::query()->where('status', EmailDeliveryStatus::CANCELLED)->count());
+        Queue::assertPushed(SendEmailBatchJob::class, 1);
+    }
+
+    public function test_bulk_retry_defers_deliveries_that_do_not_fit_daily_quota(): void
+    {
+        Queue::fake();
+        $this->createDeliveries(75);
+        $batch = app(MailQuotaService::class)->reserveNextBatch();
+        app(MailQuotaService::class)->release($batch, 'Known SMTP failure');
+        config(['mail.automation.daily_limit' => 50]);
+
+        $result = app(DeliveryActionService::class)->retryFilteredFailures($this->emptyFilters());
+
+        $this->assertSame(['queued' => 50, 'skipped' => 0, 'deferred' => 25], $result);
+        $this->assertSame(25, EmailDelivery::query()->where('status', EmailDeliveryStatus::PENDING)->count());
+    }
+
+    public function test_bulk_retry_skips_a_failed_delivery_attached_to_an_ambiguous_batch(): void
+    {
+        Queue::fake();
+        $this->createDeliveries(2);
+        $batch = app(MailQuotaService::class)->reserveNextBatch();
+        app(MailQuotaService::class)->release($batch, 'Known SMTP failure');
+        $batch->update(['status' => EmailDeliveryBatchStatus::SENDING]);
+
+        $result = app(DeliveryActionService::class)->retryFilteredFailures($this->emptyFilters());
+
+        $this->assertSame(['queued' => 0, 'skipped' => 2, 'deferred' => 0], $result);
+        Queue::assertNothingPushed();
+    }
+
+    public function test_deliveries_index_shows_filtered_failure_count_and_confirmation(): void
+    {
+        Queue::fake();
+        $this->createDeliveries(2);
+        $batch = app(MailQuotaService::class)->reserveNextBatch();
+        app(MailQuotaService::class)->release($batch, 'Known SMTP failure');
+
+        Livewire::test(DeliveriesIndex::class)
+            ->assertSee('Retry Failed (2)')
+            ->assertSee('Retry all 2 failed deliveries matching the current filters?')
+            ->set('search', 'missing@example.com')
+            ->assertSee('Retry Failed (0)');
+    }
+
     private function assertBatchDelivery(int $recipients, array $expectedSizes): void
     {
         Mail::fake();
@@ -343,8 +466,11 @@ class AutomationEmailBatchDeliveryTest extends TestCase
         $this->assertSame($expectedSizes, $bccSizes);
     }
 
-    private function createDeliveries(int $count, mixed $scheduledFor = null): void
-    {
+    private function createDeliveries(
+        int $count,
+        mixed $scheduledFor = null,
+        string $emailPrefix = 'customer'
+    ): void {
         $user = User::factory()->create();
         $template = EmailTemplate::query()->create([
             'name' => 'Static announcement',
@@ -364,7 +490,7 @@ class AutomationEmailBatchDeliveryTest extends TestCase
         for ($index = 1; $index <= $count; $index++) {
             $customer = Customer::query()->create([
                 'name' => "Customer {$index}",
-                'email' => "customer{$index}@example.com",
+                'email' => "{$emailPrefix}{$index}@example.com",
                 'source' => UserSource::MANUAL,
                 'signup_at' => now(),
             ]);
@@ -376,5 +502,17 @@ class AutomationEmailBatchDeliveryTest extends TestCase
                 'scheduled_for' => $scheduledFor ?? now(),
             ]);
         }
+    }
+
+    private function emptyFilters(): array
+    {
+        return [
+            'search' => '',
+            'status' => null,
+            'automation_id' => null,
+            'email_template_id' => null,
+            'date_from' => null,
+            'date_to' => null,
+        ];
     }
 }
