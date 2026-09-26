@@ -86,7 +86,7 @@
                     <div>
                         <dt class="text-sm text-zinc-500 dark:text-zinc-400">{{ __('Delivery Mode') }}</dt>
                         <dd class="mt-1 font-medium text-zinc-950 dark:text-white">{{ __('Bulk BCC') }}</dd>
-                        <p class="mt-1 text-sm text-zinc-500 dark:text-zinc-400">{{ __('Daily limit: :limit · Batch size: :size', ['limit' => config('mail.automation.daily_limit'), 'size' => config('mail.automation.bcc_batch_size')]) }}</p>
+                        <p class="mt-1 text-sm text-zinc-500 dark:text-zinc-400">{{ __('Daily outbound messages: :limit · Recipients per batch: :size', ['limit' => config('mail.automation.daily_limit'), 'size' => config('mail.automation.bcc_batch_size')]) }}</p>
                     </div>
                 </dl>
             </section>

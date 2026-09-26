@@ -16,7 +16,7 @@ class MailQuotaService
     {
         return (int) (MailDailyQuota::query()
             ->where('quota_date', $this->today())
-            ->value('sent_recipients') ?? 0);
+            ->value('sent_messages') ?? 0);
     }
 
     public function remainingToday(): int
@@ -26,13 +26,13 @@ class MailQuotaService
             ->first();
 
         return max(0, $this->dailyLimit()
-            - (int) ($quota?->sent_recipients ?? 0)
-            - (int) ($quota?->reserved_recipients ?? 0));
+            - (int) ($quota?->sent_messages ?? 0)
+            - (int) ($quota?->reserved_messages ?? 0));
     }
 
-    public function canReserve(int $recipientCount): bool
+    public function canReserve(int $messageCount = 1): bool
     {
-        return $recipientCount > 0 && $recipientCount <= $this->remainingToday();
+        return $messageCount > 0 && $messageCount <= $this->remainingToday();
     }
 
     public function reserveNextBatch(): ?EmailDeliveryBatch
@@ -67,7 +67,7 @@ class MailQuotaService
                 ->whereHas('customer', fn ($query) => $query->whereNotNull('email'))
                 ->orderBy('scheduled_for')
                 ->orderBy('id')
-                ->limit(min($this->batchSize(), $remaining))
+                ->limit($this->batchSize())
                 ->lockForUpdate()
                 ->pluck('id');
 
@@ -101,56 +101,12 @@ class MailQuotaService
                 ]);
 
             $quota->update([
+                'reserved_messages' => $quota->reserved_messages + 1,
                 'reserved_recipients' => $quota->reserved_recipients + $deliveryIds->count(),
                 'next_send_at' => $availableAt->copy()->addSeconds($this->delaySeconds()),
             ]);
 
             return $batch;
-        }, 3);
-    }
-
-    public function reserveRetry(EmailDeliveryBatch $batch): bool
-    {
-        return DB::transaction(function () use ($batch): bool {
-            $batch = EmailDeliveryBatch::query()->lockForUpdate()->findOrFail($batch->id);
-
-            if ($batch->status !== EmailDeliveryBatchStatus::FAILED) {
-                return $batch->status === EmailDeliveryBatchStatus::QUEUED;
-            }
-
-            $quota = $this->lockedQuota($this->today());
-
-            if ($batch->recipient_count > $this->remainingFor($quota)) {
-                return false;
-            }
-
-            $now = $this->now();
-            $availableAt = $quota->next_send_at?->isAfter($now)
-                ? $quota->next_send_at->copy()
-                : $now->copy();
-
-            $quota->update([
-                'reserved_recipients' => $quota->reserved_recipients + $batch->recipient_count,
-                'next_send_at' => $availableAt->copy()->addSeconds($this->delaySeconds()),
-            ]);
-
-            $batch->update([
-                'quota_date' => $this->today(),
-                'available_at' => $availableAt,
-                'status' => EmailDeliveryBatchStatus::QUEUED,
-                'processing_at' => null,
-                'failed_at' => null,
-                'error_message' => null,
-            ]);
-
-            $batch->deliveries()->update([
-                'status' => EmailDeliveryStatus::PROCESSING,
-                'processing_at' => $now,
-                'failed_at' => null,
-                'error_message' => null,
-            ]);
-
-            return true;
         }, 3);
     }
 
@@ -167,6 +123,8 @@ class MailQuotaService
             $now = $this->now();
 
             $quota->update([
+                'reserved_messages' => max(0, $quota->reserved_messages - 1),
+                'sent_messages' => $quota->sent_messages + 1,
                 'reserved_recipients' => max(0, $quota->reserved_recipients - $batch->recipient_count),
                 'sent_recipients' => $quota->sent_recipients + $batch->recipient_count,
             ]);
@@ -202,6 +160,7 @@ class MailQuotaService
             $now = $this->now();
 
             $quota->update([
+                'reserved_messages' => max(0, $quota->reserved_messages - 1),
                 'reserved_recipients' => max(0, $quota->reserved_recipients - $batch->recipient_count),
             ]);
 
@@ -223,6 +182,8 @@ class MailQuotaService
     {
         MailDailyQuota::query()->insertOrIgnore([
             'quota_date' => $date,
+            'sent_messages' => 0,
+            'reserved_messages' => 0,
             'sent_recipients' => 0,
             'reserved_recipients' => 0,
             'created_at' => $this->now(),
@@ -237,7 +198,7 @@ class MailQuotaService
 
     private function remainingFor(MailDailyQuota $quota): int
     {
-        return max(0, $this->dailyLimit() - $quota->sent_recipients - $quota->reserved_recipients);
+        return max(0, $this->dailyLimit() - $quota->sent_messages - $quota->reserved_messages);
     }
 
     private function dailyLimit(): int

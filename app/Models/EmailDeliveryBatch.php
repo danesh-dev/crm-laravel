@@ -20,6 +20,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
     'sent_at',
     'failed_at',
     'recipient_count',
+    'attempt_count',
+    'last_attempted_at',
     'status',
     'provider_message_id',
     'error_message',
@@ -54,6 +56,8 @@ class EmailDeliveryBatch extends Model
             'sent_at' => 'datetime',
             'failed_at' => 'datetime',
             'recipient_count' => 'integer',
+            'attempt_count' => 'integer',
+            'last_attempted_at' => 'datetime',
         ];
     }
 }

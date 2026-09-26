@@ -2,10 +2,12 @@
 
 namespace App\Services\Dashboard;
 
+use App\Enums\EmailDeliveryBatchStatus;
 use App\Enums\EmailDeliveryStatus;
 use App\Models\Automation;
 use App\Models\Customer;
 use App\Models\EmailDelivery;
+use App\Models\EmailDeliveryBatch;
 use App\Models\EmailTemplate;
 use App\Models\Subscription;
 use App\Services\Automation\AutomationDisplayService;
@@ -16,7 +18,7 @@ use Illuminate\Support\Facades\DB;
 
 class DashboardStatsService
 {
-    private const CACHE_PREFIX = 'dashboard.v4.';
+    private const CACHE_PREFIX = 'dashboard.v5.';
 
     public function __construct(
         private AutomationDisplayService $automationDisplay,
@@ -45,6 +47,7 @@ class DashboardStatsService
             'active_subscribers' => $this->activeSubscriberCount(),
             'active_automations' => Automation::query()->active()->count(),
             'emails_sent_today' => $this->sentTodayCount(),
+            'outbound_messages_today' => $this->outboundMessagesTodayCount(),
             'emails_failed_today' => $this->failedTodayCount(),
             'emails_pending' => $this->pendingCount(),
             'failed_jobs_today' => $this->failedJobsTodayCount(),
@@ -289,6 +292,15 @@ class DashboardStatsService
     private function sentTodayCount(): int
     {
         return EmailDelivery::query()
+            ->where('status', EmailDeliveryStatus::SENT->value)
+            ->whereDate('sent_at', today())
+            ->count();
+    }
+
+    private function outboundMessagesTodayCount(): int
+    {
+        return EmailDeliveryBatch::query()
+            ->where('status', EmailDeliveryBatchStatus::SENT->value)
             ->whereDate('sent_at', today())
             ->count();
     }
@@ -296,6 +308,10 @@ class DashboardStatsService
     private function failedTodayCount(): int
     {
         return EmailDelivery::query()
+            ->whereIn('status', [
+                EmailDeliveryStatus::FAILED->value,
+                EmailDeliveryStatus::BOUNCED->value,
+            ])
             ->whereDate('failed_at', today())
             ->count();
     }

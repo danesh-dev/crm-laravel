@@ -4,7 +4,6 @@ namespace App\Services\Email;
 
 use App\Enums\EmailDeliveryBatchStatus;
 use App\Enums\EmailDeliveryStatus;
-use App\Jobs\SendEmailBatchJob;
 use App\Models\EmailDelivery;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\ValidationException;
@@ -13,31 +12,36 @@ class DeliveryActionService
 {
     public function __construct(
         private DeliveryQuery $deliveryQuery,
-        private EmailBatchDispatcher $dispatcher,
     ) {}
 
     public function retry(EmailDelivery $delivery): void
     {
-        if ($delivery->status !== EmailDeliveryStatus::FAILED) {
+        $retried = DB::transaction(function () use ($delivery): bool {
+            $delivery = EmailDelivery::query()
+                ->lockForUpdate()
+                ->findOrFail($delivery->id);
+
+            if ($delivery->status !== EmailDeliveryStatus::FAILED) {
+                return false;
+            }
+
+            if (
+                $delivery->email_delivery_batch_id !== null
+                && $delivery->batch()->lockForUpdate()->first()?->status !== EmailDeliveryBatchStatus::FAILED
+            ) {
+                return false;
+            }
+
+            $delivery->update($this->retryAttributes());
+
+            return true;
+        }, 3);
+
+        if (! $retried) {
             throw ValidationException::withMessages([
                 'delivery' => __('Only failed deliveries can be retried.'),
             ]);
         }
-
-        if ($delivery->email_delivery_batch_id !== null) {
-            SendEmailBatchJob::dispatch($delivery->email_delivery_batch_id);
-
-            return;
-        }
-
-        $delivery->update([
-            'status' => EmailDeliveryStatus::PENDING,
-            'processing_at' => null,
-            'sent_at' => null,
-            'failed_at' => null,
-            'provider_message_id' => null,
-            'error_message' => null,
-        ]);
     }
 
     public function cancel(EmailDelivery $delivery): void
@@ -86,36 +90,33 @@ class DeliveryActionService
             EmailDelivery::query()
                 ->whereKey($ids)
                 ->where('status', EmailDeliveryStatus::FAILED->value)
-                ->update([
-                    'email_delivery_batch_id' => null,
-                    'status' => EmailDeliveryStatus::PENDING->value,
-                    'processing_at' => null,
-                    'sent_at' => null,
-                    'failed_at' => null,
-                    'provider_message_id' => null,
-                    'error_message' => null,
-                ]);
+                ->update($this->retryAttributes());
 
             return $ids;
         }, 3);
 
         $claimed = $claimedIds->count();
 
-        if ($claimed > 0) {
-            // One delivery per batch is the upper bound when filters span many
-            // automation/template groups. The dispatcher stops at daily quota.
-            $this->dispatcher->dispatchDue($claimed);
-        }
-
-        $queued = EmailDelivery::query()
-            ->whereKey($claimedIds)
-            ->whereNotNull('email_delivery_batch_id')
-            ->count();
-
         return [
-            'queued' => $queued,
+            'queued' => $claimed,
             'skipped' => max(0, $requested - $claimed),
-            'deferred' => $claimed - $queued,
+            'deferred' => 0,
+        ];
+    }
+
+    private function retryAttributes(): array
+    {
+        return [
+            'email_delivery_batch_id' => null,
+            'status' => EmailDeliveryStatus::PENDING->value,
+            'scheduled_for' => now(config('app.timezone'))->addSeconds(
+                max(1, (int) config('mail.automation.retry_delay_seconds', 60))
+            ),
+            'processing_at' => null,
+            'sent_at' => null,
+            'failed_at' => null,
+            'provider_message_id' => null,
+            'error_message' => null,
         ];
     }
 }

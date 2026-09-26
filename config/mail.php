@@ -119,6 +119,7 @@ return [
         'daily_limit' => max(0, (int) env('MAIL_DAILY_LIMIT', 500)),
         'bcc_batch_size' => min(100, max(1, (int) env('MAIL_BCC_BATCH_SIZE', 80))),
         'bcc_delay_seconds' => max(0, (int) env('MAIL_BCC_DELAY_SECONDS', 5)),
+        'retry_delay_seconds' => max(1, (int) env('MAIL_RETRY_DELAY_SECONDS', 60)),
     ],
 
 ];

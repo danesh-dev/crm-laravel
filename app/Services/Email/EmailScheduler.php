@@ -6,6 +6,7 @@ use App\Enums\EmailDeliveryStatus;
 use App\Models\Automation;
 use App\Models\Customer;
 use App\Models\EmailDelivery;
+use Illuminate\Database\UniqueConstraintViolationException;
 
 class EmailScheduler
 {
@@ -28,13 +29,17 @@ class EmailScheduler
             return null;
         }
 
-        $delivery = EmailDelivery::create([
-            'automation_id' => $automation->id,
-            'customer_id' => $customer->id,
-            'email_template_id' => $automation->email_template_id,
-            'status' => EmailDeliveryStatus::PENDING,
-            'scheduled_for' => $scheduledFor,
-        ]);
+        try {
+            $delivery = EmailDelivery::create([
+                'automation_id' => $automation->id,
+                'customer_id' => $customer->id,
+                'email_template_id' => $automation->email_template_id,
+                'status' => EmailDeliveryStatus::PENDING,
+                'scheduled_for' => $scheduledFor,
+            ]);
+        } catch (UniqueConstraintViolationException) {
+            return null;
+        }
 
         return $delivery;
     }

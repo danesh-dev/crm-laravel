@@ -69,6 +69,14 @@ class DeliveryService
                 return;
             }
 
+            EmailDeliveryBatch::query()
+                ->whereKey($batch->id)
+                ->where('status', EmailDeliveryBatchStatus::SENDING->value)
+                ->update([
+                    'attempt_count' => $batch->attempt_count + 1,
+                    'last_attempted_at' => now(config('app.timezone')),
+                ]);
+
             Mail::to((string) config('mail.from.address'))
                 ->bcc($recipients)
                 ->send(

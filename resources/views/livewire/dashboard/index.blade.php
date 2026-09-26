@@ -12,12 +12,13 @@
         </x-ui.button>
     </x-slot:actions>
 
-    <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-6">
+    <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-7">
         @foreach([
             ['label' => __('Total Customers'), 'value' => $stats['overview']['customers'], 'hint' => __('All customer records'), 'variant' => 'neutral'],
             ['label' => __('Active Subscribers'), 'value' => $stats['overview']['active_subscribers'], 'hint' => __('Current paid audience'), 'variant' => 'success'],
             ['label' => __('Active Automations'), 'value' => $stats['overview']['active_automations'], 'hint' => __('Running workflows'), 'variant' => 'info'],
-            ['label' => __('Emails Sent Today'), 'value' => $stats['overview']['emails_sent_today'], 'hint' => __('Successful deliveries'), 'variant' => 'success'],
+            ['label' => __('Recipients Sent Today'), 'value' => $stats['overview']['emails_sent_today'], 'hint' => __('Successful recipient deliveries'), 'variant' => 'success'],
+            ['label' => __('Outbound Messages Today'), 'value' => $stats['overview']['outbound_messages_today'], 'hint' => __('Gmail quota consumed'), 'variant' => 'info'],
             ['label' => __('Failed Emails Today'), 'value' => $stats['overview']['emails_failed_today'], 'hint' => __('Needs attention'), 'variant' => $stats['overview']['emails_failed_today'] > 0 ? 'danger' : 'neutral'],
             ['label' => __('Failed Jobs Today'), 'value' => $stats['overview']['failed_jobs_today'], 'hint' => __('Queue failures'), 'variant' => $stats['overview']['failed_jobs_today'] > 0 ? 'danger' : 'neutral'],
         ] as $card)
@@ -41,8 +42,8 @@
                 'chart' => $stats['charts']['customer_growth'],
             ],
             [
-                'title' => __('Email Sent vs Failed'),
-                'subtitle' => __('Delivery outcomes over the last 30 days.'),
+                'title' => __('Recipient Deliveries Sent vs Failed'),
+                'subtitle' => __('Recipient-level delivery outcomes over the last 30 days.'),
                 'type' => 'line',
                 'chart' => $stats['charts']['email_sent_failed'],
             ],
